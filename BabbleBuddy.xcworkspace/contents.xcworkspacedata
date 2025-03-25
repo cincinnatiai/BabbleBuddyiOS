@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:BabbleBuddyApp/BabbleBuddyApp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:DesignKit/DesignKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:NetworkingKit/NetworkingKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:CoreKit/CoreKit.xcodeproj">
+   </FileRef>
+</Workspace>
