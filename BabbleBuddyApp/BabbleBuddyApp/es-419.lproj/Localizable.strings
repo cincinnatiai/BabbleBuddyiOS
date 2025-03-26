@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  InternalSolutions
+
+  Created by GenericDevCalifornia on 2/4/25.
+  
+*/
+// Localizable.strings (Spanish)
+"error_title" = "Error";
+"error_message" = "No se encuentra usuario agregado";
+"error_button" = "Aceptar";
+"main_screen-text" = "Bienvenido";
