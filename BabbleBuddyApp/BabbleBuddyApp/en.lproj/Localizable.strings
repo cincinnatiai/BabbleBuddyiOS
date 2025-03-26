@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  InternalSolutions
+  Created by GenericDevCalifornia on 2/4/25.
+*/
+
+// Localizable.strings (English)
+"error_title" = "Configuration Error";
+"error_message" = "Copnfiguration not found";
+"error_button" = "Retry";
