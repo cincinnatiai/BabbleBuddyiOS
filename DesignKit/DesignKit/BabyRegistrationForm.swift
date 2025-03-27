@@ -11,6 +11,8 @@ struct BabyRegistrationForm: View {
     @State private var heightUnit = "Centimeters"
     @State private var bloodType = ""
     @State private var allergies = ""
+    @State private var showAlert = false
+    @State private var alertMessage = ""
 
     let genders = ["Male", "Female", "Other"]
     let weightUnits = ["Kilograms", "Pounds"]
@@ -56,11 +58,6 @@ struct BabyRegistrationForm: View {
                         }
                     }.pickerStyle(MenuPickerStyle())
                 }
-                if height == "0" {
-                    Text("Please enter a valid height.")
-                        .font(.caption)
-                        .foregroundColor(.red)
-                }
             }
             Section(header: Text("Baby's Blood Type:")) {
                 TextField("Blood Type", text: $bloodType)
@@ -72,10 +69,46 @@ struct BabyRegistrationForm: View {
             }
             Section {
                 Button("Submit") {
+                    if validateForm() {
+                    } else {
+                        showAlert = true
+                    }
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Missing Information"),
+                          message: Text(alertMessage),
+                          dismissButton: .default(Text("OK")))
+                }
             }
         }
+    }
+
+    private func validateForm() -> Bool {
+        let nameRegex = "^[A-Za-z]+$"
+        let heightWeightRegex = "^[0-9.'\\\"]+$"
+
+        if firstName.trimmingCharacters(in: .whitespaces).isEmpty || !NSPredicate(format: "SELF MATCHES %@", nameRegex).evaluate(with: firstName) {
+            alertMessage = "Please enter a valid first name using only letters."
+            return false
+        }
+        if lastName.trimmingCharacters(in: .whitespaces).isEmpty || !NSPredicate(format: "SELF MATCHES %@", nameRegex).evaluate(with: lastName) {
+            alertMessage = "Please enter a valid last name using only letters."
+            return false
+        }
+        if weight.trimmingCharacters(in: .whitespaces).isEmpty || !NSPredicate(format: "SELF MATCHES %@", heightWeightRegex).evaluate(with: weight) {
+            alertMessage = "Please enter a valid weight using numbers and allowed symbols."
+            return false
+        }
+        if height.trimmingCharacters(in: .whitespaces).isEmpty || !NSPredicate(format: "SELF MATCHES %@", heightWeightRegex).evaluate(with: height) {
+            alertMessage = "Please enter a valid height using numbers and allowed symbols."
+            return false
+        }
+        if bloodType.trimmingCharacters(in: .whitespaces).isEmpty {
+            alertMessage = "Please enter the baby's blood type."
+            return false
+        }
+        return true
     }
 }
 
