@@ -2,8 +2,7 @@ import UIKit
 import SwiftUI
 
 class SplashViewController: UIViewController, SplashViewModelDelegate {
-
-    private let splashViewModel: SplashViewModel = SplashViewModel()
+    @Inject var splashViewModel: SplashViewModel
     private let localizedStrings = String.LocalizeStringKeys.self
 
     override func viewDidLoad() {
