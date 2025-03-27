@@ -6,7 +6,6 @@ protocol SplashViewModelDelegate: AnyObject {
 }
 
 class SplashViewModel {
-
     weak var delegate: SplashViewModelDelegate?
 
     func splashNavigation() {

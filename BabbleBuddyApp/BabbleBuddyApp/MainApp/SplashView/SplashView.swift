@@ -4,6 +4,7 @@ import SwiftUI
 class SplashViewController: UIViewController, SplashViewModelDelegate {
 
     private let splashViewModel: SplashViewModel = SplashViewModel()
+    private let localizedStrings = String.LocalizeStringKeys.self
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,19 +33,18 @@ class SplashViewController: UIViewController, SplashViewModelDelegate {
 
     func navigateMainScreen() {
         let hostingController = UIHostingController(rootView: MainScreen())
-        self.navigationController?.pushViewController(hostingController, animated: true)
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.setViewControllers([hostingController], animated: true)
     }
 
     func showErrorScreen() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             let alert = UIAlertController(
-                title: NSLocalizedString("error_title", comment: "Title for error alert"),
-                message: NSLocalizedString("error_message", comment: "Message for error alert"),
+                title: self.localizedStrings.SplashViewErrorTitle,
+                message: self.localizedStrings.SplashViewErrorMessage,
                 preferredStyle: .alert
             )
             alert.addAction(UIAlertAction(
-                title: NSLocalizedString("error_button", comment: "Button title for error alert"),
+                title: self.localizedStrings.SplashViewErrorButton,
                 style: .default
             ))
             self.present(alert, animated: true)
