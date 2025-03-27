@@ -1,10 +1,3 @@
-//
-//  DesignKit.h
-//  DesignKit
-//
-//  Created by Dionicio Cruz Velázquez on 3/25/25.
-//
-
 #import <Foundation/Foundation.h>
 
 //! Project version number for DesignKit.
