@@ -6,7 +6,17 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		869CD0962D97296B004DFE93 /* AuthLibrarySPM in Frameworks */ = {isa = PBXBuildFile; productRef = 869CD0952D97296B004DFE93 /* AuthLibrarySPM */; };
+		869CD0A22D9AE4A4004DFE93 /* CoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 869CD0A12D9AE4A4004DFE93 /* CoreKit.framework */; };
+		869CD0A42D9AE4A9004DFE93 /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 869CD0A32D9AE4A9004DFE93 /* DesignKit.framework */; };
+		869CD0A62D9AE4AD004DFE93 /* NetworkingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 869CD0A52D9AE4AD004DFE93 /* NetworkingKit.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		869CD0A12D9AE4A4004DFE93 /* CoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		869CD0A32D9AE4A9004DFE93 /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		869CD0A52D9AE4AD004DFE93 /* NetworkingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabbleBuddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -36,16 +46,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				869CD0A62D9AE4AD004DFE93 /* NetworkingKit.framework in Frameworks */,
+				869CD0A42D9AE4A9004DFE93 /* DesignKit.framework in Frameworks */,
+				869CD0A22D9AE4A4004DFE93 /* CoreKit.framework in Frameworks */,
+				869CD0962D97296B004DFE93 /* AuthLibrarySPM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		869CD0A02D9AE4A4004DFE93 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				869CD0A52D9AE4AD004DFE93 /* NetworkingKit.framework */,
+				869CD0A32D9AE4A9004DFE93 /* DesignKit.framework */,
+				869CD0A12D9AE4A4004DFE93 /* CoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F57B50842D92F15700834E68 = {
 			isa = PBXGroup;
 			children = (
 				F57B508F2D92F15700834E68 /* BabbleBuddyApp */,
+				869CD0A02D9AE4A4004DFE93 /* Frameworks */,
 				F57B508E2D92F15700834E68 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,6 +104,7 @@
 			);
 			name = BabbleBuddyApp;
 			packageProductDependencies = (
+				869CD0952D97296B004DFE93 /* AuthLibrarySPM */,
 			);
 			productName = BabbleBuddyApp;
 			productReference = F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */;
@@ -109,6 +135,9 @@
 			);
 			mainGroup = F57B50842D92F15700834E68;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				869CD0942D97296B004DFE93 /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F57B508E2D92F15700834E68 /* Products */;
 			projectDirPath = "";
@@ -357,6 +386,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		869CD0942D97296B004DFE93 /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cincinnatiai/AuthLibrarySPM.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		869CD0952D97296B004DFE93 /* AuthLibrarySPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 869CD0942D97296B004DFE93 /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */;
+			productName = AuthLibrarySPM;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F57B50852D92F15700834E68 /* Project object */;
 }

@@ -1,13 +1,35 @@
 // This screen will be deleted, it was created for testing the navigation from the splashview
 
-import Foundation
 import SwiftUI
+import AuthLibrarySPM
+import UIKit
+import AWSMobileClientXCF
+import DesignKit
 
 struct MainScreen: View {
+
+    @ObservedObject var authManager: AuthManager = {
+        @Inject var globalAuthManager: AuthManager
+        return globalAuthManager
+    }()
+
     var body: some View {
-        Text("LogIn Screen Under Construction")
+        AuthApp(authManager: authManager, loginView: { viewModel in CustomLoginScreen(viewModel: viewModel)}) { user in
+            DesignKit.BabyRegistrationForm()
+        }
+        .environmentObject(authManager)
+        .onAppear {
+            resetAuthManager()
+            authManager.initializeAWS()
+            authManager.checkUserState()
+        }
+    }
+
+    func resetAuthManager() {
+        authManager.authState = .login
+        authManager.isLoggedIn = false
+        authManager.errorMessage = nil
+        authManager.signOut()
     }
 }
-#Preview  {
-    MainScreen()
-}
+
