@@ -1,114 +1,72 @@
 import SwiftUI
 
 struct BabyRegistrationForm: View {
-    @State private var firstName = ""
-    @State private var lastName = ""
-    @State private var dateOfBirth = Date()
-    @State private var gender = "Male"
-    @State private var weight = ""
-    @State private var weightUnit = "Kilograms"
-    @State private var height = ""
-    @State private var heightUnit = "Centimeters"
-    @State private var bloodType = ""
-    @State private var allergies = ""
-    @State private var showAlert = false
-    @State private var alertMessage = ""
-
-    let genders = ["Male", "Female", "Other"]
-    let weightUnits = ["Kilograms", "Pounds"]
-    let heightUnits = ["Centimeters", "Inches"]
+    @StateObject private var viewModel = BabyRegistrationViewModel()
 
     var body: some View {
         Form {
             Section(header: Text("Baby's First Name:")) {
-                TextField("First Name", text: $firstName)
+                TextField("First Name", text: $viewModel.baby.firstName)
             }
             Section(header: Text("Baby's Last Name:")) {
-                TextField("Last Name", text: $lastName)
+                TextField("Last Name", text: $viewModel.baby.lastName)
             }
             Section(header: Text("Baby's Date of Birth:")) {
-                DatePicker("", selection: $dateOfBirth, displayedComponents: .date)
-                    .datePickerStyle(.compact)
+                DatePicker("", selection: $viewModel.baby.dateOfBirth, displayedComponents: .date)
             }
             Section(header: Text("Baby's Gender:")) {
-                Picker("Gender", selection: $gender) {
-                    ForEach(genders, id: \ .self) {
-                        Text($0)
+                Picker("Gender", selection: $viewModel.baby.gender) {
+                    ForEach(Gender.allCases) { gender in
+                        Text(gender.rawValue).tag(gender)
                     }
-                }.pickerStyle(MenuPickerStyle())
+                }
+                .pickerStyle(MenuPickerStyle())
             }
             Section(header: Text("Baby's Birth Weight")) {
                 HStack {
-                    TextField("Weight", text: $weight)
+                    TextField("Weight", text: $viewModel.baby.weight)
                         .keyboardType(.decimalPad)
-                    Picker("", selection: $weightUnit) {
-                        ForEach(weightUnits, id: \ .self) {
-                            Text($0)
+                    Picker("", selection: $viewModel.baby.weightUnit) {
+                        ForEach(WeightUnit.allCases) { unit in
+                            Text(unit.rawValue).tag(unit)
                         }
                     }.pickerStyle(MenuPickerStyle())
                 }
             }
             Section(header: Text("Baby's Birth Height")) {
                 HStack {
-                    TextField("Height", text: $height)
+                    TextField("Height", text: $viewModel.baby.height)
                         .keyboardType(.decimalPad)
-                    Picker("", selection: $heightUnit) {
-                        ForEach(heightUnits, id: \ .self) {
-                            Text($0)
+                    Picker("", selection: $viewModel.baby.heightUnit) {
+                        ForEach(HeightUnit.allCases) { unit in
+                            Text(unit.rawValue).tag(unit)
                         }
                     }.pickerStyle(MenuPickerStyle())
                 }
             }
             Section(header: Text("Baby's Blood Type:")) {
-                TextField("Blood Type", text: $bloodType)
+                TextField("Blood Type", text: $viewModel.baby.bloodType)
             }
             Section(header: Text("Allergies")) {
-                TextField("Enter Allergies", text: $allergies)
+                TextField("Enter Allergies", text: $viewModel.baby.allergies)
                 Button("Add an Allergy") {
+                    // Logic for adding allergies (future improvement)
                 }
             }
             Section {
                 Button("Submit") {
-                    if validateForm() {
-                    } else {
-                        showAlert = true
+                    if !viewModel.validateForm() {
+                        viewModel.showAlert = true
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
-                .alert(isPresented: $showAlert) {
+                .alert(isPresented: $viewModel.showAlert) {
                     Alert(title: Text("Missing Information"),
-                          message: Text(alertMessage),
+                          message: Text(viewModel.alertMessage),
                           dismissButton: .default(Text("OK")))
                 }
             }
         }
-    }
-
-    private func validateForm() -> Bool {
-        let nameRegex = "^[A-Za-z]+$"
-        let heightWeightRegex = "^[0-9.'\\\"]+$"
-
-        if firstName.trimmingCharacters(in: .whitespaces).isEmpty || !NSPredicate(format: "SELF MATCHES %@", nameRegex).evaluate(with: firstName) {
-            alertMessage = "Please enter a valid first name using only letters."
-            return false
-        }
-        if lastName.trimmingCharacters(in: .whitespaces).isEmpty || !NSPredicate(format: "SELF MATCHES %@", nameRegex).evaluate(with: lastName) {
-            alertMessage = "Please enter a valid last name using only letters."
-            return false
-        }
-        if weight.trimmingCharacters(in: .whitespaces).isEmpty || !NSPredicate(format: "SELF MATCHES %@", heightWeightRegex).evaluate(with: weight) {
-            alertMessage = "Please enter a valid weight using numbers and allowed symbols."
-            return false
-        }
-        if height.trimmingCharacters(in: .whitespaces).isEmpty || !NSPredicate(format: "SELF MATCHES %@", heightWeightRegex).evaluate(with: height) {
-            alertMessage = "Please enter a valid height using numbers and allowed symbols."
-            return false
-        }
-        if bloodType.trimmingCharacters(in: .whitespaces).isEmpty {
-            alertMessage = "Please enter the baby's blood type."
-            return false
-        }
-        return true
     }
 }
 
