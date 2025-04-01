@@ -6,6 +6,6 @@ import SwiftUI
      public init() {}
 
      public var body: some View {
-         Text("Baby Registration screen Under Conbstruction")
+         Text("Baby Registration screen Under Construction")
      }
  }

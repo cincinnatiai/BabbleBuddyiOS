@@ -2,6 +2,7 @@ import UIKit
 import SwiftUI
 
 class SplashViewController: UIViewController, SplashViewModelDelegate {
+    
     @Inject var splashViewModel: SplashViewModel
     private let localizedStrings = String.LocalizeStringKeys.self
 
@@ -10,7 +11,7 @@ class SplashViewController: UIViewController, SplashViewModelDelegate {
 
         setUIView()
         splashViewModel.delegate = self
-        splashViewModel.splashNavigation()
+        splashViewModel.initializeAWS()
     }
 
     func setUIView() {

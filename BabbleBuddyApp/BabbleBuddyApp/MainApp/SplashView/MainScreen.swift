@@ -14,7 +14,7 @@ struct MainScreen: View {
     }()
 
     var body: some View {
-        AuthApp(authManager: authManager, loginView: { viewModel in CustomLoginScreen(viewModel: viewModel)}) { user in
+        AuthApp(authManager: authManager) { _ in
             DesignKit.BabyRegistrationForm()
         }
         .environmentObject(authManager)
@@ -32,4 +32,3 @@ struct MainScreen: View {
         authManager.signOut()
     }
 }
-
