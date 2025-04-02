@@ -7,32 +7,32 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabbleBuddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC45AFCF2D9C37460028DCAF /* TabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		F57B509F2D92F15900834E68 /* Exceptions for "BabbleBuddyApp" folder in "BabbleBuddyApp" target */ = {
+		EC45AFD62D9C37460028DCAF /* Exceptions for "TabBar" folder in "TabBar" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
+			publicHeaders = (
+				TabBar.h,
 			);
-			target = F57B508C2D92F15700834E68 /* BabbleBuddyApp */;
+			target = EC45AFCE2D9C37460028DCAF /* TabBar */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F57B508F2D92F15700834E68 /* BabbleBuddyApp */ = {
+		EC45AFD12D9C37460028DCAF /* TabBar */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				F57B509F2D92F15900834E68 /* Exceptions for "BabbleBuddyApp" folder in "BabbleBuddyApp" target */,
+				EC45AFD62D9C37460028DCAF /* Exceptions for "TabBar" folder in "TabBar" target */,
 			);
-			path = BabbleBuddyApp;
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F57B508A2D92F15700834E68 /* Frameworks */ = {
+		EC45AFCC2D9C37460028DCAF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,85 +42,93 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F57B50842D92F15700834E68 = {
+		EC45AFC52D9C37460028DCAF = {
 			isa = PBXGroup;
 			children = (
-				F57B508F2D92F15700834E68 /* BabbleBuddyApp */,
-				F57B508E2D92F15700834E68 /* Products */,
+				EC45AFD12D9C37460028DCAF /* TabBar */,
+				EC45AFD02D9C37460028DCAF /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		F57B508E2D92F15700834E68 /* Products */ = {
+		EC45AFD02D9C37460028DCAF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */,
+				EC45AFCF2D9C37460028DCAF /* TabBar.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		EC45AFCA2D9C37460028DCAF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		F57B508C2D92F15700834E68 /* BabbleBuddyApp */ = {
+		EC45AFCE2D9C37460028DCAF /* TabBar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F57B50A02D92F15900834E68 /* Build configuration list for PBXNativeTarget "BabbleBuddyApp" */;
+			buildConfigurationList = EC45AFD72D9C37460028DCAF /* Build configuration list for PBXNativeTarget "TabBar" */;
 			buildPhases = (
-				F57B50892D92F15700834E68 /* Sources */,
-				F57B508A2D92F15700834E68 /* Frameworks */,
-				F57B508B2D92F15700834E68 /* Resources */,
-				F57B51492D92F80500834E68 /* ShellScript */,
+				EC45AFCA2D9C37460028DCAF /* Headers */,
+				EC45AFCB2D9C37460028DCAF /* Sources */,
+				EC45AFCC2D9C37460028DCAF /* Frameworks */,
+				EC45AFCD2D9C37460028DCAF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				F57B508F2D92F15700834E68 /* BabbleBuddyApp */,
+				EC45AFD12D9C37460028DCAF /* TabBar */,
 			);
-			name = BabbleBuddyApp;
+			name = TabBar;
 			packageProductDependencies = (
 			);
-			productName = BabbleBuddyApp;
-			productReference = F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */;
-			productType = "com.apple.product-type.application";
+			productName = TabBar;
+			productReference = EC45AFCF2D9C37460028DCAF /* TabBar.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F57B50852D92F15700834E68 /* Project object */ = {
+		EC45AFC62D9C37460028DCAF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
-					F57B508C2D92F15700834E68 = {
-						CreatedOnToolsVersion = 16.2;
+					EC45AFCE2D9C37460028DCAF = {
+						CreatedOnToolsVersion = 16.1;
 					};
 				};
 			};
-			buildConfigurationList = F57B50882D92F15700834E68 /* Build configuration list for PBXProject "BabbleBuddyApp" */;
+			buildConfigurationList = EC45AFC92D9C37460028DCAF /* Build configuration list for PBXProject "TabBar" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
-				"es-419",
 			);
-			mainGroup = F57B50842D92F15700834E68;
+			mainGroup = EC45AFC52D9C37460028DCAF;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = F57B508E2D92F15700834E68 /* Products */;
+			productRefGroup = EC45AFD02D9C37460028DCAF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F57B508C2D92F15700834E68 /* BabbleBuddyApp */,
+				EC45AFCE2D9C37460028DCAF /* TabBar */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F57B508B2D92F15700834E68 /* Resources */ = {
+		EC45AFCD2D9C37460028DCAF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -129,30 +137,8 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		F57B51492D92F80500834E68 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		F57B50892D92F15700834E68 /* Sources */ = {
+		EC45AFCB2D9C37460028DCAF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -162,63 +148,73 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		F57B50A12D92F15900834E68 /* Debug */ = {
+		EC45AFD82D9C37460028DCAF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T66WJZW8RX;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BabbleBuddyApp/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Dionicio.BabbleBuddyApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cincinnatiai.TabBar;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		F57B50A22D92F15900834E68 /* Release */ = {
+		EC45AFD92D9C37460028DCAF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T66WJZW8RX;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BabbleBuddyApp/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Dionicio.BabbleBuddyApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cincinnatiai.TabBar;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		F57B50A32D92F15900834E68 /* Debug */ = {
+		EC45AFDA2D9C37460028DCAF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -252,10 +248,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -270,7 +267,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -278,10 +275,12 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		F57B50A42D92F15900834E68 /* Release */ = {
+		EC45AFDB2D9C37460028DCAF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -315,10 +314,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -327,38 +327,40 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F57B50882D92F15700834E68 /* Build configuration list for PBXProject "BabbleBuddyApp" */ = {
+		EC45AFC92D9C37460028DCAF /* Build configuration list for PBXProject "TabBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F57B50A32D92F15900834E68 /* Debug */,
-				F57B50A42D92F15900834E68 /* Release */,
+				EC45AFDA2D9C37460028DCAF /* Debug */,
+				EC45AFDB2D9C37460028DCAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F57B50A02D92F15900834E68 /* Build configuration list for PBXNativeTarget "BabbleBuddyApp" */ = {
+		EC45AFD72D9C37460028DCAF /* Build configuration list for PBXNativeTarget "TabBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F57B50A12D92F15900834E68 /* Debug */,
-				F57B50A22D92F15900834E68 /* Release */,
+				EC45AFD82D9C37460028DCAF /* Debug */,
+				EC45AFD92D9C37460028DCAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = F57B50852D92F15700834E68 /* Project object */;
+	rootObject = EC45AFC62D9C37460028DCAF /* Project object */;
 }

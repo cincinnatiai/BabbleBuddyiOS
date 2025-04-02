@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:TabBar/TabBar.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:BabbleBuddyApp/BabbleBuddyApp.xcodeproj">
    </FileRef>
    <FileRef
