@@ -7,19 +7,18 @@ class AWSConfigManager {
     private init() {}
 
     func loadConfig() -> [String: Any]? {
-          guard let path = Bundle.main.path(forResource: "AWSConfig", ofType: "plist"),
-                let xml = FileManager.default.contents(atPath: path) else {
-              print("AWSConfig.plist not found")
-              return nil
-          }
 
-          do {
-              return try PropertyListSerialization.propertyList(from: xml, options: [], format: nil) as? [String: Any]
-          } catch {
-              print("Error reading AWSConfig.plist")
-              return nil
-          }
-      }
+        guard let path = Bundle.main.path(forResource: "AWSConfig", ofType: "plist"),
+              let data = FileManager.default.contents(atPath: path) else {
+            return nil
+        }
+        do {
+            return try PropertyListSerialization.propertyList(from: data, options: [], format: nil) as? [String: Any]
+        } catch {
+            return nil
+        }
+    }
+
     func createAWSConfigurationFile() throws -> URL {
         guard let config = loadConfig(),
               let poolId = config["cognitoPoolId"] as? String,

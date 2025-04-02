@@ -8,7 +8,7 @@ import DesignKit
 
 struct MainScreen: View {
 
-    @ObservedObject var authManager: AuthManager = {
+    @StateObject var authManager: AuthManager = {
         @Inject var globalAuthManager: AuthManager
         return globalAuthManager
     }()
@@ -20,7 +20,6 @@ struct MainScreen: View {
         .environmentObject(authManager)
         .onAppear {
             resetAuthManager()
-            authManager.initializeAWS()
             authManager.checkUserState()
         }
     }

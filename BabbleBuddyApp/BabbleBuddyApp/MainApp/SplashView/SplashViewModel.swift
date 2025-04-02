@@ -1,6 +1,5 @@
 import Foundation
 import AWSMobileClientXCF
-import os.log
 
 protocol SplashViewModelDelegate: AnyObject {
     func navigateMainScreen()
@@ -10,27 +9,27 @@ protocol SplashViewModelDelegate: AnyObject {
 class SplashViewModel {
     weak var delegate: SplashViewModelDelegate?
 
-    func initializeAWS() {
+    func initializeAWSConfig() {
         do {
             let configURL = try AWSConfigManager.shared.createAWSConfigurationFile()
             let jsonData = try Data(contentsOf: configURL)
 
-            if let jsonDict = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
-                AWSInfo.configureDefaultAWSInfo(jsonDict)
+            if let jsonFile = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] {
+                AWSInfo.configureDefaultAWSInfo(jsonFile)
             }
-            AWSMobileClient.default().initialize { (_, error) in
+
+            AWSMobileClient.default().initialize { [weak self] (_, error) in
                 DispatchQueue.main.async {
-                    if let error = error {
-                        os_log("Error initializing AWS: %@", type: .error, error.localizedDescription)
+                    guard let self = self else {return}
+
+                    if error != nil {
                         self.delegate?.showErrorScreen()
                     } else {
-                        os_log("AWS Initialized successfully", type: .info)
                         self.delegate?.navigateMainScreen()
                     }
                 }
             }
         } catch {
-            os_log("Error reading AWS config: %@", type: .error, error.localizedDescription)
             DispatchQueue.main.async {
                 self.delegate?.showErrorScreen()
             }

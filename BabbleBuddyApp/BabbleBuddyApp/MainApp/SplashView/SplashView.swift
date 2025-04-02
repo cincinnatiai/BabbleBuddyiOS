@@ -11,7 +11,7 @@ class SplashViewController: UIViewController, SplashViewModelDelegate {
 
         setUIView()
         splashViewModel.delegate = self
-        splashViewModel.initializeAWS()
+        splashViewModel.initializeAWSConfig()
     }
 
     func setUIView() {
