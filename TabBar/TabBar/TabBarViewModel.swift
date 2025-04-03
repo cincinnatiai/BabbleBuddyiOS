@@ -13,6 +13,7 @@ import SwiftUI
 public class TabBarViewModel: ObservableObject {
     @Published var screensState: ScreensState = .loading
     private let viewControllersProvider: () -> [String : UIViewController]
+    private let localizedStrings = String.TabBarLocalizedStringKeys.self
     
     public init(viewControllersProvider: @escaping () -> [String : UIViewController]) {
         self.viewControllersProvider = viewControllersProvider
@@ -44,15 +45,15 @@ public class TabBarViewModel: ObservableObject {
         
         switch key {
         case "settings":
-            title = "Settings"
+            title = localizedStrings.TabBarViewModelSettingsScreenTitle
             icon = UIImage(systemName: "gearshape")
             selectedIcon = UIImage(systemName:"gearshape.fill" )
         case "home":
-            title = "HomeView"
+            title = localizedStrings.TabBarViewModelHomeScreenTitle
             icon = UIImage(systemName: "house")
             selectedIcon = UIImage(systemName:"house.fill" )
         default:
-            title = "Tab"
+            title = localizedStrings.TabBarViewModelDefaultScreenTitle
             icon = UIImage(systemName: "questionmark.circle")
             selectedIcon = UIImage(systemName: "questionmark.circle.fill")
         }
