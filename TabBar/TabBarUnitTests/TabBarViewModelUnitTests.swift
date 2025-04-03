@@ -55,7 +55,7 @@ final class TabBarViewModelUnitTests: XCTestCase {
                 XCTAssertEqual(viewControllers.count, 2)
                 XCTAssertTrue(viewControllers.first is UINavigationController)
             } else {
-                XCTFail("Unexpercted state: \(viewModel.screensState)")
+                XCTFail("Unexpected state: \(viewModel.screensState)")
             }
         }
     
@@ -71,7 +71,8 @@ final class TabBarViewModelUnitTests: XCTestCase {
             if case .success(let viewControllers) = viewModel.screensState {
                 XCTAssertTrue(viewControllers.isEmpty)
             } else {
-                XCTFail("Unexpercted state: \(viewModel.screensState)")
+
+                XCTFail("Unexpected state: \(viewModel.screensState)")
             }
         }
     
