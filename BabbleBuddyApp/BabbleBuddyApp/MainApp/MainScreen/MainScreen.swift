@@ -6,14 +6,14 @@ import UIKit
 import AWSMobileClientXCF
 import DesignKit
 
-struct MainScreen: View {
+public struct MainScreen: View {
 
-    @StateObject var authManager: AuthManager = {
+    @StateObject public var authManager: AuthManager = {
         @Inject var globalAuthManager: AuthManager
         return globalAuthManager
     }()
 
-    var body: some View {
+    public var body: some View {
         AuthApp(authManager: authManager) { _ in
             DesignKit.BabyRegistrationForm()
         }
@@ -24,7 +24,7 @@ struct MainScreen: View {
         }
     }
 
-    func resetAuthManager() {
+   public func resetAuthManager() {
         authManager.authState = .login
         authManager.isLoggedIn = false
         authManager.errorMessage = nil

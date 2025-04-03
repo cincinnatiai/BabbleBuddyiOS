@@ -12,11 +12,6 @@ class DependencyInitializer {
     
     func addDependencies (to container: Container) {
 
-        // MARK: SplashView Dependencies
-        container.register(SplashViewModel.self) {
-            SplashViewModel()
-        }
-
         // MARK: AuthManager Singleton
         container.register(AuthManager.self) {
            DependencyInitializer.sharedAuthManager
