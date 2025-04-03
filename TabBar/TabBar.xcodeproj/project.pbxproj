@@ -6,8 +6,23 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EC45B08B2D9F10EB0028DCAF /* TabBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC45AFCF2D9C37460028DCAF /* TabBar.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC45B08C2D9F10EB0028DCAF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC45AFC62D9C37460028DCAF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC45AFCE2D9C37460028DCAF;
+			remoteInfo = TabBar;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		EC45AFCF2D9C37460028DCAF /* TabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC45B0872D9F10EB0028DCAF /* TabBarUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TabBarUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -34,6 +49,11 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		EC45B0882D9F10EB0028DCAF /* TabBarUnitTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TabBarUnitTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +61,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC45B0842D9F10EB0028DCAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC45B08B2D9F10EB0028DCAF /* TabBar.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +80,7 @@
 			children = (
 				EC45B0702D9EEC020028DCAF /* Resources */,
 				EC45AFD12D9C37460028DCAF /* TabBar */,
+				EC45B0882D9F10EB0028DCAF /* TabBarUnitTests */,
 				EC45AFD02D9C37460028DCAF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				EC45AFCF2D9C37460028DCAF /* TabBar.framework */,
+				EC45B0872D9F10EB0028DCAF /* TabBarUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,6 +131,29 @@
 			productReference = EC45AFCF2D9C37460028DCAF /* TabBar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		EC45B0862D9F10EB0028DCAF /* TabBarUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC45B08E2D9F10EB0028DCAF /* Build configuration list for PBXNativeTarget "TabBarUnitTests" */;
+			buildPhases = (
+				EC45B0832D9F10EB0028DCAF /* Sources */,
+				EC45B0842D9F10EB0028DCAF /* Frameworks */,
+				EC45B0852D9F10EB0028DCAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC45B08D2D9F10EB0028DCAF /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				EC45B0882D9F10EB0028DCAF /* TabBarUnitTests */,
+			);
+			name = TabBarUnitTests;
+			packageProductDependencies = (
+			);
+			productName = TabBarUnitTests;
+			productReference = EC45B0872D9F10EB0028DCAF /* TabBarUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -108,9 +161,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					EC45AFCE2D9C37460028DCAF = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					EC45B0862D9F10EB0028DCAF = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
@@ -130,12 +187,20 @@
 			projectRoot = "";
 			targets = (
 				EC45AFCE2D9C37460028DCAF /* TabBar */,
+				EC45B0862D9F10EB0028DCAF /* TabBarUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EC45AFCD2D9C37460028DCAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EC45B0852D9F10EB0028DCAF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -152,7 +217,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EC45B0832D9F10EB0028DCAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EC45B08D2D9F10EB0028DCAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC45AFCE2D9C37460028DCAF /* TabBar */;
+			targetProxy = EC45B08C2D9F10EB0028DCAF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		EC45AFD82D9C37460028DCAF /* Debug */ = {
@@ -346,6 +426,36 @@
 			};
 			name = Release;
 		};
+		EC45B08F2D9F10EB0028DCAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cincinnatiai.TabBarUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EC45B0902D9F10EB0028DCAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cincinnatiai.TabBarUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -363,6 +473,15 @@
 			buildConfigurations = (
 				EC45AFD82D9C37460028DCAF /* Debug */,
 				EC45AFD92D9C37460028DCAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EC45B08E2D9F10EB0028DCAF /* Build configuration list for PBXNativeTarget "TabBarUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC45B08F2D9F10EB0028DCAF /* Debug */,
+				EC45B0902D9F10EB0028DCAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -61,8 +61,21 @@ public class TabBarViewModel: ObservableObject {
     }
 }
 
-public enum ScreensState {
+public enum ScreensState: Equatable {
     case loading
     case error(String)
     case success([UIViewController])
+    
+    public static func == (lhs: ScreensState, rhs: ScreensState) -> Bool {
+        switch (lhs, rhs) {
+        case (.loading, .loading):
+            return true
+        case (.error(let lhsMessage), .error(let rhsMessage)):
+            return lhsMessage == rhsMessage
+        case (.success(let lhsViewControllers), .success(let rhsViewControllers)):
+            return lhsViewControllers.count == rhsViewControllers.count
+        default:
+            return false
+        }
+    }
 }
