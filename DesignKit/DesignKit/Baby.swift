@@ -15,7 +15,7 @@ enum Gender: String, CaseIterable, Identifiable {
 enum WeightUnit: String, CaseIterable, Identifiable {
     case kilograms = "Kilograms"
     case pounds = "Pounds"
-    
+
     var id: String { rawValue }
 }
 
