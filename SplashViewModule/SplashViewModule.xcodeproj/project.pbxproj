@@ -6,8 +6,40 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		865BF5932DA02EF90066FAEA /* AuthLibrarySPM in Frameworks */ = {isa = PBXBuildFile; productRef = 865BF5922DA02EF90066FAEA /* AuthLibrarySPM */; };
+		865BF5952DA02EFE0066FAEA /* AuthLibrarySPM in Frameworks */ = {isa = PBXBuildFile; productRef = 865BF5942DA02EFE0066FAEA /* AuthLibrarySPM */; };
+		865BF5962DA02FA80066FAEA /* SplashViewModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 867F74032D9DE14400C6A5BC /* SplashViewModule.framework */; };
+		865BF5972DA02FA80066FAEA /* SplashViewModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 867F74032D9DE14400C6A5BC /* SplashViewModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		86CDA8082D9F1D970081F374 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 867F73FA2D9DE14400C6A5BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 867F74022D9DE14400C6A5BC;
+			remoteInfo = SplashViewModule;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		865BF5982DA02FA80066FAEA /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				865BF5972DA02FA80066FAEA /* SplashViewModule.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		867F74032D9DE14400C6A5BC /* SplashViewModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SplashViewModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86CDA8032D9F1D970081F374 /* SplashViewModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SplashViewModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -18,6 +50,16 @@
 			);
 			target = 867F74022D9DE14400C6A5BC /* SplashViewModule */;
 		};
+		86CDA81A2DA029300081F374 /* Exceptions for "SplashViewModule" folder in "SplashViewModuleTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				AWSconfiguration/AWSConfigManager.swift,
+				Resources/LocalizeString.swift,
+				SplashView/SplashView.swift,
+				SplashView/SplashViewModel.swift,
+			);
+			target = 86CDA8022D9F1D970081F374 /* SplashViewModuleTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -25,8 +67,14 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				867F740A2D9DE14400C6A5BC /* Exceptions for "SplashViewModule" folder in "SplashViewModule" target */,
+				86CDA81A2DA029300081F374 /* Exceptions for "SplashViewModule" folder in "SplashViewModuleTests" target */,
 			);
 			path = SplashViewModule;
+			sourceTree = "<group>";
+		};
+		86CDA8042D9F1D970081F374 /* SplashViewModuleTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = SplashViewModuleTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -36,6 +84,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				865BF5932DA02EF90066FAEA /* AuthLibrarySPM in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86CDA8002D9F1D970081F374 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				865BF5962DA02FA80066FAEA /* SplashViewModule.framework in Frameworks */,
+				865BF5952DA02EFE0066FAEA /* AuthLibrarySPM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				867F74052D9DE14400C6A5BC /* SplashViewModule */,
+				86CDA8042D9F1D970081F374 /* SplashViewModuleTests */,
+				86CDA80E2D9F21C60081F374 /* Frameworks */,
 				867F74042D9DE14400C6A5BC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,8 +114,16 @@
 			isa = PBXGroup;
 			children = (
 				867F74032D9DE14400C6A5BC /* SplashViewModule.framework */,
+				86CDA8032D9F1D970081F374 /* SplashViewModuleTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		86CDA80E2D9F21C60081F374 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,10 +157,36 @@
 			);
 			name = SplashViewModule;
 			packageProductDependencies = (
+				865BF5922DA02EF90066FAEA /* AuthLibrarySPM */,
 			);
 			productName = SplashViewModule;
 			productReference = 867F74032D9DE14400C6A5BC /* SplashViewModule.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		86CDA8022D9F1D970081F374 /* SplashViewModuleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 86CDA80A2D9F1D970081F374 /* Build configuration list for PBXNativeTarget "SplashViewModuleTests" */;
+			buildPhases = (
+				86CDA7FF2D9F1D970081F374 /* Sources */,
+				86CDA8002D9F1D970081F374 /* Frameworks */,
+				86CDA8012D9F1D970081F374 /* Resources */,
+				865BF5982DA02FA80066FAEA /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				86CDA8092D9F1D970081F374 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				86CDA8042D9F1D970081F374 /* SplashViewModuleTests */,
+			);
+			name = SplashViewModuleTests;
+			packageProductDependencies = (
+				865BF5942DA02EFE0066FAEA /* AuthLibrarySPM */,
+			);
+			productName = SplashViewModuleTests;
+			productReference = 86CDA8032D9F1D970081F374 /* SplashViewModuleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -101,9 +195,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					867F74022D9DE14400C6A5BC = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					86CDA8022D9F1D970081F374 = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
@@ -118,18 +216,29 @@
 			);
 			mainGroup = 867F73F92D9DE14400C6A5BC;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				865BF5912DA02EF10066FAEA /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 867F74042D9DE14400C6A5BC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				867F74022D9DE14400C6A5BC /* SplashViewModule */,
+				86CDA8022D9F1D970081F374 /* SplashViewModuleTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		867F74012D9DE14400C6A5BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		86CDA8012D9F1D970081F374 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -146,7 +255,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		86CDA7FF2D9F1D970081F374 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		86CDA8092D9F1D970081F374 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 867F74022D9DE14400C6A5BC /* SplashViewModule */;
+			targetProxy = 86CDA8082D9F1D970081F374 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		867F740C2D9DE14400C6A5BC /* Debug */ = {
@@ -340,6 +464,36 @@
 			};
 			name = Release;
 		};
+		86CDA80B2D9F1D970081F374 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cincinnatiai.SplashViewModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		86CDA80C2D9F1D970081F374 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cincinnatiai.SplashViewModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -361,7 +515,40 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		86CDA80A2D9F1D970081F374 /* Build configuration list for PBXNativeTarget "SplashViewModuleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				86CDA80B2D9F1D970081F374 /* Debug */,
+				86CDA80C2D9F1D970081F374 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		865BF5912DA02EF10066FAEA /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cincinnatiai/AuthLibrarySPM.git";
+			requirement = {
+				branch = "Refactor-Architecture";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		865BF5922DA02EF90066FAEA /* AuthLibrarySPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 865BF5912DA02EF10066FAEA /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */;
+			productName = AuthLibrarySPM;
+		};
+		865BF5942DA02EFE0066FAEA /* AuthLibrarySPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 865BF5912DA02EF10066FAEA /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */;
+			productName = AuthLibrarySPM;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 867F73FA2D9DE14400C6A5BC /* Project object */;
 }
