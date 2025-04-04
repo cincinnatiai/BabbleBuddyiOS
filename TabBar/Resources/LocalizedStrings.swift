@@ -13,13 +13,22 @@ extension String {
     }
     
     enum TabBarLocalizedStringKeys {
-        static let TabBarViewErrorAlertTitle = "TabBarView_ErrorAlert_Title".localized
-        static let TabBarViewErrorAlertButton = "TabBarView_ErrorAlert_Button".localized
-        static let TabBarViewModelSettingsScreenTitle = "TabBarViewModel_SettingsScreen_Title".localized
-        static let TabBarViewModelHomeScreenTitle = "TabBarViewModel_HomeScreen_Title".localized
-        static let TabBarViewModelDefaultScreenTitle = "TabBarViewModel_DefaultScreen_Title".localized
-        static let FatalErrorMessage = "FatalError_Message".localized
-        static let Test = "Test".localized
+        static let TabBarViewErrorAlertTitle = "TAB_BAR_VIEW_ERROR_ALERT_TITLE".localized
+        static let TabBarViewErrorAlertButton = "TAB_BAR_VIEW_ERROR_ALERT_BUTTON".localized
+        static let TabBarViewModelSettingsScreenTitle = "TAB_BAR_VIEW_MODEL_SETTINGS_SCREEN_TITLE".localized
+        static let TabBarViewModelHomeScreenTitle = "TAB_BAR_VIEW_MODEL_HOME_SCREEN_TITLE".localized
+        static let TabBarViewModelDefaultScreenTitle = "TAB_BAR_VIEW_MODEL_DEFAULT_SCREEN_TITLE".localized
+        static let FatalErrorMessage = "FATAL_ERROR_MESSAGE".localized
         
+        enum TabBarItemKey: String {
+            case home = "home"
+            case settings = "settings"
+        }
+        
+        enum TabBarIcons {
+            static let home = ("house", "house.fill")
+            static let settings = ("gearshape", "gearshape.fill")
+            static let unknown = ("questionmark.circle", "questionmark.circle.fill")
+        }
     }
 }

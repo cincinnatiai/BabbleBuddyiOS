@@ -28,9 +28,8 @@ public class TabBarViewModel: ObservableObject {
     }
     
     private func sortElements() async -> [(String,UIViewController)]{
-        
         let viewControllers = await MainActor.run { viewControllersProvider() }
-        let preferredOrder = ["home", "settings"]
+        let preferredOrder = [localizedStrings.TabBarItemKey.home.rawValue, localizedStrings.TabBarItemKey.settings.rawValue]
         let orderedKeys = preferredOrder + viewControllers.keys.filter { !preferredOrder.contains($0) }
         let sortedViewControllers = orderedKeys.compactMap { key in
             viewControllers[key].map { (key, $0) }
@@ -51,24 +50,20 @@ public class TabBarViewModel: ObservableObject {
     
     private func getTabBarItem(key: String) -> UITabBarItem {
         let title: String
-        let icon: UIImage?
-        let selectedIcon: UIImage?
+        let icons: (String,String)
         
-        switch key {
-        case "settings":
+        switch self.localizedStrings.TabBarItemKey(rawValue: key) {
+        case .settings :
             title = localizedStrings.TabBarViewModelSettingsScreenTitle
-            icon = UIImage(systemName: "gearshape")
-            selectedIcon = UIImage(systemName:"gearshape.fill" )
-        case "home":
+            icons = localizedStrings.TabBarIcons.settings
+        case .home :
             title = localizedStrings.TabBarViewModelHomeScreenTitle
-            icon = UIImage(systemName: "house")
-            selectedIcon = UIImage(systemName:"house.fill" )
+            icons = localizedStrings.TabBarIcons.home
         default:
             title = localizedStrings.TabBarViewModelDefaultScreenTitle
-            icon = UIImage(systemName: "questionmark.circle")
-            selectedIcon = UIImage(systemName: "questionmark.circle.fill")
+            icons = localizedStrings.TabBarIcons.unknown
         }
-        return UITabBarItem(title: title, image: icon, selectedImage: selectedIcon)
+        return UITabBarItem(title: title, image: UIImage(systemName: icons.0), selectedImage: UIImage(systemName: icons.1))
     }
 }
 
