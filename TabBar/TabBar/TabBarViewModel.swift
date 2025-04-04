@@ -22,20 +22,31 @@ public class TabBarViewModel: ObservableObject {
     public func initialize () {
         screensState = .loading
         Task {
-             await configureTabs()
+            let sortedElements = await sortElements()
+            await configureTabs(sortedElements: sortedElements)
         }
     }
     
+    private func sortElements() async -> [(String,UIViewController)]{
+        
+        let viewControllers = await MainActor.run { viewControllersProvider() }
+        let preferredOrder = ["home", "settings"]
+        let orderedKeys = preferredOrder + viewControllers.keys.filter { !preferredOrder.contains($0) }
+        let sortedViewControllers = orderedKeys.compactMap { key in
+            viewControllers[key].map { (key, $0) }
+        }
+        return sortedViewControllers
+    }
+    
     @MainActor
-    private func configureTabs() async {
-        let viewControllers = viewControllersProvider()
+    private func configureTabs(sortedElements: [(String,UIViewController)]) async {
         var configuratedTabs =  [UIViewController]()
-        for (key, viewController) in viewControllers {
+        for (key, viewController) in sortedElements {
             let navigationController = UINavigationController(rootViewController: viewController)
             navigationController.tabBarItem = getTabBarItem(key: key)
             configuratedTabs.append(navigationController)
         }
-        self.screensState = .success(configuratedTabs)
+        screensState = .success(configuratedTabs)
     }
     
     private func getTabBarItem(key: String) -> UITabBarItem {
