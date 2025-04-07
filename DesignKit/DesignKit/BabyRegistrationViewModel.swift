@@ -1,10 +1,3 @@
-//
-//  BabyRegistrationViewModel.swift
-//  DesignKit
-//
-//  Created by CincinnatiAI Dallas on 3/31/25.
-//
-
 import Foundation
 import Combine
 
