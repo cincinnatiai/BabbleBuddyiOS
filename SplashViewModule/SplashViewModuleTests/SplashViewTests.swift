@@ -1,7 +1,7 @@
 import XCTest
 @testable import SplashViewModule
 
-final class AWSConfigManagerTests: XCTestCase {
+final class SplashViewTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
@@ -11,20 +11,49 @@ final class AWSConfigManagerTests: XCTestCase {
 
     }
 
-    func test_LoadConfigFileDoesNotExist() {
-        let configManager = AWSConfigManager.shared
-        XCTAssertNil(configManager.loadConfig())
+    func test_showErrorScreen() {
+        // Given
+        let mockVM = MockSplashViewModel(mainScreen: { UIViewController() })
+        mockVM.shouldFail = true
+        let splashVC = SplashViewController(splashViewModel: mockVM)
+
+        // When
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = splashVC
+        window.makeKeyAndVisible()
+        splashVC.loadViewIfNeeded()
+
+        // Then
+        let expectation = XCTestExpectation(description: "Wait for error screen")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            XCTAssertTrue(splashVC.presentedViewController is UIAlertController)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 2.0)
     }
 
+    func test_navigateMainScreen_called() {
+        // Given
+        let mainVC = UIViewController()
+        mainVC.view.accessibilityIdentifier = "MainScreen"
 
-    func test_CreateAWSConfigWithInvalidConfiguration() throws {
-        let configManager = AWSConfigManager()
+        let mockVM = MockSplashViewModel(mainScreen: { mainVC })
+        mockVM.shouldFail = false
 
-        do {
-            _ = try configManager.createAWSConfigurationFile()
-            XCTFail("Expected Error Configuration Not Found")
-        } catch {
-            XCTAssertNotNil(error, "Expected Error Configuration Not Found")
+        let splashVC = TestableSplashViewController(splashViewModel: mockVM)
+
+        // When
+        splashVC.loadViewIfNeeded()
+
+        // Then
+        let expectation = XCTestExpectation(description: "Wait for navigation method")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            XCTAssertTrue(splashVC.didNavigateToMainScreen)
+            XCTAssertEqual(splashVC.receivedMainVC?.view.accessibilityIdentifier, "MainScreen")
+            expectation.fulfill()
         }
+
+        wait(for: [expectation], timeout: 2.0)
     }
 }

@@ -1,8 +1,25 @@
-//
-//  MockSplashViewModel.swift
-//  SplashViewModuleTests
-//
-//  Created by GenericDevCalifornia on 4/4/25.
-//
-
 import Foundation
+import UIKit
+@testable import SplashViewModule
+
+class MockSplashViewModel: SplashViewModel {
+    var shouldFail = false
+
+    override func initializeAWSConfig() {
+        if shouldFail {
+            delegate?.showErrorScreen()
+        } else {
+            delegate?.navigateMainScreen(mainScreen: mainScreen())
+        }
+    }
+}
+
+class TestableSplashViewController: SplashViewController {
+    var didNavigateToMainScreen = false
+    var receivedMainVC: UIViewController?
+
+    override func navigateMainScreen(mainScreen: UIViewController) {
+        didNavigateToMainScreen = true
+        receivedMainVC = mainScreen
+    }
+}

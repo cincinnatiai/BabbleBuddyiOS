@@ -2,20 +2,11 @@ import Foundation
 import AWSMobileClientXCF
 
 class AWSConfigManager {
-    static var shared = AWSConfigManager()
-
-    private var testConfig: [String: Any]?
-
+    static let shared = AWSConfigManager()
+    
     public init() {}
 
-    func setTestConfig(_ config: [String: Any]) {
-        self.testConfig = config
-    }
-
     func loadConfig() -> [String: Any]? {
-        if let testConfig = testConfig {
-            return testConfig
-        }
 
         guard let path = Bundle.main.path(forResource: "AWSConfig", ofType: "plist"),
               let data = FileManager.default.contents(atPath: path) else {

@@ -9,16 +9,15 @@ public protocol SplashViewModelDelegate: AnyObject {
 public class SplashViewModel {
 
     public weak var delegate: SplashViewModelDelegate?
-    private let mainScreen: () -> UIViewController
+    public let mainScreen: () -> UIViewController
 
     public init(mainScreen: @escaping () -> UIViewController) {
         self.mainScreen = mainScreen
     }
 
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError()
     }
-
 
     public func initializeAWSConfig() {
         do {
@@ -31,12 +30,12 @@ public class SplashViewModel {
 
             AWSMobileClient.default().initialize { [weak self] (_, error) in
                 DispatchQueue.main.async {
-                    guard let self = self else {return}
+                    guard let self, let delegate = self.delegate else { return }
 
                     if error != nil {
-                        self.delegate?.showErrorScreen()
+                        delegate.showErrorScreen()
                     } else {
-                        self.delegate?.navigateMainScreen(mainScreen: self.mainScreen())
+                        delegate.navigateMainScreen(mainScreen: self.mainScreen())
                     }
                 }
             }
