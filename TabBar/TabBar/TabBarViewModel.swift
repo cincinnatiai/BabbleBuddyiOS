@@ -10,37 +10,38 @@ import Combine
 import UIKit
 import SwiftUI
 
-public class TabBarViewModel: ObservableObject {
-    @Published var screensState: ScreensState = .loading
-    private let viewControllersProvider: () -> [String : UIViewController]
-    private let localizedStrings = String.TabBarLocalizedStringKeys.self
+public class TabBarViewModel : ObservableObject {
+    @Published var screensState : ScreensState = .loading
+    private let viewControllersProvider : () -> [String : UIViewController]
+    private let localizedStrings = TabBarLocalizedStringKeys.self
     
     public init(viewControllersProvider: @escaping () -> [String : UIViewController]) {
         self.viewControllersProvider = viewControllersProvider
+        initialize()
     }
     
     public func initialize () {
         screensState = .loading
         Task {
-            let sortedElements = await sortElements()
-            await configureTabs(sortedElements: sortedElements)
+            let viewControllers = await MainActor.run { viewControllersProvider() }
+            await configureTabs(elements: viewControllers)
         }
     }
     
-    private func sortElements() async -> [(String,UIViewController)]{
-        let viewControllers = await MainActor.run { viewControllersProvider() }
-        let preferredOrder = [localizedStrings.TabBarItemKey.home.rawValue, localizedStrings.TabBarItemKey.settings.rawValue]
-        let orderedKeys = preferredOrder + viewControllers.keys.filter { !preferredOrder.contains($0) }
-        let sortedViewControllers = orderedKeys.compactMap { key in
-            viewControllers[key].map { (key, $0) }
+    private func sortKeys(elements : [String : UIViewController]) async -> [String] {
+        let preferredOrder: [TabBarItemKey] = [.home, .settings]
+        let preferredKeys = preferredOrder.map(\.rawValue)
+        let existingPreferredKeys = preferredKeys.filter { elements.keys.contains($0) }
+        let remainingKeys = elements.keys.filter { !preferredKeys.contains($0) }
+        return existingPreferredKeys + remainingKeys
         }
-        return sortedViewControllers
-    }
     
     @MainActor
-    private func configureTabs(sortedElements: [(String,UIViewController)]) async {
+    private func configureTabs(elements : [String : UIViewController]) async {
+        let sortedKeys = await sortKeys(elements: elements)
         var configuratedTabs =  [UIViewController]()
-        for (key, viewController) in sortedElements {
+        for key in sortedKeys {
+            guard let viewController = elements[key] else {continue}
             let navigationController = UINavigationController(rootViewController: viewController)
             navigationController.tabBarItem = getTabBarItem(key: key)
             configuratedTabs.append(navigationController)
@@ -48,20 +49,20 @@ public class TabBarViewModel: ObservableObject {
         screensState = .success(configuratedTabs)
     }
     
-    private func getTabBarItem(key: String) -> UITabBarItem {
+    private func getTabBarItem(key : String) -> UITabBarItem {
         let title: String
         let icons: (String,String)
         
-        switch self.localizedStrings.TabBarItemKey(rawValue: key) {
+        switch TabBarItemKey(rawValue: key) {
         case .settings :
             title = localizedStrings.TabBarViewModelSettingsScreenTitle
-            icons = localizedStrings.TabBarIcons.settings
+            icons = TabBarIcons.settings
         case .home :
             title = localizedStrings.TabBarViewModelHomeScreenTitle
-            icons = localizedStrings.TabBarIcons.home
+            icons = TabBarIcons.home
         default:
             title = localizedStrings.TabBarViewModelDefaultScreenTitle
-            icons = localizedStrings.TabBarIcons.unknown
+            icons = TabBarIcons.unknown
         }
         return UITabBarItem(title: title, image: UIImage(systemName: icons.0), selectedImage: UIImage(systemName: icons.1))
     }

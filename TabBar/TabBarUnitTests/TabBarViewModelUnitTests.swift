@@ -105,4 +105,43 @@ final class TabBarViewModelUnitTests: XCTestCase {
             }
         }
     }
+    
+    func testViewControllersAreInCorrectOrder() async {
+        // Given
+        let expectedOrderKeys = ["Home", "Settings", "Default"]
+        let unknownVC = await UIViewController()
+        let settingsVC = await UIViewController()
+        let homeVC = await UIViewController()
+        viewControllersProvider = {
+            return [
+                "unknown": unknownVC,
+                "settings": settingsVC,
+                "home": homeVC
+            ]
+        }
+            
+        viewModel = TabBarViewModel(viewControllersProvider: viewControllersProvider)
+
+        let expectation = XCTestExpectation()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { expectation.fulfill() }
+        
+        // When
+        viewModel.initialize()
+        
+        // Then
+        await fulfillment(of: [expectation], timeout: 1.0)
+        
+        await MainActor.run {
+            if case .success(let viewControllers) = viewModel.screensState {
+                let sortedViewControllers = viewControllers.compactMap { navigationController -> String? in
+                    return (navigationController.tabBarItem.title)}
+                
+                XCTAssertEqual(viewControllers.count, viewControllersProvider().count)
+                XCTAssertEqual(sortedViewControllers, expectedOrderKeys)
+            } else {
+                XCTFail("Unexpected state: \(viewModel.screensState)")
+            }
+        }
+    }
+    
 }

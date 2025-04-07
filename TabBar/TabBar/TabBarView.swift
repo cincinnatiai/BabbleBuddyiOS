@@ -13,7 +13,7 @@ public class TabBarView: UITabBarController {
     
     private var viewModel: TabBarViewModel
     private var cancellables = Set<AnyCancellable>()
-    private let localizedStrings = String.TabBarLocalizedStringKeys.self
+    private let localizedStrings = TabBarLocalizedStringKeys.self
     
     private var loader: UIActivityIndicatorView = {
        let loader = UIActivityIndicatorView(style: .large)
@@ -64,20 +64,18 @@ public class TabBarView: UITabBarController {
         viewModel.$screensState
             .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
-                guard let self = self else { return }
+                guard let self else { return }
                 switch state {
                 case .loading:
-                    self.showLoader()
+                    showLoader()
                 case .error(let message):
-                    self.showErrorAlert(message: message)
-                    self.hideLoader()
+                    showErrorAlert(message: message)
+                    hideLoader()
                 case .success(let viewControllers):
                     self.viewControllers = viewControllers
-                    self.hideLoader()
+                    hideLoader()
                 }
             }
             .store(in: &cancellables)
-        viewModel.initialize()
     }
-    
 }
