@@ -3,7 +3,7 @@ import AWSMobileClientXCF
 
 class AWSConfigManager {
     static let shared = AWSConfigManager()
-    
+
     public init() {}
 
     func loadConfig() -> [String: Any]? {

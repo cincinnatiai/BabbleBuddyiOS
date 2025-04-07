@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import AWSMobileClientXCF
 @testable import SplashViewModule
 
 class MockSplashViewModel: SplashViewModel {
