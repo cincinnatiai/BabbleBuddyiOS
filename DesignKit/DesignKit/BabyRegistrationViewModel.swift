@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import CoreKit
 
 final class BabyRegistrationViewModel: ObservableObject {
     @Published var baby = Baby(
@@ -45,3 +46,22 @@ final class BabyRegistrationViewModel: ObservableObject {
         return true
     }
 }
+
+/*
+func submitForm() {
+    AnalyticsManager.shared.logEvent("baby_registration_started")
+
+    if !validateForm() {
+        AnalyticsManager.shared.logEvent("baby_registration_failed", parameters: [
+            "missing_field": "firstName" // o el que sea dinámico
+        ])
+        return
+    }
+
+    AnalyticsManager.shared.logEvent("baby_registration_submitted", parameters: [
+        "gender": baby.gender.rawValue,
+        "weight_unit": baby.weightUnit.rawValue,
+        "height_unit": baby.heightUnit.rawValue
+    ])
+}
+*/
