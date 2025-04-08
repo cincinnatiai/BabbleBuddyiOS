@@ -3,6 +3,9 @@
    version = "1.0">
    <FileRef
       location = "group:SplashViewModule/SplashViewModule.xcodeproj">
+  /FileRef>
+  <FileRef
+      location = "group:TabBar/TabBar.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:BabbleBuddyApp/BabbleBuddyApp.xcodeproj">
