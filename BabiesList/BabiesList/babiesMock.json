@@ -1,0 +1,52 @@
+[
+    {
+        "account": {
+            "partition_key": "",
+            "range_key": "",
+            "title": "Izak Nino",
+            "description": "2025-04-09",
+            "metadata": "",
+            "type": "DEFAULT",
+            "created": "",
+            "modified": "",
+            "status": "ACTIVE"
+        },
+        "account_profile": {
+            "partition_key": "",
+            "range_key": "",
+            "first_name": "Temporary",
+            "middle_name": "",
+            "last_name": "Temporary",
+            "encrypted_email": "",
+            "permissions": 5,
+            "created": "",
+            "modified": "",
+            "status": "ACTIVE"
+        }
+    },
+    {
+        "account": {
+            "partition_key": "",
+            "range_key": "",
+            "title": "Zahir Hernandez",
+            "description": "",
+            "metadata": "",
+            "type": "DEFAULT",
+            "created": "",
+            "modified": "",
+            "status": "ACTIVE"
+        },
+        "account_profile": {
+            "partition_key": "",
+            "range_key": "",
+            "first_name": "Temporary",
+            "middle_name": "",
+            "last_name": "Temporary",
+            "encrypted_email": "",
+            "permissions": 5,
+            "created": "",
+            "modified": "",
+            "status": "ACTIVE"
+        }
+    }
+]
