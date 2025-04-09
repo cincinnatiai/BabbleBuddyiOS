@@ -48,7 +48,7 @@ class AWSConfigManager {
         ]
 
         let fileManager = FileManager.default
-        let dir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        guard let dir = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return URL(fileURLWithPath: "") }
         let fileURL = dir.appendingPathComponent("awsconfiguration.json")
 
         let jsonData = try JSONSerialization.data(withJSONObject: awsConfig, options: .prettyPrinted)

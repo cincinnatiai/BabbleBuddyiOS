@@ -35,8 +35,8 @@ public class SplashViewController: UIViewController, SplashViewModelDelegate {
         NSLayoutConstraint.activate([
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            logoImageView.widthAnchor.constraint(equalToConstant: 100),
-            logoImageView.heightAnchor.constraint(equalToConstant: 100)
+            logoImageView.widthAnchor.constraint(equalToConstant: UIConstants.widthAnchorConstant),
+            logoImageView.heightAnchor.constraint(equalToConstant: UIConstants.heightAnchorConstant)
         ])
     }
 
