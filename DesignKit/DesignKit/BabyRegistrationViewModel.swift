@@ -1,6 +1,5 @@
 import Foundation
 import Combine
-import CoreKit
 
 final class BabyRegistrationViewModel: ObservableObject {
     @Published var baby = Baby(
@@ -8,12 +7,12 @@ final class BabyRegistrationViewModel: ObservableObject {
         lastName: "",
         dateOfBirth: Date(),
         gender: .male,
-        weight: "",
+        weight: 0,
         weightUnit: .kilograms,
-        height: "",
+        height: 0,
         heightUnit: .centimeters,
         bloodType: "",
-        allergies: ""
+        allergies: [""]
     )
 
     @Published var showAlert = false
@@ -21,21 +20,22 @@ final class BabyRegistrationViewModel: ObservableObject {
 
     func validateForm() -> Bool {
         let nameRegex = "^[A-Za-z]+$"
-        let heightWeightRegex = "^[0-9.'\\\"]+$"
 
-        if baby.firstName.trimmingCharacters(in: .whitespaces).isEmpty || !NSPredicate(format: "SELF MATCHES %@", nameRegex).evaluate(with: baby.firstName) {
+        if baby.firstName.trimmingCharacters(in: .whitespaces).isEmpty
+            || !NSPredicate(format: "SELF MATCHES %@", nameRegex).evaluate(with: baby.firstName) {
             alertMessage = "Please enter a valid first name using only letters."
             return false
         }
-        if baby.lastName.trimmingCharacters(in: .whitespaces).isEmpty || !NSPredicate(format: "SELF MATCHES %@", nameRegex).evaluate(with: baby.lastName) {
+        if baby.lastName.trimmingCharacters(in: .whitespaces).isEmpty
+            || !NSPredicate(format: "SELF MATCHES %@", nameRegex).evaluate(with: baby.lastName) {
             alertMessage = "Please enter a valid last name using only letters."
             return false
         }
-        if baby.weight.trimmingCharacters(in: .whitespaces).isEmpty || !NSPredicate(format: "SELF MATCHES %@", heightWeightRegex).evaluate(with: baby.weight) {
+        if baby.weight <= 0 {
             alertMessage = "Please enter a valid weight."
             return false
         }
-        if baby.height.trimmingCharacters(in: .whitespaces).isEmpty || !NSPredicate(format: "SELF MATCHES %@", heightWeightRegex).evaluate(with: baby.height) {
+        if baby.height <= 0 {
             alertMessage = "Please enter a valid height."
             return false
         }
@@ -43,7 +43,39 @@ final class BabyRegistrationViewModel: ObservableObject {
             alertMessage = "Please enter the baby's blood type."
             return false
         }
+        
+        if baby.allergies.contains(where: { $0.trimmingCharacters(in: .whitespaces).isEmpty }) {
+            alertMessage = "Please enter valid allergy information or remove empty fields."
+            return false
+        }
+
         return true
+    }
+
+    private var savePath: URL {
+        FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            .appendingPathComponent("baby_data.json")
+    }
+
+    func saveBabyLocally() {
+        do {
+            let data = try JSONEncoder().encode(self.baby)
+            try data.write(to: savePath, options: .atomic)
+            print("Baby data saved to: \(savePath)")
+        } catch {
+            print("Failed to save baby data: \(error.localizedDescription)")
+        }
+    }
+
+    func loadSavedBaby() {
+        do {
+            let data = try Data(contentsOf: savePath)
+            let loaded = try JSONDecoder().decode(Baby.self, from: data)
+            self.baby = loaded
+            print("Loaded baby data from local storage.")
+        } catch {
+            print("No saved data or failed to load: \(error.localizedDescription)")
+        }
     }
 }
 
@@ -53,7 +85,7 @@ func submitForm() {
 
     if !validateForm() {
         AnalyticsManager.shared.logEvent("baby_registration_failed", parameters: [
-            "missing_field": "firstName" // o el que sea dinámico
+            "missing_field": "firstName" 
         ])
         return
     }
