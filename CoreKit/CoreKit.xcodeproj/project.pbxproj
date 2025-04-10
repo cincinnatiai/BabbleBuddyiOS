@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		11E0B5B32DA3BE9B00241E69 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E0B5B22DA3BE9700241E69 /* AnalyticsManager.swift */; };
 		11E0B5B62DA3BEDF00241E69 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 11E0B5B52DA3BEDF00241E69 /* FirebaseAnalytics */; };
 		11E0B5B82DA3BEDF00241E69 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 11E0B5B72DA3BEDF00241E69 /* FirebaseAnalyticsOnDeviceConversion */; };
 		11E0B5BA2DA3BEDF00241E69 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 11E0B5B92DA3BEDF00241E69 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -32,7 +31,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		11E0B5B22DA3BE9700241E69 /* AnalyticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsManager.swift; sourceTree = "<group>"; };
 		F57B50F52D92F69E00834E68 /* CoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -92,7 +90,6 @@
 		F57B50EB2D92F69E00834E68 = {
 			isa = PBXGroup;
 			children = (
-				11E0B5B22DA3BE9700241E69 /* AnalyticsManager.swift */,
 				F57B50F72D92F69E00834E68 /* CoreKit */,
 				F57B50F62D92F69E00834E68 /* Products */,
 			);
@@ -214,7 +211,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11E0B5B32DA3BE9B00241E69 /* AnalyticsManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
