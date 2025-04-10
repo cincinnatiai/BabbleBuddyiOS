@@ -49,9 +49,7 @@ struct BabyRegistrationForm: View {
                 }
                 Button(action: {
                     viewModel.baby.allergies.append("")
-                }
-                )
-                {
+                } ) {
                     Text("Add Allergy")
                         .foregroundColor(.blue)
                 }

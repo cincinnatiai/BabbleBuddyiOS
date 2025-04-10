@@ -1,8 +1,15 @@
+//
+//  BabyRegistrationViewModel.swift
+//  DesignKit
+//
+//  Created by CincinnatiAI Dallas on 3/31/25.
+//
+
 import Foundation
 import Combine
 
 final class BabyRegistrationViewModel: ObservableObject {
-    @Published var baby = Baby(
+    @Published var baby = BabyModel(
         firstName: "",
         lastName: "",
         dateOfBirth: Date(),
@@ -19,31 +26,37 @@ final class BabyRegistrationViewModel: ObservableObject {
     @Published var alertMessage = ""
 
     func validateForm() -> Bool {
-        let nameRegex = "^[A-Za-z]+$"
+        func isValidName(_ name: String) -> Bool {
+            let nameRegex = "^[A-Za-z]+$"
+            return !name.trimmingCharacters(in: .whitespaces).isEmpty &&
+                NSPredicate(format: "SELF MATCHES %@", nameRegex).evaluate(with: name)
+        }
 
-        if baby.firstName.trimmingCharacters(in: .whitespaces).isEmpty
-            || !NSPredicate(format: "SELF MATCHES %@", nameRegex).evaluate(with: baby.firstName) {
+        guard isValidName(baby.firstName) else {
             alertMessage = "Please enter a valid first name using only letters."
             return false
         }
-        if baby.lastName.trimmingCharacters(in: .whitespaces).isEmpty
-            || !NSPredicate(format: "SELF MATCHES %@", nameRegex).evaluate(with: baby.lastName) {
+
+        guard isValidName(baby.lastName) else {
             alertMessage = "Please enter a valid last name using only letters."
             return false
         }
-        if baby.weight <= 0 {
+
+        guard baby.weight > 0 else {
             alertMessage = "Please enter a valid weight."
             return false
         }
-        if baby.height <= 0 {
+
+        guard baby.height > 0 else {
             alertMessage = "Please enter a valid height."
             return false
         }
-        if baby.bloodType.trimmingCharacters(in: .whitespaces).isEmpty {
+
+        guard !baby.bloodType.trimmingCharacters(in: .whitespaces).isEmpty else {
             alertMessage = "Please enter the baby's blood type."
             return false
         }
-        
+
         if baby.allergies.contains(where: { $0.trimmingCharacters(in: .whitespaces).isEmpty }) {
             alertMessage = "Please enter valid allergy information or remove empty fields."
             return false
@@ -70,7 +83,7 @@ final class BabyRegistrationViewModel: ObservableObject {
     func loadSavedBaby() {
         do {
             let data = try Data(contentsOf: savePath)
-            let loaded = try JSONDecoder().decode(Baby.self, from: data)
+            let loaded = try JSONDecoder().decode(BabyModel.self, from: data)
             self.baby = loaded
             print("Loaded baby data from local storage.")
         } catch {

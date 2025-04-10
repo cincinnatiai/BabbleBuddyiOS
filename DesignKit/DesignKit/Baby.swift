@@ -1,9 +1,12 @@
 //
-//  Baby.swift
+//
+//  BabyModel.swift
 //  DesignKit
 //
 //  Created by CincinnatiAI Dallas on 3/31/25.
 //
+
+import Foundation
 
 enum Gender: String, CaseIterable, Identifiable, Codable {
     case male = "Male"
@@ -24,7 +27,7 @@ enum HeightUnit: String, CaseIterable, Identifiable, Codable {
     var id: String { rawValue }
 }
 
-struct Baby: Codable {
+struct BabyModel: Codable {
     var firstName: String
     var lastName: String
     var dateOfBirth: Date
