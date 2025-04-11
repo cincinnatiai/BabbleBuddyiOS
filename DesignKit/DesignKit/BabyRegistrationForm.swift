@@ -1,8 +1,11 @@
 import SwiftUI
 
 struct BabyRegistrationForm: View {
-    @StateObject private var viewModel = BabyRegistrationViewModel()
+    @StateObject private var viewModel: BabyRegistrationViewModel
 
+    init(viewModel: BabyRegistrationViewModel = BabyRegistrationViewModel()) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
     var body: some View {
         VStack {
             Text("Baby Registration Form").bold()

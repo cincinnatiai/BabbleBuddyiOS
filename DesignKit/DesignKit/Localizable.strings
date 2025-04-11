@@ -1,0 +1,20 @@
+//
+//  Localizable.strings
+//  DesignKit
+//
+//  Created by CincinnatiAI Dallas on 4/09/25.
+//
+
+"first_name_placeholder" = "First Name";
+"last_name_placeholder" = "Last Name";
+"date_of_birth_label" = "Date of Birth";
+"gender_label" = "Gender";
+"weight_label" = "Weight";
+"height_label" = "Height";
+"blood_type_label" = "Blood Type";
+"add_allergy_button" = "Add Allergy";
+"allergy_placeholder" = "Allergy";
+"submit_button" = "Submit";
+"missing_info_title" = "Missing Information";
+"missing_info_message" = "Please fill all required fields.";
+"remove_button" = "Remove";
