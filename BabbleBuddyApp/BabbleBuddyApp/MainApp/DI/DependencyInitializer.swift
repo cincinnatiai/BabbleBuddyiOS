@@ -14,24 +14,30 @@ class DependencyInitializer {
     }
     
     func addDependencies (to container: Container) {
-        
-        // MARK: AuthManager Singleton
         container.register(AuthManager.self) {
            DependencyInitializer.sharedAuthManager
         }
-        
         container.register(AuthViewModel.self) {
             DependencyInitializer.sharedAuthViewModel
         }
-        
-        
         container.register(TokenHandler.self) {
             DependencyInitializer.sharedTokenHandler
         }
-
-        // MARK: SplashView Dependencies
-        container.register(SplashViewModel.self) {
-            SplashViewModel()
+        
+        container.register(ViewLoaderViewModel.self) {
+            ViewLoaderViewModel()
+        }
+        
+        container.register(HomeScreen.self) {
+            HomeScreen()
+        }
+        
+        container.register(SettingsView.self) {
+            SettingsView()
+        }
+        
+        container.register(FirebaseService.self) {
+            FirebaseService()
         }
     }
 }

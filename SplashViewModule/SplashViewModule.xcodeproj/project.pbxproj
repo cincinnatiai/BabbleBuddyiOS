@@ -175,7 +175,6 @@
 			mainGroup = 86DD7CF72DA5D5A8005D214C;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				86DD7D242DA5D657005D214C /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 86DD7D022DA5D5A8005D214C /* Products */;
@@ -481,17 +480,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		86DD7D242DA5D657005D214C /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cincinnatiai/AuthLibrarySPM.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 86DD7CF82DA5D5A8005D214C /* Project object */;
 }

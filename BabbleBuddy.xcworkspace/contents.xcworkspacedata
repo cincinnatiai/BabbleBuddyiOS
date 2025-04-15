@@ -2,7 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:BabiesList/BabiesList.xcodeproj">
+      location = "container:SplashViewModule/SplashViewModule.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "container:BabiesList/BabiesList.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:TabBar/TabBar.xcodeproj">

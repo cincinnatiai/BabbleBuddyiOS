@@ -1,23 +1,26 @@
 import UIKit
+import SplashViewModule
+import SwiftUI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        let mainScreen = { UIHostingController(rootView: MainScreen()) }
+        let splashViewModel = SplashViewModel(mainScreen: mainScreen)
+        let splashViewController = SplashViewController(splashViewModel: splashViewModel)
         guard let windowScene = (scene as? UIWindowScene) else { return }
-         _ = DependencyInitializer()
-
-        let navigationController = UINavigationController(rootViewController: SplashViewController())
-
+        _ = DependencyInitializer()
+        let navigationController = UINavigationController(rootViewController: splashViewController)
+        navigationController.isNavigationBarHidden = true
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
-}
+    }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
 

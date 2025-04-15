@@ -10,7 +10,7 @@ import FirebaseFirestore
 
 class FirebaseService {
     
-    private let db = Firestore.firestore()
+    private let dataBase = Firestore.firestore()
 
     enum FirestoreServiceError: Error {
         case documentNotFound
@@ -20,7 +20,7 @@ class FirebaseService {
     }
     
     func fetchURLs(completion: @escaping (Result<[String: Any], FirestoreServiceError>) -> Void) {
-        db.collection("ios_configs")
+        dataBase.collection("ios_configs")
           .document("configs")
           .getDocument { (document, error) in
             if let error = error {

@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  BabbleBuddyApp
+
+  Created by Trainee on 4/16/25.
+  
+*/
+
+// MARK: HomeScreen Strings
+"HomeScreen_Label" = "Home Screen Under Construction";
+
+// MARK: ViewLoader Strings
+"ViewLoader_Loading_Label" = "Loading data...";
+

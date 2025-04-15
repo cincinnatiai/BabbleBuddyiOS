@@ -6,7 +6,59 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EC8C44862DB1694B00BABAFC /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EC8C44852DB1694B00BABAFC /* FirebaseAnalytics */; };
+		EC8C44882DB1694B00BABAFC /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = EC8C44872DB1694B00BABAFC /* FirebaseAppCheck */; };
+		EC8C448A2DB1694B00BABAFC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EC8C44892DB1694B00BABAFC /* FirebaseAuth */; };
+		EC8C448C2DB1694B00BABAFC /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = EC8C448B2DB1694B00BABAFC /* FirebaseCore */; };
+		EC8C448E2DB1694B00BABAFC /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = EC8C448D2DB1694B00BABAFC /* FirebaseCrashlytics */; };
+		EC8C44902DB1694B00BABAFC /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = EC8C448F2DB1694B00BABAFC /* FirebaseDatabase */; };
+		EC8C44922DB1694B00BABAFC /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EC8C44912DB1694B00BABAFC /* FirebaseFirestore */; };
+		EC8C44942DB1694B00BABAFC /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = EC8C44932DB1694B00BABAFC /* FirebaseFunctions */; };
+		EC8C44962DB1694B00BABAFC /* FirebaseInstallations in Frameworks */ = {isa = PBXBuildFile; productRef = EC8C44952DB1694B00BABAFC /* FirebaseInstallations */; };
+		EC8C44982DB1694B00BABAFC /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = EC8C44972DB1694B00BABAFC /* FirebaseRemoteConfig */; };
+		EC8C449A2DB1694B00BABAFC /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = EC8C44992DB1694B00BABAFC /* FirebaseStorage */; };
+		EC8C449D2DB1696600BABAFC /* AuthLibrarySPM in Frameworks */ = {isa = PBXBuildFile; productRef = EC8C449C2DB1696600BABAFC /* AuthLibrarySPM */; };
+		EC8C44A42DB1699500BABAFC /* BabiesList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C449F2DB1699500BABAFC /* BabiesList.framework */; };
+		EC8C44A52DB1699500BABAFC /* BabiesList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C449F2DB1699500BABAFC /* BabiesList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC8C44A62DB1699500BABAFC /* CoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C44A02DB1699500BABAFC /* CoreKit.framework */; };
+		EC8C44A72DB1699500BABAFC /* CoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C44A02DB1699500BABAFC /* CoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC8C44A82DB1699500BABAFC /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C44A12DB1699500BABAFC /* DesignKit.framework */; };
+		EC8C44A92DB1699500BABAFC /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C44A12DB1699500BABAFC /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC8C44AA2DB1699500BABAFC /* NetworkingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C44A22DB1699500BABAFC /* NetworkingKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		EC8C44AB2DB1699500BABAFC /* NetworkingKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C44A22DB1699500BABAFC /* NetworkingKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC8C44AC2DB1699500BABAFC /* TabBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C44A32DB1699500BABAFC /* TabBar.framework */; };
+		EC8C44AD2DB1699500BABAFC /* TabBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C44A32DB1699500BABAFC /* TabBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EC8C44DD2DB182B600BABAFC /* SplashViewModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C44DC2DB182B600BABAFC /* SplashViewModule.framework */; };
+		EC8C44DE2DB182B600BABAFC /* SplashViewModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C44DC2DB182B600BABAFC /* SplashViewModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EC8C44AE2DB1699500BABAFC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EC8C44A92DB1699500BABAFC /* DesignKit.framework in Embed Frameworks */,
+				EC8C44A72DB1699500BABAFC /* CoreKit.framework in Embed Frameworks */,
+				EC8C44DE2DB182B600BABAFC /* SplashViewModule.framework in Embed Frameworks */,
+				EC8C44A52DB1699500BABAFC /* BabiesList.framework in Embed Frameworks */,
+				EC8C44AD2DB1699500BABAFC /* TabBar.framework in Embed Frameworks */,
+				EC8C44AB2DB1699500BABAFC /* NetworkingKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		EC8C449F2DB1699500BABAFC /* BabiesList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabiesList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC8C44A02DB1699500BABAFC /* CoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC8C44A12DB1699500BABAFC /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC8C44A22DB1699500BABAFC /* NetworkingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC8C44A32DB1699500BABAFC /* TabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EC8C44DC2DB182B600BABAFC /* SplashViewModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SplashViewModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabbleBuddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -36,16 +88,48 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC8C44902DB1694B00BABAFC /* FirebaseDatabase in Frameworks */,
+				EC8C449D2DB1696600BABAFC /* AuthLibrarySPM in Frameworks */,
+				EC8C44882DB1694B00BABAFC /* FirebaseAppCheck in Frameworks */,
+				EC8C44AA2DB1699500BABAFC /* NetworkingKit.framework in Frameworks */,
+				EC8C44A82DB1699500BABAFC /* DesignKit.framework in Frameworks */,
+				EC8C448A2DB1694B00BABAFC /* FirebaseAuth in Frameworks */,
+				EC8C44962DB1694B00BABAFC /* FirebaseInstallations in Frameworks */,
+				EC8C44942DB1694B00BABAFC /* FirebaseFunctions in Frameworks */,
+				EC8C44DD2DB182B600BABAFC /* SplashViewModule.framework in Frameworks */,
+				EC8C44A62DB1699500BABAFC /* CoreKit.framework in Frameworks */,
+				EC8C448E2DB1694B00BABAFC /* FirebaseCrashlytics in Frameworks */,
+				EC8C448C2DB1694B00BABAFC /* FirebaseCore in Frameworks */,
+				EC8C44AC2DB1699500BABAFC /* TabBar.framework in Frameworks */,
+				EC8C44862DB1694B00BABAFC /* FirebaseAnalytics in Frameworks */,
+				EC8C449A2DB1694B00BABAFC /* FirebaseStorage in Frameworks */,
+				EC8C44922DB1694B00BABAFC /* FirebaseFirestore in Frameworks */,
+				EC8C44982DB1694B00BABAFC /* FirebaseRemoteConfig in Frameworks */,
+				EC8C44A42DB1699500BABAFC /* BabiesList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC8C449E2DB1699500BABAFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC8C44DC2DB182B600BABAFC /* SplashViewModule.framework */,
+				EC8C449F2DB1699500BABAFC /* BabiesList.framework */,
+				EC8C44A02DB1699500BABAFC /* CoreKit.framework */,
+				EC8C44A12DB1699500BABAFC /* DesignKit.framework */,
+				EC8C44A22DB1699500BABAFC /* NetworkingKit.framework */,
+				EC8C44A32DB1699500BABAFC /* TabBar.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F57B50842D92F15700834E68 = {
 			isa = PBXGroup;
 			children = (
 				F57B508F2D92F15700834E68 /* BabbleBuddyApp */,
+				EC8C449E2DB1699500BABAFC /* Frameworks */,
 				F57B508E2D92F15700834E68 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,6 +153,7 @@
 				F57B508A2D92F15700834E68 /* Frameworks */,
 				F57B508B2D92F15700834E68 /* Resources */,
 				F57B51492D92F80500834E68 /* ShellScript */,
+				EC8C44AE2DB1699500BABAFC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -79,6 +164,18 @@
 			);
 			name = BabbleBuddyApp;
 			packageProductDependencies = (
+				EC8C44852DB1694B00BABAFC /* FirebaseAnalytics */,
+				EC8C44872DB1694B00BABAFC /* FirebaseAppCheck */,
+				EC8C44892DB1694B00BABAFC /* FirebaseAuth */,
+				EC8C448B2DB1694B00BABAFC /* FirebaseCore */,
+				EC8C448D2DB1694B00BABAFC /* FirebaseCrashlytics */,
+				EC8C448F2DB1694B00BABAFC /* FirebaseDatabase */,
+				EC8C44912DB1694B00BABAFC /* FirebaseFirestore */,
+				EC8C44932DB1694B00BABAFC /* FirebaseFunctions */,
+				EC8C44952DB1694B00BABAFC /* FirebaseInstallations */,
+				EC8C44972DB1694B00BABAFC /* FirebaseRemoteConfig */,
+				EC8C44992DB1694B00BABAFC /* FirebaseStorage */,
+				EC8C449C2DB1696600BABAFC /* AuthLibrarySPM */,
 			);
 			productName = BabbleBuddyApp;
 			productReference = F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */;
@@ -109,6 +206,10 @@
 			);
 			mainGroup = F57B50842D92F15700834E68;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				EC8C44842DB1694B00BABAFC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				EC8C449B2DB1696600BABAFC /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F57B508E2D92F15700834E68 /* Products */;
 			projectDirPath = "";
@@ -169,9 +270,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T66WJZW8RX;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BabbleBuddyApp/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Allow FaceID";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -182,7 +284,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Dionicio.BabbleBuddyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CincinnatiAI.BabbleBuddyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -197,9 +299,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T66WJZW8RX;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BabbleBuddyApp/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Allow FaceID";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -210,7 +313,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.Dionicio.BabbleBuddyApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CincinnatiAI.BabbleBuddyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -359,6 +462,88 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EC8C44842DB1694B00BABAFC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.11.0;
+			};
+		};
+		EC8C449B2DB1696600BABAFC /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cincinnatiai/AuthLibrarySPM.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EC8C44852DB1694B00BABAFC /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC8C44842DB1694B00BABAFC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		EC8C44872DB1694B00BABAFC /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC8C44842DB1694B00BABAFC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		EC8C44892DB1694B00BABAFC /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC8C44842DB1694B00BABAFC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		EC8C448B2DB1694B00BABAFC /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC8C44842DB1694B00BABAFC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		EC8C448D2DB1694B00BABAFC /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC8C44842DB1694B00BABAFC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		EC8C448F2DB1694B00BABAFC /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC8C44842DB1694B00BABAFC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		EC8C44912DB1694B00BABAFC /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC8C44842DB1694B00BABAFC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		EC8C44932DB1694B00BABAFC /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC8C44842DB1694B00BABAFC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		EC8C44952DB1694B00BABAFC /* FirebaseInstallations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC8C44842DB1694B00BABAFC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseInstallations;
+		};
+		EC8C44972DB1694B00BABAFC /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC8C44842DB1694B00BABAFC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		EC8C44992DB1694B00BABAFC /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC8C44842DB1694B00BABAFC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		EC8C449C2DB1696600BABAFC /* AuthLibrarySPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC8C449B2DB1696600BABAFC /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */;
+			productName = AuthLibrarySPM;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F57B50852D92F15700834E68 /* Project object */;
 }

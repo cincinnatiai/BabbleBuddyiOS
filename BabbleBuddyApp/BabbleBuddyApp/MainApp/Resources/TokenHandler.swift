@@ -10,7 +10,9 @@ import AuthLibrarySPM
 
 class TokenHandler: TokenManagerProtocol {
     
+    var onTokenSaved: (() -> Void)?
     func manageTokenId(idToken: String) {
-        KeychainHelper.shared.save(idToken, forKey: "idToken")
+        KeychainHelper.shared.saveValue(idToken, for: .idToken)
+        onTokenSaved?()
     }
 }

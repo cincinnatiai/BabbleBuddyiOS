@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EC8C44B52DB17DD600BABAFC /* BabiesList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C44B42DB17DD600BABAFC /* BabiesList.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		EC8C44B42DB17DD600BABAFC /* BabiesList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabiesList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57B50D22D92F65C00834E68 /* NetworkingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -36,16 +41,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC8C44B52DB17DD600BABAFC /* BabiesList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EC8C44B32DB17DD600BABAFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EC8C44B42DB17DD600BABAFC /* BabiesList.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F57B50C82D92F65C00834E68 = {
 			isa = PBXGroup;
 			children = (
 				F57B50D42D92F65C00834E68 /* NetworkingKit */,
+				EC8C44B32DB17DD600BABAFC /* Frameworks */,
 				F57B50D32D92F65C00834E68 /* Products */,
 			);
 			sourceTree = "<group>";
