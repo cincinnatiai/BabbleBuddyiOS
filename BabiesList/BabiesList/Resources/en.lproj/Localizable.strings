@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  BabiesList
+
+  Created by Trainee on 4/21/25.
+  
+*/
+"Fatal_Error_Message" = "init(coder:) has not been implemented";
+"BabyTableViewCell_DateOfBirth_Label" = "Date Of Birth: ";
+"BabiesListView_AlertMessage_Title" = "Error";
+"BabiesListView_AlertAction_Label" = "Ok";

@@ -4,6 +4,9 @@
    <FileRef
       location = "group:SplashViewModule/SplashViewModule.xcodeproj">
    </FileRef>
+      <FileRef
+      location = "group:BabiesList/BabiesList.xcodeproj">
+   </FileRef>
    <FileRef
       location = "group:TabBar/TabBar.xcodeproj">
    </FileRef>
