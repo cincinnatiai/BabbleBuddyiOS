@@ -8,10 +8,5 @@ class DependencyInitializer {
     }
     
     func addDependencies (to container: Container) {
-
-        // MARK: SplashView Dependencies
-        container.register(SplashViewModel.self) {
-            SplashViewModel()
-        }
     }
 }
