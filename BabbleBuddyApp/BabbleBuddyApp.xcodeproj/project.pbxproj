@@ -6,7 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		ECC8882C2DB6F10500848C01 /* SplashViewModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */; };
+		ECC8882D2DB6F10500848C01 /* SplashViewModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		ECC8882E2DB6F10500848C01 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				ECC8882D2DB6F10500848C01 /* SplashViewModule.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SplashViewModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabbleBuddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -36,16 +56,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECC8882C2DB6F10500848C01 /* SplashViewModule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		ECC888292DB6F0FD00848C01 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F57B50842D92F15700834E68 = {
 			isa = PBXGroup;
 			children = (
 				F57B508F2D92F15700834E68 /* BabbleBuddyApp */,
+				ECC888292DB6F0FD00848C01 /* Frameworks */,
 				F57B508E2D92F15700834E68 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,6 +99,7 @@
 				F57B508A2D92F15700834E68 /* Frameworks */,
 				F57B508B2D92F15700834E68 /* Resources */,
 				F57B51492D92F80500834E68 /* ShellScript */,
+				ECC8882E2DB6F10500848C01 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
