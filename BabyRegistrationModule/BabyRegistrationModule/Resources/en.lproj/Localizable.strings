@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  BabyRegistrationModule
+
+  Created by Trainee on 4/24/25.
+  
+*/
+
+"BabyRegistrationView_FirstName_Title" = "First Name";
+"BabyRegistrationView_FirstName_PlaceHolder" = "Enter baby's name";
+"BabyRegistrationView_LastName_Title" = "Last Name";
+"BabyRegistrationView_LastName_PlaceHolder" = "Enter baby's last name";
+"BabyRegistrationView_DateOfBirth_Title" = "Date of Birth";
+"BabyRegistrationView_Gender_Title" = "Gender";
+"BabyRegistrationView_GenderPicker_Male_Text" = "Male";
+"BabyRegistrationView_GenderPicker_Female_Text" = "Female";
+"BabyRegistrationView_BirthWeight_Title" = "Birth Weight";
+"BabyRegistrationView_BirthWeight_PlaceHolder" = "Enter baby's weight";
+"BabyRegistrationView_BirthWeightPicker_Kilograms_Text" = "kg";
+"BabyRegistrationView_BirthWeightPicker_Pounds_Text" = "lb";
+"BabyRegistrationView_BirthHeight_Title" = "Birth Height";
+"BabyRegistrationView_BirthHeight_PlaceHolder" = "Enter baby's height";
+"BabyRegistrationView_BirthHeightPicker_Centimeters_Text" = "cm";
+"BabyRegistrationView_BirthHeightPicker_Inches_Text" = "in";
+"BabyRegistrationView_BloodType_Title" = "Blood Type";
+"BabyRegistrationView_BloodType_PlaceHolder" = "Enter baby's blood type";
+"BabyRegistrationView_Allergies_Title" = "Allergies";
+"BabyRegistrationView_Allergies_PlaceHolder" = "Enter allergy";
+"BabyRegistrationView_Submit_Button_Text" = "Submit";
