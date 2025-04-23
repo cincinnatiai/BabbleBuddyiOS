@@ -17,8 +17,8 @@ class BabyTableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-
-    private lazy var dateOfBirthLabel: UILabel = {
+    
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -40,7 +40,7 @@ class BabyTableViewCell: UITableViewCell {
         setupViews()
         setupConstraints()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError(localizedStrings.FatalErrorMessage)
     }
@@ -49,10 +49,10 @@ class BabyTableViewCell: UITableViewCell {
 extension BabyTableViewCell {
     private func setupViews() {
         verticalStack.addArrangedSubview(nameLabel)
-        verticalStack.addArrangedSubview(dateOfBirthLabel)
+        verticalStack.addArrangedSubview(descriptionLabel)
         contentView.addSubview(verticalStack)
     }
-
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             verticalStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: ConstraintConstants.constraintConstantCG12),
@@ -61,9 +61,9 @@ extension BabyTableViewCell {
             verticalStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: ConstraintConstants.contstraintConstantNegativeCG12)
         ])
     }
-
+    
     func configureInfo(with baby: DisplayableBaby) {
         nameLabel.text = baby.name
-        dateOfBirthLabel.text = " \(localizedStrings.BabyTableViewCellDateOfBirthLabel) \(baby.dateOfBirth)"
+        descriptionLabel.text = " \(localizedStrings.BabyTableViewCellDescriptionLabel) \(baby.description)"
     }
 }

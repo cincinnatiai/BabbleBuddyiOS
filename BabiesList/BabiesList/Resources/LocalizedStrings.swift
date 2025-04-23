@@ -15,7 +15,7 @@ extension String {
 
 enum BabiesListLocalizedStringKeys {
     static let FatalErrorMessage = "Fatal_Error_Message".localized
-    static let BabyTableViewCellDateOfBirthLabel = "BabyTableViewCell_DateOfBirth_Label".localized
+    static let BabyTableViewCellDescriptionLabel = "BabyTableViewCell_Description_Label".localized
     static let BabiesListViewAlertMessageTitle = "BabiesListView_AlertMessage_Title".localized
     static let BabiesListViewAlertActionLabel = "BabiesListView_AlertAction_Label".localized
 }

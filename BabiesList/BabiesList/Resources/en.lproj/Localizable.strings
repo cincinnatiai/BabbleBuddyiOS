@@ -6,6 +6,6 @@
   
 */
 "Fatal_Error_Message" = "init(coder:) has not been implemented";
-"BabyTableViewCell_DateOfBirth_Label" = "Date Of Birth: ";
+"BabyTableViewCell_Description_Label" = "Description: ";
 "BabiesListView_AlertMessage_Title" = "Error";
 "BabiesListView_AlertAction_Label" = "Ok";

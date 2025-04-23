@@ -9,5 +9,5 @@ import Foundation
 
 public struct DisplayableBaby: Codable {
     let name: String
-    let dateOfBirth: String
+    let description: String
 }

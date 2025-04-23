@@ -10,16 +10,16 @@ import UIKit
 
 public class BabiesListViewModel {
     @Published var babiesState: BabiesState = .loading
-    private var infoProvider: () async -> Result<[AccountResponseModel],Error>
+    private var apiResponseProvider: () async -> Result<[AccountResponseModel],Error>
     
-    public init(infoProvider: @escaping () -> Result<[AccountResponseModel], Error>) {
-        self.infoProvider = infoProvider
+    public init(apiResponseProvider: @escaping () -> Result<[AccountResponseModel], Error>) {
+        self.apiResponseProvider = apiResponseProvider
     }
     
     func initialize() {
         babiesState = .loading
         Task {
-            let response = await infoProvider()
+            let response = await apiResponseProvider()
             switch response {
             case .success(let result):
                 let babies = await transformToDisplayableBabies(response: result)
@@ -39,9 +39,9 @@ public class BabiesListViewModel {
             guard
                 let baby = element.account,
                 let babyName = baby.title,
-                let babyDateOfBirth = baby.description
+                let babyDescription = baby.description
             else { return nil }
-            return DisplayableBaby(name: babyName, dateOfBirth: babyDateOfBirth)
+            return DisplayableBaby(name: babyName, description: babyDescription)
         }
         return babies
     }
