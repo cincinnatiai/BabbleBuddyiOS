@@ -13,6 +13,7 @@ public struct LabelAndTextField: View {
     var title: String
     var inputPlaceHolder: String
     @Binding var inputBinder: String
+    var keyboardType: UIKeyboardType = .default
     
     public var body: some View {
         VStack {

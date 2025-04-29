@@ -9,41 +9,34 @@ import Foundation
 import SwiftUI
 
 struct BabyRegistrationView: View {
-    @State private var firstName: String = ""
-    @State private var lastName: String = ""
-    @State private var bloodType: String = ""
-    @State private var dateOfBirth: Date = Date()
-    @State private var selectedGender: String = ""
-    @State private var birthWeight: String = ""
-    @State private var selectedWeightUnit: String = ""
-    @State private var birthHeight: String = ""
-    @State private var selectedHeightUnit: String = ""
-    @State private var allergies: [String] = [""]
+    
+    @StateObject var viewModel: BabyRegistrationViewModel
+    
     private let localizedStrings = BabyRegistrationModuleLocalizedStringKeys.self
     
     var body: some View {
         Form {
             Section {
-                LabelAndTextField(title: localizedStrings.BabyRegistrationViewFirstNameTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewFirstNamePlaceHolder, inputBinder: $firstName)
+                LabelAndTextField(title: localizedStrings.BabyRegistrationViewFirstNameTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewFirstNamePlaceHolder, inputBinder: $viewModel.firstName)
             }
             
             Section {
-                LabelAndTextField(title: localizedStrings.BabyRegistrationViewLastNameTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewLastNamePlaceHolder, inputBinder: $lastName)
+                LabelAndTextField(title: localizedStrings.BabyRegistrationViewLastNameTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewLastNamePlaceHolder, inputBinder: $viewModel.lastName)
             }
             
             Section {
                 VStack(alignment: .leading) {
                     Text(localizedStrings.BabyRegistrationViewDateOfBirthTitle).bold()
-                    CustomDatePicker(selectedDate: $dateOfBirth)
+                    CustomDatePicker(selectedDate: $viewModel.dateOfBirth)
                 }
             }
             
             Section {
                 VStack(alignment: .leading) {
                     Text(localizedStrings.BabyRegistrationViewGenderTitle).bold()
-                    Picker("", selection: $selectedGender) {
-                        Text(localizedStrings.BabyRegistrationViewGenderPickerMaleText).tag(GenderKeys.Male)
-                        Text(localizedStrings.BabyRegistrationViewGenderPickerFemaleText).tag(GenderKeys.Female)
+                    Picker("", selection: $viewModel.selectedGender) {
+                        Text(localizedStrings.BabyRegistrationViewGenderPickerMaleText).tag(BabyRegistrationResources.GenderKeys.Male.rawValue)
+                        Text(localizedStrings.BabyRegistrationViewGenderPickerFemaleText).tag(BabyRegistrationResources.GenderKeys.Female.rawValue)
                     }
                     .pickerStyle(.segmented)
                 }
@@ -51,10 +44,12 @@ struct BabyRegistrationView: View {
             
             Section {
                 VStack(alignment: .leading) {
-                    LabelAndTextField(title: localizedStrings.BabyRegistrationViewBirthWeightTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewBirthWeightPlaceHolder, inputBinder: $birthWeight)
-                    Picker("", selection: $selectedWeightUnit) {
-                        Text(localizedStrings.BabyRegistrationViewBirthWeightPickerKilogramsText).tag(UnitsKeys.kg)
-                        Text(localizedStrings.BabyRegistrationViewBirthWeightPickerPoundsText).tag(UnitsKeys.lbs)
+                    LabelAndTextField(title: localizedStrings.BabyRegistrationViewBirthWeightTitle,
+                                      inputPlaceHolder: localizedStrings.BabyRegistrationViewBirthWeightPlaceHolder,
+                                      inputBinder: $viewModel.birthWeight, keyboardType: .decimalPad)
+                    Picker("", selection: $viewModel.selectedWeightUnit) {
+                        Text(localizedStrings.BabyRegistrationViewBirthWeightPickerKilogramsText).tag(BabyRegistrationResources.UnitsKeys.kg.rawValue)
+                        Text(localizedStrings.BabyRegistrationViewBirthWeightPickerPoundsText).tag(BabyRegistrationResources.UnitsKeys.lbs.rawValue)
                     }
                     .pickerStyle(.segmented)
                 }
@@ -62,34 +57,37 @@ struct BabyRegistrationView: View {
             
             Section {
                 VStack(alignment: .leading) {
-                    LabelAndTextField(title: localizedStrings.BabyRegistrationViewBirthHeightTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewBirthHeightPlaceHolder, inputBinder: $birthHeight)
-                    Picker("", selection: $selectedHeightUnit) {
-                        Text(localizedStrings.BabyRegistrationViewBirthHeightPickerCentimetersText).tag(UnitsKeys.cm)
-                        Text(localizedStrings.BabyRegistrationViewBirthHeightPickerInchesText).tag(UnitsKeys.inch)
+                    LabelAndTextField(title: localizedStrings.BabyRegistrationViewBirthHeightTitle,
+                                      inputPlaceHolder: localizedStrings.BabyRegistrationViewBirthHeightPlaceHolder,
+                                      inputBinder: $viewModel.birthHeight, keyboardType: .decimalPad)
+                    
+                    Picker("", selection: $viewModel.selectedHeightUnit) {
+                        Text(localizedStrings.BabyRegistrationViewBirthHeightPickerCentimetersText).tag(BabyRegistrationResources.UnitsKeys.cm.rawValue)
+                        Text(localizedStrings.BabyRegistrationViewBirthHeightPickerInchesText).tag(BabyRegistrationResources.UnitsKeys.inch.rawValue)
                     }
                     .pickerStyle(.segmented)
                 }
             }
             
             Section {
-                LabelAndTextField(title: localizedStrings.BabyRegistrationViewBloodTypeTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewBloodTypePlaceHolder, inputBinder: $bloodType)
+                LabelAndTextField(title: localizedStrings.BabyRegistrationViewBloodTypeTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewBloodTypePlaceHolder, inputBinder: $viewModel.bloodType)
             }
             
-
+            
             
             Section {
                 Text(localizedStrings.BabyRegistrationViewAllergiesTitle).bold()
-                ForEach(allergies.indices, id: \.self) { index in
+                ForEach(viewModel.allergies.indices, id: \.self) { index in
                     HStack {
-                        TextField(localizedStrings.BabyRegistrationViewAllergiesPlaceHolder, text: $allergies[index])
+                        TextField(localizedStrings.BabyRegistrationViewAllergiesPlaceHolder, text: $viewModel.allergies[index])
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-
-                        let isLastItem = index == allergies.indices.last
+                        
+                        let isLastItem = index == viewModel.allergies.indices.last
                         if isLastItem {
                             Button(action: {
-                                allergies.append("")
+                                viewModel.allergies.append("")
                             }) {
-                                Image(systemName: BabyRegistrationIcons.plusIcon)
+                                Image(systemName: BabyRegistrationResources.Icons.plusIcon)
                                     .foregroundColor(.blue)
                             }
                         }
@@ -98,25 +96,31 @@ struct BabyRegistrationView: View {
             }
             
             Section {
-                Button(action: submitForm) {
+                Button(action: {
+                    if viewModel.validateForm() {
+                        viewModel.submit()
+                    }
+                }) {
                     Text(localizedStrings.BabyRegistrationViewSubmitButtonText)
                         .font(.headline)
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.blue)
                         .foregroundColor(.white)
-                        .cornerRadius(CGConstants.buttonCornerRadius)
+                        .cornerRadius(BabyRegistrationResources.CGConstants.buttonCornerRadius)
+                }
+                if let errorMessage = viewModel.errorMessage {
+                    Text(errorMessage).bold()
+                        .foregroundColor(.red)
+                        .font(.caption)
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
         }
     }
-    
-    func submitForm() {
-        print("Form submitted with: \n Name: \(firstName) \n Last Name: \(lastName) \n Blood Type: \(bloodType) \n Date of Birth: \(dateOfBirth) \n Gender: \(selectedGender) \n Weight: \(birthWeight) \(selectedWeightUnit) \n Height: \(birthHeight) \(selectedHeightUnit) \n Allergies: \(allergies)")
-    }
 }
 
 #Preview {
-    BabyRegistrationView()
+    BabyRegistrationView(viewModel: BabyRegistrationViewModel())
 }
-

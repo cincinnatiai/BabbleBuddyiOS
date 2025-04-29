@@ -27,3 +27,16 @@
 "BabyRegistrationView_Allergies_Title" = "Allergies";
 "BabyRegistrationView_Allergies_PlaceHolder" = "Enter allergy";
 "BabyRegistrationView_Submit_Button_Text" = "Submit";
+
+"CustomDatePicker_Button_Title" = "Ok";
+
+"ValidationErrors_EmptyFirstName_Text" = "First name is required";
+"ValidationErrors_EmptyLastName_Text" = "Last name is required";
+"ValidationErrors_EmptyGender_Text" = "Gender is required";
+"ValidationErrors_EmptyBirthWeight_Text" = "Birth weight is required";
+"ValidationErrors_EmptyWeightUnit_Text" = "Weight unit is required";
+"ValidationErrors_InvalidWeightValue_Text" = "Birth weight must be a number";
+"ValidationErrors_EmptyBirthHeight_Text" = "Birth height is required";
+"ValidationErrors_EmptyHeightUnit_Text" = "Height unit is required";
+"ValidationErrors_InvalidHeightValue_Text" = "Birth height must be a number";
+"ValidationErrors_EmptyBloodType_Text" = "Blood type is required";

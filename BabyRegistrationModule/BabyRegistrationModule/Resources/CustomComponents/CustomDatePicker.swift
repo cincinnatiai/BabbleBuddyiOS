@@ -23,7 +23,7 @@ struct CustomDatePicker: View {
                         isPickerVisible.toggle()
                     }
                 }) {
-                    Image(systemName: "calendar")
+                    Image(systemName: CustomDatePickerResources.Icons.calendarIcon)
                         .imageScale(.large)
                 }
             }
@@ -35,7 +35,7 @@ struct CustomDatePicker: View {
                         .datePickerStyle(.graphical)
                         .labelsHidden()
                         .clipped()
-                    Button ("OK") {
+                    Button (CustomDatePickerResources.LocalizedStrings.CustomDatePickerButtonTitle) {
                         withAnimation {
                             isPickerVisible = false
                         }
@@ -49,7 +49,7 @@ struct CustomDatePicker: View {
     
     private func formattedDate(_ date: Date) -> String {
             let formatter = DateFormatter()
-            formatter.dateFormat = "MM/dd/yyyy"
+        formatter.dateFormat = CustomDatePickerResources.Constants.dateFormat
             return formatter.string(from: date)
         }
 }
