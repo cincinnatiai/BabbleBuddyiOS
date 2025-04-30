@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC1EC3062DBA9B8900CEE588 /* AuthLibrarySPM in Frameworks */ = {isa = PBXBuildFile; productRef = EC1EC3052DBA9B8900CEE588 /* AuthLibrarySPM */; };
 		ECC8882C2DB6F10500848C01 /* SplashViewModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */; };
 		ECC8882D2DB6F10500848C01 /* SplashViewModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECC8882C2DB6F10500848C01 /* SplashViewModule.framework in Frameworks */,
+				EC1EC3062DBA9B8900CEE588 /* AuthLibrarySPM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +112,7 @@
 			);
 			name = BabbleBuddyApp;
 			packageProductDependencies = (
+				EC1EC3052DBA9B8900CEE588 /* AuthLibrarySPM */,
 			);
 			productName = BabbleBuddyApp;
 			productReference = F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */;
@@ -140,6 +143,9 @@
 			);
 			mainGroup = F57B50842D92F15700834E68;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				EC1EC3042DBA9B8900CEE588 /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F57B508E2D92F15700834E68 /* Products */;
 			projectDirPath = "";
@@ -203,6 +209,7 @@
 				DEVELOPMENT_TEAM = T66WJZW8RX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BabbleBuddyApp/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Allow FaceID";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -231,6 +238,7 @@
 				DEVELOPMENT_TEAM = T66WJZW8RX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BabbleBuddyApp/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Allow FaceID";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -390,6 +398,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EC1EC3042DBA9B8900CEE588 /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cincinnatiai/AuthLibrarySPM.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EC1EC3052DBA9B8900CEE588 /* AuthLibrarySPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EC1EC3042DBA9B8900CEE588 /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */;
+			productName = AuthLibrarySPM;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F57B50852D92F15700834E68 /* Project object */;
 }
