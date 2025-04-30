@@ -4,7 +4,7 @@
    <FileRef
       location = "group:SplashViewModule/SplashViewModule.xcodeproj">
    </FileRef>
-      <FileRef
+   <FileRef
       location = "group:BabiesList/BabiesList.xcodeproj">
    </FileRef>
    <FileRef

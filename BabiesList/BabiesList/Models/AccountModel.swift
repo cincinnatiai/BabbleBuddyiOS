@@ -17,4 +17,16 @@ public struct AccountModel: Codable {
   let created: String?
   let modified: String?
   let status: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case partitionKey = "partition_Key"
+        case rangeKey = "range_key"
+        case title
+        case description
+        case metadata
+        case type
+        case created
+        case modified
+        case status
+    }
 }

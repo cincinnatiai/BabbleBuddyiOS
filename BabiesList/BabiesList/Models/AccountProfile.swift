@@ -18,4 +18,17 @@ public struct AccountProfile: Codable {
     let created: String?
     let modified: String?
     let status: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case partitionKey = "partition_key"
+        case rangeKey = "range_key"
+        case firstName = "first_name"
+        case middleName = "middle_name"
+        case lastName = "last_name"
+        case encryptedEmail = "encrypted_email"
+        case permissions
+        case created
+        case modified
+        case status
+    }
 }

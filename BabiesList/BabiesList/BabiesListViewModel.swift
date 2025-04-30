@@ -10,16 +10,16 @@ import UIKit
 
 public class BabiesListViewModel {
     @Published var babiesState: BabiesState = .loading
-    private var apiResponseProvider: () async -> Result<[AccountResponseModel],Error>
+    private var accountApi: () async -> Result<[AccountResponseModel],Error>
     
-    public init(apiResponseProvider: @escaping () -> Result<[AccountResponseModel], Error>) {
-        self.apiResponseProvider = apiResponseProvider
+    public init(accountApi: @escaping () -> Result<[AccountResponseModel], Error>) {
+        self.accountApi = accountApi
     }
     
     func initialize() {
         babiesState = .loading
         Task {
-            let response = await apiResponseProvider()
+            let response = await accountApi()
             switch response {
             case .success(let result):
                 let babies = await transformToDisplayableBabies(response: result)
