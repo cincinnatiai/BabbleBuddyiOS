@@ -2,7 +2,7 @@ import Foundation
 
 extension String {
     var localized: String {
-        NSLocalizedString(self, comment: "")
+        NSLocalizedString(self, bundle: .splashViewModule, comment: "")
     }
 
     enum LocalizeStringKeys {
