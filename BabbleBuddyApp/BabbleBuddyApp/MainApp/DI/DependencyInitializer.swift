@@ -17,5 +17,17 @@ class DependencyInitializer {
         container.register(AuthViewModel.self) {
             DependencyInitializer.sharedAuthViewModel
         }
+
+        container.register(ViewLoaderViewModel.self) {
+            ViewLoaderViewModel()
+        }
+
+        container.register(HomeScreen.self) {
+            HomeScreen()
+        }
+
+        container.register(SettingsView.self) {
+            SettingsView()
+        }
     }
 }
