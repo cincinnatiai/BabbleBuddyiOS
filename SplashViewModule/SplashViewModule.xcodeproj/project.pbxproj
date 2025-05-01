@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		86DD7D0C2DA5D5A8005D214C /* SplashViewModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DD7D012DA5D5A8005D214C /* SplashViewModule.framework */; };
-		ECC888332DB6F1A200848C01 /* AuthLibrarySPM in Frameworks */ = {isa = PBXBuildFile; productRef = ECC888322DB6F1A200848C01 /* AuthLibrarySPM */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECC888332DB6F1A200848C01 /* AuthLibrarySPM in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,7 +127,6 @@
 			);
 			name = SplashViewModule;
 			packageProductDependencies = (
-				ECC888322DB6F1A200848C01 /* AuthLibrarySPM */,
 			);
 			productName = SplashViewModule;
 			productReference = 86DD7D012DA5D5A8005D214C /* SplashViewModule.framework */;
@@ -186,7 +183,6 @@
 			mainGroup = 86DD7CF72DA5D5A8005D214C;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				86DD7D242DA5D657005D214C /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 86DD7D022DA5D5A8005D214C /* Products */;
@@ -492,25 +488,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		86DD7D242DA5D657005D214C /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cincinnatiai/AuthLibrarySPM.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		ECC888322DB6F1A200848C01 /* AuthLibrarySPM */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 86DD7D242DA5D657005D214C /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */;
-			productName = AuthLibrarySPM;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 86DD7CF82DA5D5A8005D214C /* Project object */;
 }
