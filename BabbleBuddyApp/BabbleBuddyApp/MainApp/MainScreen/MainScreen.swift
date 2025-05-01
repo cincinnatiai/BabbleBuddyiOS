@@ -1,7 +1,6 @@
 import Foundation
 import SwiftUI
 import TabBar
-import BabiesList
 import UIKit
 import AuthLibrarySPM
 
@@ -16,10 +15,15 @@ struct MainScreen: View {
         @Inject var globalAuthViewModel: AuthViewModel
         return globalAuthViewModel
     }()
-
+    
+    @StateObject var viewLoaderViewModel: ViewLoaderViewModel = {
+       @Inject var viewLoaderViewModel: ViewLoaderViewModel
+        return viewLoaderViewModel
+    }()
+    
     var body: some View {
         AuthApp(authManager: authManager, authviewModel: authViewModel) { _ in
-            HomeScreen()
+            ViewLoader(viewModel: viewLoaderViewModel)
         }
         .environmentObject(authManager)
         .onAppear {

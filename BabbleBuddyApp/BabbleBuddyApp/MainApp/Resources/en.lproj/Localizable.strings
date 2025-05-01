@@ -6,3 +6,5 @@
   
 */
 "HomeScreen_Label" = "Logged In";
+
+"ViewLoader_Loading_Label" = "Loading data...";
