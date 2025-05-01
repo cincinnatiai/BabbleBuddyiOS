@@ -8,4 +8,12 @@ extension String {
 
 enum LocalizedStringKeys {
     static let HomeScreenLabel = "HomeScreen_Label".localized
+    static let ViewLoaderLoadingLabel = "ViewLoader_Loading_Label".localized
+}
+
+enum BabbleBuddyAppResources {
+    enum TabBarViewControllerKeys: String {
+        case home
+        case settings
+    }
 }
