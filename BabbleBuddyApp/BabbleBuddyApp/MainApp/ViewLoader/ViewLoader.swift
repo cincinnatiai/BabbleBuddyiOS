@@ -19,7 +19,7 @@ struct ViewLoader: View {
             } else {
                 ProgressView(localizedStrings.ViewLoaderLoadingLabel)
                     .onAppear {
-                        viewModel.setViewControllers()
+                        viewModel.initializeData()
                     }
             }
         }

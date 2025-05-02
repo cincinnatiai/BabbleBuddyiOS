@@ -16,4 +16,9 @@ enum BabbleBuddyAppResources {
         case home
         case settings
     }
+    
+    enum KeychainKeys: String {
+        case idToken
+        case baseURL
+    }
 }

@@ -21,15 +21,29 @@ struct MainScreen: View {
         return viewLoaderViewModel
     }()
     
+    @Inject var tokenHandler: TokenHandler
+    
     var body: some View {
-        AuthApp(authManager: authManager, authviewModel: authViewModel) { _ in
-            ViewLoader(viewModel: viewLoaderViewModel)
+        Group {
+            AuthApp(authManager: authManager, authviewModel: authViewModel) { user in
+                if authViewModel.authState == .session(user: user) {
+                    ViewLoader(viewModel: viewLoaderViewModel)
+                        .onAppear {
+                            tokenHandler.onTokenSaved = {
+                                viewLoaderViewModel.notifyTokenReady()
+                            }
+                        }
+                }
+            }
+            .environmentObject(authManager)
         }
-        .environmentObject(authManager)
         .onAppear {
+            KeychainHelper.shared.deleteValues(forKey: BabbleBuddyAppResources.KeychainKeys.idToken.rawValue)
             resetAuthManager()
             authManager.initializeAWS()
             authManager.checkUserState()
+            authManager.setTokenProtocol(tokenHandler)
+            viewLoaderViewModel.fetchRemoteConfig()
         }
     }
 

@@ -17,6 +17,30 @@ class ViewLoaderViewModel: ObservableObject {
     @Inject var homeScreen: HomeScreen
     @Inject var settingsView: SettingsView
     
+    private var tokenAvailable = false
+    private var baseURLAvailable = false
+    private let remoteConfigProvider: RemoteConfigProvider = {
+        @Inject var remoteConfigProvider: RemoteConfigProvider
+        return remoteConfigProvider
+    }()
+    
+    func notifyTokenReady() {
+        tokenAvailable = true
+        tryInitialization()
+    }
+    
+    private func tryInitialization() {
+        guard tokenAvailable, baseURLAvailable else { return }
+        initializeData()
+    }
+    
+    func initializeData() {
+        guard let _ = KeychainHelper.shared.read(forKey: BabbleBuddyAppResources.KeychainKeys.idToken.rawValue),
+              let _ = KeychainHelper.shared.read(forKey: BabbleBuddyAppResources.KeychainKeys.baseURL.rawValue)
+        else { return }
+        setViewControllers()
+    }
+    
     func setViewControllers() {
         let controllers: [String: UIViewController] = [
             BabbleBuddyAppResources.TabBarViewControllerKeys.home.rawValue: UIHostingController(rootView: homeScreen),
@@ -24,5 +48,19 @@ class ViewLoaderViewModel: ObservableObject {
         ]
         self.viewControllers = controllers
         self.isReady = true
+    }
+    
+    func fetchRemoteConfig() {
+        remoteConfigProvider.fetchURLs { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let config):
+                guard let baseApiUrl = config["bfs_endpoint"]  as? String else { return }
+                KeychainHelper.shared.save(baseApiUrl, forKey: BabbleBuddyAppResources.KeychainKeys.baseURL.rawValue)
+                baseURLAvailable = true
+                tryInitialization()
+            case .failure: break
+            }
+        }
     }
 }
