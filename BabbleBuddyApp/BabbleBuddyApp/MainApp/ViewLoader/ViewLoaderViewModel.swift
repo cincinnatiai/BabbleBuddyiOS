@@ -19,9 +19,9 @@ class ViewLoaderViewModel: ObservableObject {
     
     private var tokenAvailable = false
     private var baseURLAvailable = false
-    private let fireBaseService: FirebaseService = {
-        @Inject var fireBaseService: FirebaseService
-        return fireBaseService
+    private let remoteConfigProvider: RemoteConfigProvider = {
+        @Inject var remoteConfigProvider: RemoteConfigProvider
+        return remoteConfigProvider
     }()
     
     func notifyTokenReady() {
@@ -50,13 +50,13 @@ class ViewLoaderViewModel: ObservableObject {
         self.isReady = true
     }
     
-    func fetchCognitoConfig() {
-        fireBaseService.fetchURLs { [weak self] result in
+    func fetchRemoteConfig() {
+        remoteConfigProvider.fetchURLs { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let config):
-                guard let url = config.values.first  as? String else { return }
-                KeychainHelper.shared.save(url,forKey: BabbleBuddyAppResources.KeychainKeys.baseURL.rawValue)
+                guard let baseApiUrl = config["bfs_endpoint"]  as? String else { return }
+                KeychainHelper.shared.save(baseApiUrl, forKey: BabbleBuddyAppResources.KeychainKeys.baseURL.rawValue)
                 baseURLAvailable = true
                 tryInitialization()
             case .failure: break

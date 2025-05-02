@@ -30,8 +30,8 @@ class DependencyInitializer {
         container.register(SettingsView.self) {
             SettingsView()
         }
-        container.register(FirebaseService.self) {
-            FirebaseService()
+        container.register(RemoteConfigProvider.self) {
+            RemoteConfigProvider()
         }
     }
 }

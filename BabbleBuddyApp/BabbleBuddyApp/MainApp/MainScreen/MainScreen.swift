@@ -43,7 +43,7 @@ struct MainScreen: View {
             authManager.initializeAWS()
             authManager.checkUserState()
             authManager.setTokenProtocol(tokenHandler)
-            viewLoaderViewModel.fetchCognitoConfig()
+            viewLoaderViewModel.fetchRemoteConfig()
         }
     }
 

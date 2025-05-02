@@ -11,6 +11,7 @@ import AuthLibrarySPM
 class TokenHandler: TokenManagerProtocol {
     
     var onTokenSaved: (() -> Void)?
+    
     func manageTokenId(idToken: String) {
         KeychainHelper.shared.save(idToken, forKey: BabbleBuddyAppResources.KeychainKeys.idToken.rawValue)
         onTokenSaved?()

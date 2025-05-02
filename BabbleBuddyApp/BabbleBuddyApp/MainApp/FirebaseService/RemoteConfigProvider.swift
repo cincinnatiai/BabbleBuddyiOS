@@ -8,9 +8,9 @@
 import Foundation
 import FirebaseFirestore
 
-class FirebaseService {
+class RemoteConfigProvider {
     
-    private let dataBase = Firestore.firestore()
+    private lazy var dataBase = Firestore.firestore()
 
     enum FirestoreServiceError: Error {
         case documentNotFound
