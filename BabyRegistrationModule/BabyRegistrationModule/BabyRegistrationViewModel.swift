@@ -38,7 +38,6 @@ class BabyRegistrationViewModel: ObservableObject {
             allergies: allergies
         )
         onSubmit?(data)
-        print("Form submitted with: \n Name: \(firstName) \n Last Name: \(lastName) \n Blood Type: \(bloodType) \n Date of Birth: \(dateOfBirth) \n Gender: \(selectedGender) \n Weight: \(birthWeight)\(selectedWeightUnit) \n Height: \(birthHeight) \(selectedHeightUnit) \n Allergies: \(allergies)")
     }
     
     func validateForm() -> Bool {

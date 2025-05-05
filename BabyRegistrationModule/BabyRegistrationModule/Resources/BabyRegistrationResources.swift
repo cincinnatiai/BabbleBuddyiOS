@@ -37,15 +37,15 @@ enum BabyRegistrationModuleLocalizedStringKeys {
     static let BabyRegistrationViewSubmitButtonText = "BabyRegistrationView_Submit_Button_Text".localized
     
     static let ValidationErrorsEmptyFirstNameText = "ValidationErrors_EmptyFirstName_Text".localized
-    static let ValidationErrorsEmptyLastNameText =  "ValidationErrors_EmptyLastName_Text".localized
-    static let ValidationErrorsEmptyGenderText =   "ValidationErrors_EmptyGender_Text".localized
-    static let ValidationErrorsEmptyBirthWeightText =    "ValidationErrors_EmptyBirthWeight_Text".localized
-    static let ValidationErrorsEmptyWeightUnitText =  "ValidationErrors_EmptyWeightUnit_Text".localized
-    static let ValidationErrorsInvalidWeightValueText =    "ValidationErrors_InvalidWeightValue_Text".localized
-    static let ValidationErrorsEmptyBirthHeightText =  "ValidationErrors_EmptyBirthHeight_Text".localized
-    static let ValidationErrorsEmptyHeightUnitText =    "ValidationErrors_EmptyHeightUnit_Text".localized
-    static let ValidationErrorsInvalidHeightValueText =    "ValidationErrors_InvalidHeightValue_Text".localized
-    static let ValidationErrorsEmptyBloodTypeText =    "ValidationErrors_EmptyBloodType_Text".localized
+    static let ValidationErrorsEmptyLastNameText = "ValidationErrors_EmptyLastName_Text".localized
+    static let ValidationErrorsEmptyGenderText = "ValidationErrors_EmptyGender_Text".localized
+    static let ValidationErrorsEmptyBirthWeightText = "ValidationErrors_EmptyBirthWeight_Text".localized
+    static let ValidationErrorsEmptyWeightUnitText = "ValidationErrors_EmptyWeightUnit_Text".localized
+    static let ValidationErrorsInvalidWeightValueText = "ValidationErrors_InvalidWeightValue_Text".localized
+    static let ValidationErrorsEmptyBirthHeightText = "ValidationErrors_EmptyBirthHeight_Text".localized
+    static let ValidationErrorsEmptyHeightUnitText = "ValidationErrors_EmptyHeightUnit_Text".localized
+    static let ValidationErrorsInvalidHeightValueText = "ValidationErrors_InvalidHeightValue_Text".localized
+    static let ValidationErrorsEmptyBloodTypeText = "ValidationErrors_EmptyBloodType_Text".localized
     
     
 }
