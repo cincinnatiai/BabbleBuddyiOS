@@ -70,32 +70,27 @@ enum BabyRegistrationResources {
     
     struct CGConstants {
         static let buttonCornerRadius: CGFloat = 10
+        static let viewSpacing: CGFloat = 20
     }
     
     enum ValidationErrors {
         case emptyFirstName
         case emptyLastName
         case emptyGender
-        case emptyBirthWeight
         case emptyWeigthUnit
         case invalidWeightValue
-        case emptyBirthHeight
         case emptyHeightUnit
         case invalidHeightValue
-        case emptyBloodType
         
         var localizedDesription: String {
             switch self {
             case .emptyFirstName : return BabyRegistrationModuleLocalizedStringKeys.ValidationErrorsEmptyFirstNameText
             case .emptyLastName : return BabyRegistrationModuleLocalizedStringKeys.ValidationErrorsEmptyLastNameText
             case .emptyGender : return BabyRegistrationModuleLocalizedStringKeys.ValidationErrorsEmptyGenderText
-            case .emptyBirthWeight : return BabyRegistrationModuleLocalizedStringKeys.ValidationErrorsEmptyBirthWeightText
             case .emptyWeigthUnit : return BabyRegistrationModuleLocalizedStringKeys.ValidationErrorsEmptyWeightUnitText
             case .invalidWeightValue : return BabyRegistrationModuleLocalizedStringKeys.ValidationErrorsInvalidWeightValueText
-            case .emptyBirthHeight : return BabyRegistrationModuleLocalizedStringKeys.ValidationErrorsEmptyBirthHeightText
             case .emptyHeightUnit : return BabyRegistrationModuleLocalizedStringKeys.ValidationErrorsEmptyHeightUnitText
             case .invalidHeightValue : return BabyRegistrationModuleLocalizedStringKeys.ValidationErrorsInvalidHeightValueText
-            case .emptyBloodType : return BabyRegistrationModuleLocalizedStringKeys.ValidationErrorsEmptyBloodTypeText
             }
         }
     }

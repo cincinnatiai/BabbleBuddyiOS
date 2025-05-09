@@ -24,6 +24,12 @@ class BabyRegistrationViewModel: ObservableObject {
     
     var onSubmit: ((BabyRegistrationData) -> Void)?
     
+    func onSubmitTapped() {
+        if validateForm() {
+            submit()
+        }
+    }
+    
     func submit() {
         let data = BabyRegistrationData(
             firstName: firstName,
@@ -56,7 +62,6 @@ class BabyRegistrationViewModel: ObservableObject {
         if let error = validateGender() { return error }
         if let error = validateBirthWeight() { return error }
         if let error = validateBirthHeight() { return error }
-        if let error = validateBloodType() { return error }
         return nil
     }
     
@@ -73,20 +78,16 @@ class BabyRegistrationViewModel: ObservableObject {
     }
     
     private func validateBirthWeight() -> BabyRegistrationResources.ValidationErrors? {
-        guard !birthWeight.isEmpty else { return .emptyBirthWeight }
+        guard !birthWeight.isEmpty else { return nil }
         guard Double(birthWeight) != nil else { return .invalidWeightValue }
         guard !selectedWeightUnit.isEmpty else { return .emptyWeigthUnit }
         return nil
     }
     
     private func validateBirthHeight() -> BabyRegistrationResources.ValidationErrors? {
-        guard !birthHeight.isEmpty else { return .emptyBirthHeight }
+        guard !birthHeight.isEmpty else { return nil }
         guard Double(birthHeight) != nil else { return .invalidHeightValue }
         guard !selectedHeightUnit.isEmpty else { return .emptyHeightUnit }
         return nil
-    }
-    
-    private func validateBloodType() -> BabyRegistrationResources.ValidationErrors? {
-        return bloodType.isEmpty ? .emptyBloodType  : nil
     }
 }

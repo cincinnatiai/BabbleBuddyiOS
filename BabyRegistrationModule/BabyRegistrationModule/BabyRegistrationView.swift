@@ -15,67 +15,52 @@ struct BabyRegistrationView: View {
     private let localizedStrings = BabyRegistrationModuleLocalizedStringKeys.self
     
     var body: some View {
-        Form {
-            Section {
+        ScrollView {
+            LazyVStack(spacing: BabyRegistrationResources.CGConstants.viewSpacing) {
                 LabelAndTextField(title: localizedStrings.BabyRegistrationViewFirstNameTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewFirstNamePlaceHolder, inputBinder: $viewModel.firstName)
-            }
-            
-            Section {
+                Divider()
+                
                 LabelAndTextField(title: localizedStrings.BabyRegistrationViewLastNameTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewLastNamePlaceHolder, inputBinder: $viewModel.lastName)
-            }
-            
-            Section {
-                VStack(alignment: .leading) {
-                    Text(localizedStrings.BabyRegistrationViewDateOfBirthTitle).bold()
-                    CustomDatePicker(selectedDate: $viewModel.dateOfBirth)
+                Divider()
+                
+                Text(localizedStrings.BabyRegistrationViewDateOfBirthTitle).bold()
+                CustomDatePicker(selectedDate: $viewModel.dateOfBirth)
+                Divider()
+                
+                Text(localizedStrings.BabyRegistrationViewGenderTitle).bold()
+                Picker("", selection: $viewModel.selectedGender) {
+                    Text(localizedStrings.BabyRegistrationViewGenderPickerMaleText).tag(BabyRegistrationResources.GenderKeys.Male.rawValue)
+                    Text(localizedStrings.BabyRegistrationViewGenderPickerFemaleText).tag(BabyRegistrationResources.GenderKeys.Female.rawValue)
                 }
-            }
-            
-            Section {
-                VStack(alignment: .leading) {
-                    Text(localizedStrings.BabyRegistrationViewGenderTitle).bold()
-                    Picker("", selection: $viewModel.selectedGender) {
-                        Text(localizedStrings.BabyRegistrationViewGenderPickerMaleText).tag(BabyRegistrationResources.GenderKeys.Male.rawValue)
-                        Text(localizedStrings.BabyRegistrationViewGenderPickerFemaleText).tag(BabyRegistrationResources.GenderKeys.Female.rawValue)
-                    }
-                    .pickerStyle(.segmented)
+                .pickerStyle(.segmented)
+                Divider()
+                
+                LabelAndTextField(title: localizedStrings.BabyRegistrationViewBirthWeightTitle,
+                                  inputPlaceHolder: localizedStrings.BabyRegistrationViewBirthWeightPlaceHolder,
+                                  inputBinder: $viewModel.birthWeight, keyboardType: .decimalPad)
+                Picker("", selection: $viewModel.selectedWeightUnit) {
+                    Text(localizedStrings.BabyRegistrationViewBirthWeightPickerKilogramsText).tag(BabyRegistrationResources.UnitsKeys.kg.rawValue)
+                    Text(localizedStrings.BabyRegistrationViewBirthWeightPickerPoundsText).tag(BabyRegistrationResources.UnitsKeys.lbs.rawValue)
                 }
-            }
-            
-            Section {
-                VStack(alignment: .leading) {
-                    LabelAndTextField(title: localizedStrings.BabyRegistrationViewBirthWeightTitle,
-                                      inputPlaceHolder: localizedStrings.BabyRegistrationViewBirthWeightPlaceHolder,
-                                      inputBinder: $viewModel.birthWeight, keyboardType: .decimalPad)
-                    Picker("", selection: $viewModel.selectedWeightUnit) {
-                        Text(localizedStrings.BabyRegistrationViewBirthWeightPickerKilogramsText).tag(BabyRegistrationResources.UnitsKeys.kg.rawValue)
-                        Text(localizedStrings.BabyRegistrationViewBirthWeightPickerPoundsText).tag(BabyRegistrationResources.UnitsKeys.lbs.rawValue)
-                    }
-                    .pickerStyle(.segmented)
+                .pickerStyle(.segmented)
+                Divider()
+                
+                LabelAndTextField(title: localizedStrings.BabyRegistrationViewBirthHeightTitle,
+                                  inputPlaceHolder: localizedStrings.BabyRegistrationViewBirthHeightPlaceHolder,
+                                  inputBinder: $viewModel.birthHeight, keyboardType: .decimalPad)
+                
+                Picker("", selection: $viewModel.selectedHeightUnit) {
+                    Text(localizedStrings.BabyRegistrationViewBirthHeightPickerCentimetersText).tag(BabyRegistrationResources.UnitsKeys.cm.rawValue)
+                    Text(localizedStrings.BabyRegistrationViewBirthHeightPickerInchesText).tag(BabyRegistrationResources.UnitsKeys.inch.rawValue)
                 }
-            }
-            
-            Section {
-                VStack(alignment: .leading) {
-                    LabelAndTextField(title: localizedStrings.BabyRegistrationViewBirthHeightTitle,
-                                      inputPlaceHolder: localizedStrings.BabyRegistrationViewBirthHeightPlaceHolder,
-                                      inputBinder: $viewModel.birthHeight, keyboardType: .decimalPad)
-                    
-                    Picker("", selection: $viewModel.selectedHeightUnit) {
-                        Text(localizedStrings.BabyRegistrationViewBirthHeightPickerCentimetersText).tag(BabyRegistrationResources.UnitsKeys.cm.rawValue)
-                        Text(localizedStrings.BabyRegistrationViewBirthHeightPickerInchesText).tag(BabyRegistrationResources.UnitsKeys.inch.rawValue)
-                    }
-                    .pickerStyle(.segmented)
-                }
-            }
-            
-            Section {
+                .pickerStyle(.segmented)
+                Divider()
+                
                 LabelAndTextField(title: localizedStrings.BabyRegistrationViewBloodTypeTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewBloodTypePlaceHolder, inputBinder: $viewModel.bloodType)
-            }
-            
-            
-            
-            Section {
+                Divider()
+                
+                
+                
                 Text(localizedStrings.BabyRegistrationViewAllergiesTitle).bold()
                 ForEach(viewModel.allergies.indices, id: \.self) { index in
                     HStack {
@@ -93,13 +78,10 @@ struct BabyRegistrationView: View {
                         }
                     }
                 }
-            }
-            
-            Section {
+                Divider()
+                
                 Button(action: {
-                    if viewModel.validateForm() {
-                        viewModel.submit()
-                    }
+                        viewModel.onSubmitTapped()
                 }) {
                     Text(localizedStrings.BabyRegistrationViewSubmitButtonText)
                         .font(.headline)
@@ -117,6 +99,7 @@ struct BabyRegistrationView: View {
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
+            .padding()
         }
     }
 }

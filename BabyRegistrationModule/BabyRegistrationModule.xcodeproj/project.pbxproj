@@ -6,11 +6,31 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EC955D7D2DCE4447007A6FF7 /* BabyRegistrationModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC8897A2DB947CE00848C01 /* BabyRegistrationModule.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EC955D7E2DCE4447007A6FF7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ECC889712DB947CE00848C01 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ECC889792DB947CE00848C01;
+			remoteInfo = BabyRegistrationModule;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		EC955D792DCE4447007A6FF7 /* BabyRegistrationModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BabyRegistrationModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC8897A2DB947CE00848C01 /* BabyRegistrationModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BabyRegistrationModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		EC955D7A2DCE4447007A6FF7 /* BabyRegistrationModuleTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BabyRegistrationModuleTests;
+			sourceTree = "<group>";
+		};
 		ECC8897C2DB947CE00848C01 /* BabyRegistrationModule */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BabyRegistrationModule;
@@ -19,6 +39,14 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EC955D762DCE4447007A6FF7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC955D7D2DCE4447007A6FF7 /* BabyRegistrationModule.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ECC889772DB947CE00848C01 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				ECC8897C2DB947CE00848C01 /* BabyRegistrationModule */,
+				EC955D7A2DCE4447007A6FF7 /* BabyRegistrationModuleTests */,
 				ECC8897B2DB947CE00848C01 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				ECC8897A2DB947CE00848C01 /* BabyRegistrationModule.framework */,
+				EC955D792DCE4447007A6FF7 /* BabyRegistrationModuleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +88,29 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		EC955D782DCE4447007A6FF7 /* BabyRegistrationModuleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EC955D822DCE4447007A6FF7 /* Build configuration list for PBXNativeTarget "BabyRegistrationModuleTests" */;
+			buildPhases = (
+				EC955D752DCE4447007A6FF7 /* Sources */,
+				EC955D762DCE4447007A6FF7 /* Frameworks */,
+				EC955D772DCE4447007A6FF7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EC955D7F2DCE4447007A6FF7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				EC955D7A2DCE4447007A6FF7 /* BabyRegistrationModuleTests */,
+			);
+			name = BabyRegistrationModuleTests;
+			packageProductDependencies = (
+			);
+			productName = BabyRegistrationModuleTests;
+			productReference = EC955D792DCE4447007A6FF7 /* BabyRegistrationModuleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		ECC889792DB947CE00848C01 /* BabyRegistrationModule */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ECC889832DB947CE00848C01 /* Build configuration list for PBXNativeTarget "BabyRegistrationModule" */;
@@ -91,6 +144,9 @@
 				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
+					EC955D782DCE4447007A6FF7 = {
+						CreatedOnToolsVersion = 16.3;
+					};
 					ECC889792DB947CE00848C01 = {
 						CreatedOnToolsVersion = 16.3;
 					};
@@ -111,11 +167,19 @@
 			projectRoot = "";
 			targets = (
 				ECC889792DB947CE00848C01 /* BabyRegistrationModule */,
+				EC955D782DCE4447007A6FF7 /* BabyRegistrationModuleTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EC955D772DCE4447007A6FF7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ECC889782DB947CE00848C01 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -126,6 +190,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EC955D752DCE4447007A6FF7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		ECC889762DB947CE00848C01 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -135,7 +206,45 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		EC955D7F2DCE4447007A6FF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ECC889792DB947CE00848C01 /* BabyRegistrationModule */;
+			targetProxy = EC955D7E2DCE4447007A6FF7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		EC955D802DCE4447007A6FF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cincinnatiai.BabyRegistrationModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EC955D812DCE4447007A6FF7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cincinnatiai.BabyRegistrationModuleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		ECC889812DB947CE00848C01 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -328,6 +437,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EC955D822DCE4447007A6FF7 /* Build configuration list for PBXNativeTarget "BabyRegistrationModuleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EC955D802DCE4447007A6FF7 /* Debug */,
+				EC955D812DCE4447007A6FF7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		ECC889742DB947CE00848C01 /* Build configuration list for PBXProject "BabyRegistrationModule" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
