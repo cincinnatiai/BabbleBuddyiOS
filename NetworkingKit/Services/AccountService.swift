@@ -50,21 +50,31 @@ public class BabiesListServiceImplementation: BabiesListService {
     }
 
     private func buildRequest() throws -> URLRequest {
-
         let (baseURL, idToken) = authDataProvider()
 
         guard !baseURL.isEmpty, !idToken.isEmpty else {
             throw ServiceErrors.unknown(
-                NSError(domain: Constants.buildRequest, code: ServiceErrorCode.missingAuthData, userInfo: [
-                    NSLocalizedDescriptionKey: Constants.missingURL
+                NSError(domain: Constants.Error.buildRequest, code: ServiceErrorCode.missingAuthData, userInfo: [
+                    NSLocalizedDescriptionKey: Constants.Error.missingURL
                 ])
             )
         }
 
-        guard let url = URL(string: baseURL + Constants.babiesListEndpoint ) else { throw ServiceErrors.invalidURL }
-        var request = URLRequest(url: url)
-        request.httpMethod = Constants.postMethod
-        request.setValue("Bearer \(idToken)", forHTTPHeaderField: Constants.authorizationHeader)
+        guard var components = URLComponents(string: baseURL) else {
+            throw ServiceErrors.invalidURL
+        }
+
+        components.queryItems = [
+            URLQueryItem(name: "action", value: Constants.Endpoint.fetchAccounts)
+        ]
+
+        guard let reuqestURL = components.url else {
+            throw ServiceErrors.invalidURL
+        }
+
+        var request = URLRequest(url: reuqestURL)
+        request.httpMethod = Constants.Request.httpMethod
+        request.setValue("Bearer \(idToken)", forHTTPHeaderField: Constants.Request.authorizationHeader)
         return request
     }
 
