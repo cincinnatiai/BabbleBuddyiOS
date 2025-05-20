@@ -1,19 +1,25 @@
 import Foundation
 import BabiesList
 
-public protocol BabiesListService {
+public protocol BabyAccountService {
     func fetchBabies() async -> Result<[AccountResponseModel], Error>
 }
 
-public class BabiesListServiceImplementation: BabiesListService {
-    public typealias AuthDataProvider = () -> (baseURL: String, idToken: String)
+public class BabiesListServiceImplementation: BabyAccountService {
+    public typealias TokenProvider = () -> String
+    public typealias BaseURLProvider = () -> String
 
     private let decoder: JSONDecoder = JSONDecoder()
     private let session: URLSession = URLSession.shared
-    private let authDataProvider: AuthDataProvider
+    private let tokenProvider: TokenProvider
+    private let baseURLProvider: BaseURLProvider
 
-    public init(dataProvider: @escaping AuthDataProvider) {
-        self.authDataProvider = dataProvider
+    public init(
+    baseURLProvider: @escaping BaseURLProvider,
+    tokenProvider: @escaping TokenProvider
+    ){
+        self.baseURLProvider = baseURLProvider
+        self.tokenProvider = tokenProvider
     }
 
     public func fetchBabies() async -> Result<[AccountResponseModel], Error> {
@@ -39,7 +45,7 @@ public class BabiesListServiceImplementation: BabiesListService {
             throw ServiceErrors.invalidResponse
         }
         guard (200...299).contains(httpResponse.statusCode) else {
-            throw mapHTTPError(httpResponse.statusCode)
+            throw ErrorMapper.HTTPErrorHandler(httpResponse.statusCode)
         }
         do {
             let babies = try decoder.decode([AccountResponseModel].self, from: data)
@@ -50,7 +56,8 @@ public class BabiesListServiceImplementation: BabiesListService {
     }
 
     private func buildRequest() throws -> URLRequest {
-        let (baseURL, idToken) = authDataProvider()
+        let baseURL = baseURLProvider()
+        let idToken = tokenProvider()
 
         guard !baseURL.isEmpty, !idToken.isEmpty else {
             throw ServiceErrors.unknown(
@@ -68,24 +75,13 @@ public class BabiesListServiceImplementation: BabiesListService {
             URLQueryItem(name: "action", value: Constants.Endpoint.fetchAccounts)
         ]
 
-        guard let reuqestURL = components.url else {
+        guard let requestURL = components.url else {
             throw ServiceErrors.invalidURL
         }
 
-        var request = URLRequest(url: reuqestURL)
+        var request = URLRequest(url: requestURL)
         request.httpMethod = Constants.Request.httpMethod
         request.setValue("Bearer \(idToken)", forHTTPHeaderField: Constants.Request.authorizationHeader)
         return request
-    }
-
-    private func mapHTTPError(_ statusCode: Int) -> ServiceErrors {
-        switch statusCode {
-        case 400: return .badRequest
-        case 401: return .unauthorized
-        case 403: return .forbidden
-        case 404: return .notFound
-        case 500: return .serverError
-        default: return .httpError(statusCode)
-        }
     }
 }
