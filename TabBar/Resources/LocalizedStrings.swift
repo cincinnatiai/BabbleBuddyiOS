@@ -22,6 +22,7 @@ enum TabBarLocalizedStringKeys {
     static let FatalErrorMessage = "FATAL_ERROR_MESSAGE".localized
 }
 
+/// Not used, these icons now are deprecated because the parent app is injecting it to the library
 enum TabBarIcons {
     static let home = ("house", "house.fill")
     static let settings = ("gearshape", "gearshape.fill")

@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import UIKit
 
+// TODO: Currently not used, review to extract key functionalities
 public class TabBarView: UITabBarController {
     
     private var viewModel: TabBarViewModel
@@ -77,5 +78,37 @@ public class TabBarView: UITabBarController {
                 }
             }
             .store(in: &cancellables)
+    }
+}
+
+import SwiftUI
+
+public struct TabBarViewV2: View {
+    private let tabs: [TabItem]
+
+    public init(tabs: [TabItem]) {
+        self.tabs = tabs
+    }
+
+    public var body: some View {
+        TabView {
+            ForEach(Array(tabs.enumerated()), id: \.offset) { _, tab in
+                tabContentView(tab)
+                    .tabItem {
+                        Image(systemName: tab.icon)
+                        Text(tab.title)
+                    }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func tabContentView(_ tab: TabItem) -> some View {
+        switch tab.content {
+        case .swiftUIView(let view):
+            view
+        case .viewController(let vc):
+            ViewControllerWrapper(viewController: vc)
+        }
     }
 }
