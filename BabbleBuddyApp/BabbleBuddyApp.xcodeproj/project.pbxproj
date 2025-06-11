@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D14624C72DF9416300E052AE /* TabBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14624C62DF9416300E052AE /* TabBar.framework */; };
+		D14624C82DF9416300E052AE /* TabBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D14624C62DF9416300E052AE /* TabBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC1EC3062DBA9B8900CEE588 /* AuthLibrarySPM in Frameworks */ = {isa = PBXBuildFile; productRef = EC1EC3052DBA9B8900CEE588 /* AuthLibrarySPM */; };
 		ECC8882C2DB6F10500848C01 /* SplashViewModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */; };
 		ECC8882D2DB6F10500848C01 /* SplashViewModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -26,6 +28,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D14624C82DF9416300E052AE /* TabBar.framework in Embed Frameworks */,
 				ECC8882D2DB6F10500848C01 /* SplashViewModule.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -34,6 +37,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D14624C62DF9416300E052AE /* TabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SplashViewModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabbleBuddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -72,6 +76,7 @@
 				ECD4A23B2DC3FEB60094E06D /* FirebaseAnalytics in Frameworks */,
 				ECD4A23D2DC3FEB60094E06D /* FirebaseAuth in Frameworks */,
 				ECD4A2432DC3FEB60094E06D /* FirebaseFirestore in Frameworks */,
+				D14624C72DF9416300E052AE /* TabBar.framework in Frameworks */,
 				ECD4A2452DC3FEB60094E06D /* FirebaseRemoteConfig in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,6 +87,7 @@
 		ECC888292DB6F0FD00848C01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D14624C62DF9416300E052AE /* TabBar.framework */,
 				ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */,
 			);
 			name = Frameworks;

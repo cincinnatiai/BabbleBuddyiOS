@@ -10,6 +10,7 @@ import Combine
 import UIKit
 import SwiftUI
 
+// TODO: Currently not used, review to extract key functionalities
 public class TabBarViewModel : ObservableObject {
     @Published var screensState : ScreensState = .loading
     private let viewControllersProvider : () -> [String : UIViewController]

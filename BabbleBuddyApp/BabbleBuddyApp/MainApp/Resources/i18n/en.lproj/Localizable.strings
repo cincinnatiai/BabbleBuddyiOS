@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  BabbleBuddyApp
+
+  Created by Trainee on 4/24/25.
+  
+*/
+
+// MARK: Screen messages
+"HomeScreen_Label" = "Logged In";
+"ViewLoader_Loading_Label" = "Loading data...";
+
+// MARK: TabBar titles:
+"TAB_BAR_SETTINGS_ITEM_TITLE" = "Settings";
+"TAB_BAR__HOME_ITEM_TITLE" = "Home";
