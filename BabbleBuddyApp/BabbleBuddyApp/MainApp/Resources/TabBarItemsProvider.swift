@@ -8,6 +8,8 @@
 import SwiftUI
 import TabBar
 import AuthLibrarySPM
+import BabiesList
+import NetworkingKit
 
 typealias L10n = LocalizedStringKeys
 
@@ -22,10 +24,17 @@ enum TabBarItemsProvider {
                 view: HomeScreen()
             ),
             TabItem(
+                title: L10n.HomeScreenTabItemTitle,
+                icon: "figure.and.child.holdinghands",
+                viewController: TabBarScreenProvider.makeBabiesListView()
+            ),
+            TabItem(
                 title: L10n.SettingsScreenTabItemTitle,
                 icon: "gearshape",
                 view: SettingsView()
             )
         ]
     }
+    
+
 }

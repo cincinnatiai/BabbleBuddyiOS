@@ -2,57 +2,6 @@ import SwiftUI
 import TabBar
 import AuthLibrarySPM
 
-struct MainScreen: View {
-    
-    @StateObject var authManager: AuthManager = {
-        @Inject var globalAuthManager: AuthManager
-        return globalAuthManager
-    }()
-    
-    @StateObject var authViewModel: AuthViewModel = {
-        @Inject var globalAuthViewModel: AuthViewModel
-        return globalAuthViewModel
-    }()
-    
-    @StateObject var viewLoaderViewModel: ViewLoaderViewModel = {
-       @Inject var viewLoaderViewModel: ViewLoaderViewModel
-        return viewLoaderViewModel
-    }()
-    
-    @Inject var tokenHandler: TokenHandler
-    
-    var body: some View {
-        Group {
-            AuthApp(authManager: authManager, authviewModel: authViewModel) { user in
-                if authViewModel.authState == .session(user: user) {
-                    ViewLoader(viewModel: viewLoaderViewModel)
-                        .onAppear {
-                            tokenHandler.onTokenSaved = {
-                                viewLoaderViewModel.notifyTokenReady()
-                            }
-                        }
-                }
-            }
-            .environmentObject(authManager)
-        }
-        .onAppear {
-            KeychainHelper.shared.deleteValues(forKey: BabbleBuddyAppResources.KeychainKeys.idToken.rawValue)
-            resetAuthManager()
-            authManager.initializeAWS()
-            authManager.checkUserState()
-            authManager.setTokenProtocol(tokenHandler)
-            viewLoaderViewModel.fetchRemoteConfig()
-        }
-    }
-
-    func resetAuthManager() {
-        authViewModel.authState = .login
-        authManager.isLoggedIn = false
-        authViewModel.errorMessage = nil
-        authManager.signOut()
-    }
-}
-
 struct MainScreenV2: View {
 
     @StateObject var authManager: AuthManager = {
@@ -65,12 +14,10 @@ struct MainScreenV2: View {
         return globalAuthViewModel
     }()
 
-    @StateObject var viewLoaderViewModel: ViewLoaderViewModel = {
-       @Inject var viewLoaderViewModel: ViewLoaderViewModel
-        return viewLoaderViewModel
-    }()
-
     @Inject var tokenHandler: TokenHandler
+    @Inject var configurationService: ConfigurationService
+
+    @State private var didFetchURL = false
 
     var body: some View {
         Group {
@@ -82,16 +29,22 @@ struct MainScreenV2: View {
             .environmentObject(authManager)
         }
         .onAppear {
-            KeychainHelper.shared.deleteValues(forKey: BabbleBuddyAppResources.KeychainKeys.idToken.rawValue)
-            resetAuthManager()
-            authManager.initializeAWS()
-            authManager.checkUserState()
-            authManager.setTokenProtocol(tokenHandler)
-            viewLoaderViewModel.fetchRemoteConfig()
+            initializeApp()
         }
     }
 
-    func resetAuthManager() {
+    private func initializeApp() {
+        guard !didFetchURL else { return }
+        didFetchURL = true
+
+        configurationService.fetchBaseURL { _ in }
+        authManager.setTokenProtocol(tokenHandler)
+        authManager.initializeAWS()
+        authManager.checkUserState()
+        resetAuthManager()
+    }
+
+    private func resetAuthManager() {
         authViewModel.authState = .login
         authManager.isLoggedIn = false
         authViewModel.errorMessage = nil
