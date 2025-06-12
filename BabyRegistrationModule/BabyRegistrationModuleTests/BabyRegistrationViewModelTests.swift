@@ -11,8 +11,7 @@ import XCTest
 final class BabyRegistrationViewModelTests: XCTestCase {
     
     var viewModel: BabyRegistrationViewModel!
-    //
-
+    
     override func setUpWithError() throws {
         try super.setUpWithError()
         viewModel = BabyRegistrationViewModel()

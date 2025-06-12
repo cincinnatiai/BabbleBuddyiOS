@@ -8,7 +8,6 @@
 import SwiftUI
 
 /// To use it call it like this:
-///
 /// BBHStack { The views you need in a row }
 
 public struct BBHStack<Content: View>: View {
