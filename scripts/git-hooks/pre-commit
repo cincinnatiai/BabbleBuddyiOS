@@ -1,0 +1,60 @@
+#!/bin/sh
+
+# Name validation
+if git rev-parse --verify HEAD >/dev/null 2>&1
+then
+  against=HEAD
+else
+  against=$(git hash-object -t tree /dev/null)
+fi
+
+allownonascii=$(git config --type=bool hooks.allownonascii)
+exec 1>&2
+
+if [ "$allownonascii" != "true" ] &&
+  test $(git diff --cached --name-only --diff-filter=A -z $against |
+    LC_ALL=C tr -d '[ -~]\0' | wc -c) != 0
+then
+  cat <<\EOF
+Error: Attempt to add a non-ASCII file name.
+To be portable it is advisable to rename the file.
+You can disable this check using:
+  git config hooks.allownonascii true
+EOF
+  exit 1
+fi
+
+# Space validation
+if ! git diff-index --check --cached $against --; then
+  echo "❌ Commit failed due to whitespace errors."
+  exit 1
+fi
+
+# Staged files rule
+echo "🔍 Running SwiftLint only on staged files..."
+
+files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.swift$')
+
+if [ -z "$files" ]; then
+  echo "✅ No Swift files staged. Skipping SwiftLint."
+  exit 0
+fi
+
+hasErrors=0
+for file in $files; do
+  if [ -f "$file" ]; then
+    swiftlint lint --quiet "$file" --reporter xcode
+    STATUS=$?
+    if [ $STATUS -ne 0 ]; then
+      hasErrors=1
+    fi
+  fi
+done
+
+if [ $hasErrors -ne 0 ]; then
+  echo "❌ SwiftLint found violations in staged files. Commit aborted."
+  exit 1
+fi
+
+echo "✅ SwiftLint passed on staged Swift files."
+exit 0
