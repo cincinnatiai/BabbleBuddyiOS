@@ -118,9 +118,9 @@
 			buildConfigurationList = F57B50A02D92F15900834E68 /* Build configuration list for PBXNativeTarget "BabbleBuddyApp" */;
 			buildPhases = (
 				F57B50892D92F15700834E68 /* Sources */,
+				F57B51492D92F80500834E68 /* ShellScript */,
 				F57B508A2D92F15700834E68 /* Frameworks */,
 				F57B508B2D92F15700834E68 /* Resources */,
-				F57B51492D92F80500834E68 /* ShellScript */,
 				ECC8882E2DB6F10500848C01 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -211,8 +211,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-			showEnvVarsInLog = 0;
+			shellScript = "echo \"🚨 SwiftLint is running from Build Phase\"\n\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

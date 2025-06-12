@@ -106,7 +106,9 @@ public struct TabBarViewV2: View {
     private func tabContentView(_ tab: TabItem) -> some View {
         switch tab.content {
         case .swiftUIView(let view):
+            NavigationStack {
             view
+            }
         case .viewController(let vc):
             ViewControllerWrapper(viewController: vc)
         }
