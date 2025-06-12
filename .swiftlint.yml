@@ -1,0 +1,83 @@
+included:
+  - .
+excluded:
+  - Pods
+  - Carthage
+  - Generated
+
+disabled_rules:
+  - line_length
+  - trailing_whitespace
+  - comma
+  - todo
+
+opt_in_rules:
+  - fatal_error_message
+  - unused_optional_binding
+  - identifier_name
+  - type_name
+  - function_parameter_count
+  - type_body_length
+  - file_length
+  - function_body_length
+  - empty_count
+  - redundant_optional_initialization
+  - private_over_fileprivate
+  - closure_parameter_position
+  - discouraged_direct_init
+  - redundant_discardable_let
+  - unused_declaration
+
+identifier_name:
+  allowed_symbols: []
+  excluded:
+    - id
+    - URL
+  min_length:
+    warning: 3
+    error: 2
+  max_length:
+    warning: 40
+    error: 60
+
+type_name:
+  min_length:
+    warning: 3
+    error: 3
+  max_length:
+    warning: 40
+    error: 60
+  excluded:
+    - "^BB[A-Z].*"
+
+function_parameter_count:
+  warning: 4
+  error: 6
+
+type_body_length:
+  warning: 300
+  error: 500
+
+file_length:
+  warning: 500
+  error: 800
+
+function_body_length:
+  warning: 40
+  error: 80
+
+fatal_error_message:
+  severity: error
+
+unused_optional_binding:
+  severity: warning
+
+redundant_discardable_let:
+  severity: warning
+
+custom_rules:
+  no_debug_prints:
+    name: "Avoid print/debug"
+    regex: 'print\(|debugPrint\('
+    message: "Remove debug print statements"
+    severity: error
