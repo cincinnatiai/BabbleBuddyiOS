@@ -1,6 +1,17 @@
 # BabbleBuddyApp
 **A modular iOS application built in Swift using SPM and feature-based/clean architecture. Designed for scalability, testability, and team collaboration.**
 
+## Requirements for contributors
+- Clone the repo:
+    `git clone https://github.com/cincinnatiai/BabbleBuddyiOS.git`
+- On the terminal on project folder run:
+    `bash scripts/setup.sh`
+- Add the dependencys on SPM:
+    - https://github.com/cincinnatiai/AuthLibrarySPM
+    - https://github.com/firebase/firebase-ios-sdk
+- Add the firebase and AWS configuration files to the main app resources
+
+
 ## Overview
 BabbleBuddy is a baby journal tracking iOS application built using modular Swift packages. The architecture supports reusable UI components, isolated feature modules, and clean networking layers.
 
