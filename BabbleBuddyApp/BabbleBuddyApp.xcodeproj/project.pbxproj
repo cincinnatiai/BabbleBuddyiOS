@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D112E74A2DFA256A009A1B18 /* BabyRegistrationModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D112E7492DFA256A009A1B18 /* BabyRegistrationModule.framework */; };
-		D112E74B2DFA256A009A1B18 /* BabyRegistrationModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D112E7492DFA256A009A1B18 /* BabyRegistrationModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D14624C72DF9416300E052AE /* TabBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14624C62DF9416300E052AE /* TabBar.framework */; };
 		D14624C82DF9416300E052AE /* TabBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D14624C62DF9416300E052AE /* TabBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EC1EC3062DBA9B8900CEE588 /* AuthLibrarySPM in Frameworks */ = {isa = PBXBuildFile; productRef = EC1EC3052DBA9B8900CEE588 /* AuthLibrarySPM */; };
@@ -30,7 +28,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D112E74B2DFA256A009A1B18 /* BabyRegistrationModule.framework in Embed Frameworks */,
 				D14624C82DF9416300E052AE /* TabBar.framework in Embed Frameworks */,
 				ECC8882D2DB6F10500848C01 /* SplashViewModule.framework in Embed Frameworks */,
 			);
@@ -40,7 +37,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D112E7492DFA256A009A1B18 /* BabyRegistrationModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabyRegistrationModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14624C62DF9416300E052AE /* TabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SplashViewModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabbleBuddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,7 +72,6 @@
 				ECC8882C2DB6F10500848C01 /* SplashViewModule.framework in Frameworks */,
 				ECD4A2472DC3FEB60094E06D /* FirebaseStorage in Frameworks */,
 				EC1EC3062DBA9B8900CEE588 /* AuthLibrarySPM in Frameworks */,
-				D112E74A2DFA256A009A1B18 /* BabyRegistrationModule.framework in Frameworks */,
 				ECD4A23F2DC3FEB60094E06D /* FirebaseCrashlytics in Frameworks */,
 				ECD4A23B2DC3FEB60094E06D /* FirebaseAnalytics in Frameworks */,
 				ECD4A23D2DC3FEB60094E06D /* FirebaseAuth in Frameworks */,
@@ -92,7 +87,6 @@
 		ECC888292DB6F0FD00848C01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D112E7492DFA256A009A1B18 /* BabyRegistrationModule.framework */,
 				D14624C62DF9416300E052AE /* TabBar.framework */,
 				ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */,
 			);
@@ -124,9 +118,9 @@
 			buildConfigurationList = F57B50A02D92F15900834E68 /* Build configuration list for PBXNativeTarget "BabbleBuddyApp" */;
 			buildPhases = (
 				F57B50892D92F15700834E68 /* Sources */,
+				F57B51492D92F80500834E68 /* ShellScript */,
 				F57B508A2D92F15700834E68 /* Frameworks */,
 				F57B508B2D92F15700834E68 /* Resources */,
-				F57B51492D92F80500834E68 /* ShellScript */,
 				ECC8882E2DB6F10500848C01 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -217,8 +211,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-			showEnvVarsInLog = 0;
+			shellScript = "echo \"🚨 SwiftLint is running from Build Phase\"\n\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
