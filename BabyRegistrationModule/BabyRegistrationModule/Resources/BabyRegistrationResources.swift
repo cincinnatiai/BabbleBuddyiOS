@@ -35,7 +35,11 @@ enum BabyRegistrationModuleLocalizedStringKeys {
     static let BabyRegistrationViewAllergiesTitle = "BabyRegistrationView_Allergies_Title".localized
     static let BabyRegistrationViewAllergiesPlaceHolder = "BabyRegistrationView_Allergies_PlaceHolder".localized
     static let BabyRegistrationViewSubmitButtonText = "BabyRegistrationView_Submit_Button_Text".localized
-    
+    static let CustomDatePickerButtonTitle = "CustomDatePicker_Button_Title".localized
+    static let BabyRegistrationScreenTitle = "BabyRegistrationView_Screen_Title".localized
+    static let BabyRegistrationViewBabyInfoSectionTitle = "BabyRegistrationView_Baby_Info_Section_Title".localized
+    static let BabyRegistrationViewBabyMeasurementsSectionTitle = "BabyRegistrationView_Baby_Measurements_Section_Title".localized
+    static let BabyRegistrationViewBabyMedicalInfoSectionTitle = "BabyRegistrationView_Medical_Info_Section_Title".localized
     static let ValidationErrorsEmptyFirstNameText = "ValidationErrors_EmptyFirstName_Text".localized
     static let ValidationErrorsEmptyLastNameText = "ValidationErrors_EmptyLastName_Text".localized
     static let ValidationErrorsEmptyGenderText = "ValidationErrors_EmptyGender_Text".localized

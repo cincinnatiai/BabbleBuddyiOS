@@ -6,6 +6,7 @@
   
 */
 
+"BabyRegistrationView_Screen_Title" = "Baby registration";
 "BabyRegistrationView_FirstName_Title" = "First Name";
 "BabyRegistrationView_FirstName_PlaceHolder" = "Enter baby's name";
 "BabyRegistrationView_LastName_Title" = "Last Name";
@@ -27,8 +28,11 @@
 "BabyRegistrationView_Allergies_Title" = "Allergies";
 "BabyRegistrationView_Allergies_PlaceHolder" = "Enter allergy (Optional)";
 "BabyRegistrationView_Submit_Button_Text" = "Submit";
+"BabyRegistrationView_Baby_Info_Section_Title" = "Baby information";
+"BabyRegistrationView_Baby_Measurements_Section_Title" = "Baby measurements";
+"BabyRegistrationView_Medical_Info_Section_Title" = "Medical information";
 
-"CustomDatePicker_Button_Title" = "Ok";
+"CustomDatePicker_Button_Title" = "Select";
 
 "ValidationErrors_EmptyFirstName_Text" = "First name is required";
 "ValidationErrors_EmptyLastName_Text" = "Last name is required";

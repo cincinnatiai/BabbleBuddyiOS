@@ -7,66 +7,83 @@
 
 import Foundation
 import SwiftUI
+import DesignKit
 
-struct BabyRegistrationView: View {
-    
-    @StateObject var viewModel: BabyRegistrationViewModel
-    
+public struct BabyRegistrationView: View {
+    @ObservedObject var viewModel: BabyRegistrationViewModel
     private let localizedStrings = BabyRegistrationModuleLocalizedStringKeys.self
-    
-    var body: some View {
-        ScrollView {
-            LazyVStack(spacing: BabyRegistrationResources.CGConstants.viewSpacing) {
-                LabelAndTextField(title: localizedStrings.BabyRegistrationViewFirstNameTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewFirstNamePlaceHolder, inputBinder: $viewModel.firstName)
-                Divider()
-                
-                LabelAndTextField(title: localizedStrings.BabyRegistrationViewLastNameTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewLastNamePlaceHolder, inputBinder: $viewModel.lastName)
-                Divider()
-                
-                Text(localizedStrings.BabyRegistrationViewDateOfBirthTitle).bold()
-                CustomDatePicker(selectedDate: $viewModel.dateOfBirth)
-                Divider()
-                
-                Text(localizedStrings.BabyRegistrationViewGenderTitle).bold()
-                Picker("", selection: $viewModel.selectedGender) {
-                    Text(localizedStrings.BabyRegistrationViewGenderPickerMaleText).tag(BabyRegistrationResources.GenderKeys.Male.rawValue)
-                    Text(localizedStrings.BabyRegistrationViewGenderPickerFemaleText).tag(BabyRegistrationResources.GenderKeys.Female.rawValue)
+    private let bloodTypes = ["A+","A-","B+","B-","AB+","AB-","O+","O-"]
+
+    public init(viewModel: BabyRegistrationViewModel) {
+        self.viewModel = viewModel
+    }
+
+    public var body: some View {
+        BBVStack(screenTitle: localizedStrings.BabyRegistrationScreenTitle) {
+            BBCardSectionViewContainer(
+                title: localizedStrings.BabyRegistrationViewBabyInfoSectionTitle,
+                icon: Image(systemName: "face.smiling")
+            ) {
+                BBTextfield(
+                    inputPlaceHolder: localizedStrings.BabyRegistrationViewFirstNameTitle,
+                    inputBinder: $viewModel.firstName
+                )
+                BBTextfield(inputPlaceHolder: localizedStrings.BabyRegistrationViewLastNameTitle, inputBinder: $viewModel.lastName)
+                BBHStack {
+                    BBDatePicker(
+                        selectedDate: $viewModel.dateOfBirth,
+                        closingButtonLabel: localizedStrings.CustomDatePickerButtonTitle
+                    )
+                    Picker("", selection: $viewModel.selectedGender) {
+                        Text(localizedStrings.BabyRegistrationViewGenderPickerMaleText).tag(BabyRegistrationResources.GenderKeys.Male.rawValue)
+                        Text(localizedStrings.BabyRegistrationViewGenderPickerFemaleText).tag(BabyRegistrationResources.GenderKeys.Female.rawValue)
+                    }
+                    .pickerStyle(.segmented)
                 }
-                .pickerStyle(.segmented)
-                Divider()
-                
-                LabelAndTextField(title: localizedStrings.BabyRegistrationViewBirthWeightTitle,
-                                  inputPlaceHolder: localizedStrings.BabyRegistrationViewBirthWeightPlaceHolder,
-                                  inputBinder: $viewModel.birthWeight, keyboardType: .decimalPad)
-                Picker("", selection: $viewModel.selectedWeightUnit) {
-                    Text(localizedStrings.BabyRegistrationViewBirthWeightPickerKilogramsText).tag(BabyRegistrationResources.UnitsKeys.kg.rawValue)
-                    Text(localizedStrings.BabyRegistrationViewBirthWeightPickerPoundsText).tag(BabyRegistrationResources.UnitsKeys.lbs.rawValue)
+            }
+
+            BBCardSectionViewContainer(
+                title: localizedStrings.BabyRegistrationViewBabyMeasurementsSectionTitle,
+                icon: Image(systemName: "pencil.and.ruler")
+            ) {
+                BBHStack {
+                    BBTextfield(
+                        inputPlaceHolder: localizedStrings.BabyRegistrationViewBirthWeightTitle,
+                        inputBinder: $viewModel.birthWeight, keyboardType: .decimalPad)
+                    Picker("", selection: $viewModel.selectedWeightUnit) {
+                        Text(localizedStrings.BabyRegistrationViewBirthWeightPickerKilogramsText).tag(BabyRegistrationResources.UnitsKeys.kg.rawValue)
+                        Text(localizedStrings.BabyRegistrationViewBirthWeightPickerPoundsText).tag(BabyRegistrationResources.UnitsKeys.lbs.rawValue)
+                    }
+                    .pickerStyle(.segmented)
                 }
-                .pickerStyle(.segmented)
-                Divider()
-                
-                LabelAndTextField(title: localizedStrings.BabyRegistrationViewBirthHeightTitle,
-                                  inputPlaceHolder: localizedStrings.BabyRegistrationViewBirthHeightPlaceHolder,
-                                  inputBinder: $viewModel.birthHeight, keyboardType: .decimalPad)
-                
-                Picker("", selection: $viewModel.selectedHeightUnit) {
-                    Text(localizedStrings.BabyRegistrationViewBirthHeightPickerCentimetersText).tag(BabyRegistrationResources.UnitsKeys.cm.rawValue)
-                    Text(localizedStrings.BabyRegistrationViewBirthHeightPickerInchesText).tag(BabyRegistrationResources.UnitsKeys.inch.rawValue)
+                BBHStack {
+                    BBTextfield(
+                        inputPlaceHolder: localizedStrings.BabyRegistrationViewBirthHeightTitle,
+                        inputBinder: $viewModel.birthHeight, keyboardType: .decimalPad)
+
+                    Picker("", selection: $viewModel.selectedHeightUnit) {
+                        Text(localizedStrings.BabyRegistrationViewBirthHeightPickerCentimetersText).tag(BabyRegistrationResources.UnitsKeys.cm.rawValue)
+                        Text(localizedStrings.BabyRegistrationViewBirthHeightPickerInchesText).tag(BabyRegistrationResources.UnitsKeys.inch.rawValue)
+                    }
+                    .pickerStyle(.segmented)
                 }
-                .pickerStyle(.segmented)
-                Divider()
-                
-                LabelAndTextField(title: localizedStrings.BabyRegistrationViewBloodTypeTitle, inputPlaceHolder: localizedStrings.BabyRegistrationViewBloodTypePlaceHolder, inputBinder: $viewModel.bloodType)
-                Divider()
-                
-                
-                
-                Text(localizedStrings.BabyRegistrationViewAllergiesTitle).bold()
+            }
+
+            BBCardSectionViewContainer(
+                title: localizedStrings.BabyRegistrationViewBabyMedicalInfoSectionTitle,
+                icon: Image(systemName: "drop")
+            ) {
+                BBWheelPicker(
+                    options: bloodTypes,
+                    selected: $viewModel.bloodType,
+                    title: localizedStrings.BabyRegistrationViewBloodTypeTitle,
+                    doneButtonLabel: localizedStrings.CustomDatePickerButtonTitle
+                )
                 ForEach(viewModel.allergies.indices, id: \.self) { index in
                     HStack {
                         TextField(localizedStrings.BabyRegistrationViewAllergiesPlaceHolder, text: $viewModel.allergies[index])
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        
+
                         let isLastItem = index == viewModel.allergies.indices.last
                         if isLastItem {
                             Button(action: {
@@ -78,28 +95,25 @@ struct BabyRegistrationView: View {
                         }
                     }
                 }
-                Divider()
-                
-                Button(action: {
-                        viewModel.onSubmitTapped()
-                }) {
-                    Text(localizedStrings.BabyRegistrationViewSubmitButtonText)
-                        .font(.headline)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(BabyRegistrationResources.CGConstants.buttonCornerRadius)
-                }
-                if let errorMessage = viewModel.errorMessage {
-                    Text(errorMessage).bold()
-                        .foregroundColor(.red)
-                        .font(.caption)
-                        .padding()
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
             }
-            .padding()
+            Button(action: {
+                viewModel.onSubmitTapped()
+            }) {
+                Text(localizedStrings.BabyRegistrationViewSubmitButtonText)
+                    .font(.headline)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(BabyRegistrationResources.CGConstants.buttonCornerRadius)
+            }
+            if let errorMessage = viewModel.errorMessage {
+                Text(errorMessage).bold()
+                    .foregroundColor(.red)
+                    .font(.caption)
+                    .padding()
+                    .frame(maxWidth: .infinity, alignment: .center)
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-class BabyRegistrationViewModel: ObservableObject {
+public final class BabyRegistrationViewModel: ObservableObject {
     @Published var firstName: String = ""
     @Published var lastName: String = ""
     @Published var bloodType: String = ""
