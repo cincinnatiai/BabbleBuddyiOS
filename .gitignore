@@ -30,10 +30,7 @@ playground.xcworkspace
 .DS_Store
 
 ## Workspace data
-*.xcworkspace/
-*.xcworkspace/contents.xcworkspacedata
 *.xcworkspace/xcuserdata/
-*.xcworkspace/xcshareddata/
 
 # Swift Package Manager
 #

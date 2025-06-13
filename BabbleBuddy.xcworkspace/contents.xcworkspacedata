@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:BabbleBuddyApp/BabbleBuddyApp.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:BabiesList/BabiesList.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:BabyRegistrationModule/BabyRegistrationModule.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SplashViewModule/SplashViewModule.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:TabBar/TabBar.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CoreKit/CoreKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DesignKit/DesignKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NetworkingKit/NetworkingKit.xcodeproj">
+   </FileRef>
+</Workspace>
