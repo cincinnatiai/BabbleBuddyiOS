@@ -1,19 +1,62 @@
-//
-//  TokenHandler.swift
-//  BabbleBuddyApp
-//
-//  Created by Trainee on 5/1/25.
-//
-
 import Foundation
 import AuthLibrarySPM
+import Security
 
-class TokenHandler: TokenManagerProtocol {
+public class TokenHandler: TokenManagerProtocol {
     
-    var onTokenSaved: (() -> Void)?
+    public init() {}
     
-    func manageTokenId(idToken: String) {
-        KeychainHelper.shared.save(idToken, forKey: BabbleBuddyAppResources.KeychainKeys.idToken.rawValue)
-        onTokenSaved?()
+    // MARK: Handle IDTokens on Keychain Values
+    public func getIdToken() -> String? {
+        return KeychainHelper.shared.read(forKey: KeychainKeys.idToken)
     }
+    
+    public func manageTokenId(idToken: String) {
+        KeychainHelper.shared.save(idToken, forKey: KeychainKeys.idToken)
+    }
+    
+    // MARK: Handle Refresh on Keychain Values
+    public func getRefreshToken() -> String? {
+        return KeychainHelper.shared.read(forKey: KeychainKeys.refreshToken)
+    }
+    
+    public func manageRefreshToken(refreshToken: String) {
+        KeychainHelper.shared.save(refreshToken, forKey: KeychainKeys.refreshToken)
+    }
+    
+    // MARK: Handle Access Tokens on Keychain Values
+    public func getAccessToken() -> String? {
+        return KeychainHelper.shared.read(forKey: KeychainKeys.accessToken)
+    }
+    
+    public func manageAccessToken(accessToken: String) {
+        KeychainHelper.shared.save(accessToken, forKey: KeychainKeys.accessToken)
+    }
+    
+    // MARK: Handle New Tokens on Keychain Values
+    public func getNewTokens() -> (idToken: String?, accessToken: String?) {
+        let idToken = KeychainHelper.shared.read(forKey: KeychainKeys.idToken)
+        let accessToken = KeychainHelper.shared.read(forKey: KeychainKeys.accessToken)
+        return (idToken, accessToken)
+    }
+    
+    public func manageNewTokens(idToken: String, accessToken: String) {
+        KeychainHelper.shared.save(idToken, forKey: KeychainKeys.idToken)
+        KeychainHelper.shared.save(accessToken, forKey: KeychainKeys.accessToken)
+    }
+    
+    // MARK: Clear tokens stored
+    public func clearAllTokens() {
+        KeychainHelper.shared.deleteValues(forKey: KeychainKeys.idToken)
+        KeychainHelper.shared.deleteValues(forKey: KeychainKeys.accessToken)
+        KeychainHelper.shared.deleteValues(forKey: KeychainKeys.refreshToken)
+    }
+}
+
+
+public enum KeychainKeys {
+    public static let idToken = "idToken"
+    public static let refreshToken = "refreshToken"
+    public static let accessToken = "accessToken"
+    public static let baseURL = "baseURL"
 }

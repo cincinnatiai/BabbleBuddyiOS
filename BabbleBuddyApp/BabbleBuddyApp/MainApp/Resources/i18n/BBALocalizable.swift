@@ -10,4 +10,5 @@ enum LocalizedStringKeys {
     static let ViewLoaderLoadingLabel = "ViewLoader_Loading_Label".localized
     static let HomeScreenTabItemTitle = "TAB_BAR__HOME_ITEM_TITLE".localized
     static let SettingsScreenTabItemTitle = "TAB_BAR_SETTINGS_ITEM_TITLE".localized
+    static let BabiesListTabItemTitle = "TAB_BAR_BABIES_LIST_ITEM_TITLE".localized
 }

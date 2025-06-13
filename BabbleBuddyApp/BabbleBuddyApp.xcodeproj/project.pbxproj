@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		966FCD2B2DFC9E2A008B4114 /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD2A2DFC9E2A008B4114 /* DesignKit.framework */; };
+		966FCD2C2DFC9E2A008B4114 /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD2A2DFC9E2A008B4114 /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		966FCD2E2DFC9E2E008B4114 /* BabiesList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD2D2DFC9E2E008B4114 /* BabiesList.framework */; };
+		966FCD2F2DFC9E2E008B4114 /* BabiesList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD2D2DFC9E2E008B4114 /* BabiesList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		966FCD312DFC9E3A008B4114 /* NetworkingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD302DFC9E3A008B4114 /* NetworkingKit.framework */; };
+		966FCD322DFC9E3A008B4114 /* NetworkingKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD302DFC9E3A008B4114 /* NetworkingKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		966FCD342DFC9EE2008B4114 /* BabiesList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD332DFC9EE2008B4114 /* BabiesList.framework */; };
+		966FCD352DFC9EE2008B4114 /* BabiesList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD332DFC9EE2008B4114 /* BabiesList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D1022DC22DFB80A200E1CF2E /* BabyRegistrationModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1022DC12DFB80A200E1CF2E /* BabyRegistrationModule.framework */; };
 		D1022DC32DFB80A200E1CF2E /* BabyRegistrationModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D1022DC12DFB80A200E1CF2E /* BabyRegistrationModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D14624C72DF9416300E052AE /* TabBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14624C62DF9416300E052AE /* TabBar.framework */; };
@@ -30,7 +38,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				966FCD352DFC9EE2008B4114 /* BabiesList.framework in Embed Frameworks */,
 				D1022DC32DFB80A200E1CF2E /* BabyRegistrationModule.framework in Embed Frameworks */,
+				966FCD322DFC9E3A008B4114 /* NetworkingKit.framework in Embed Frameworks */,
+				966FCD2F2DFC9E2E008B4114 /* BabiesList.framework in Embed Frameworks */,
+				966FCD2C2DFC9E2A008B4114 /* DesignKit.framework in Embed Frameworks */,
 				D14624C82DF9416300E052AE /* TabBar.framework in Embed Frameworks */,
 				ECC8882D2DB6F10500848C01 /* SplashViewModule.framework in Embed Frameworks */,
 			);
@@ -40,6 +52,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		966FCD2A2DFC9E2A008B4114 /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		966FCD2D2DFC9E2E008B4114 /* BabiesList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabiesList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		966FCD302DFC9E3A008B4114 /* NetworkingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		966FCD332DFC9EE2008B4114 /* BabiesList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabiesList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1022DC12DFB80A200E1CF2E /* BabyRegistrationModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabyRegistrationModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14624C62DF9416300E052AE /* TabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SplashViewModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,12 +93,16 @@
 				ECD4A2472DC3FEB60094E06D /* FirebaseStorage in Frameworks */,
 				EC1EC3062DBA9B8900CEE588 /* AuthLibrarySPM in Frameworks */,
 				D1022DC22DFB80A200E1CF2E /* BabyRegistrationModule.framework in Frameworks */,
+				966FCD312DFC9E3A008B4114 /* NetworkingKit.framework in Frameworks */,
 				ECD4A23F2DC3FEB60094E06D /* FirebaseCrashlytics in Frameworks */,
 				ECD4A23B2DC3FEB60094E06D /* FirebaseAnalytics in Frameworks */,
 				ECD4A23D2DC3FEB60094E06D /* FirebaseAuth in Frameworks */,
 				ECD4A2432DC3FEB60094E06D /* FirebaseFirestore in Frameworks */,
+				966FCD2B2DFC9E2A008B4114 /* DesignKit.framework in Frameworks */,
+				966FCD342DFC9EE2008B4114 /* BabiesList.framework in Frameworks */,
 				D14624C72DF9416300E052AE /* TabBar.framework in Frameworks */,
 				ECD4A2452DC3FEB60094E06D /* FirebaseRemoteConfig in Frameworks */,
+				966FCD2E2DFC9E2E008B4114 /* BabiesList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +112,10 @@
 		ECC888292DB6F0FD00848C01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				966FCD332DFC9EE2008B4114 /* BabiesList.framework */,
+				966FCD302DFC9E3A008B4114 /* NetworkingKit.framework */,
+				966FCD2D2DFC9E2E008B4114 /* BabiesList.framework */,
+				966FCD2A2DFC9E2A008B4114 /* DesignKit.framework */,
 				D1022DC12DFB80A200E1CF2E /* BabyRegistrationModule.framework */,
 				D14624C62DF9416300E052AE /* TabBar.framework */,
 				ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */,

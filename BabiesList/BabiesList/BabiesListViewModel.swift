@@ -10,9 +10,9 @@ import UIKit
 
 public class BabiesListViewModel {
     @Published var babiesState: BabiesState = .loading
-    private var accountApi: () async -> Result<[AccountResponseModel],Error>
-    
-    public init(accountApi: @escaping () -> Result<[AccountResponseModel], Error>) {
+    private var accountApi: () async -> Result<[AccountResponseModel], Error>
+
+    public init(accountApi: @escaping () async -> Result<[AccountResponseModel], Error>) {
         self.accountApi = accountApi
     }
     

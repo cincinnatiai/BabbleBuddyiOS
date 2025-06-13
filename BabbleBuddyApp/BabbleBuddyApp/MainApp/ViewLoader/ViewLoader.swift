@@ -1,27 +1,20 @@
-//
-//  ViewLoader.swift
-//  BabbleBuddyApp
-//
-//  Created by Trainee on 5/1/25.
-//
-
 import Foundation
 import SwiftUI
 
+// MARK: - ViewLoader
+
+/// Entry point view that decides whether to show a loading indicator
+/// or render the main tab bar, based on `ViewLoaderViewModel` readiness.
 struct ViewLoader: View {
+    
+    // MARK: - Dependencies
+    
     private let localizedStrings = LocalizedStringKeys.self
     @ObservedObject var viewModel: ViewLoaderViewModel
-
+    
     var body: some View {
         Group {
-            if viewModel.isReady {
-                TabBarWrapper(viewControllers: viewModel.viewControllers)
-            } else {
-                ProgressView(localizedStrings.ViewLoaderLoadingLabel)
-                    .onAppear {
-                        viewModel.initializeData()
-                    }
-            }
+            ProgressView(localizedStrings.ViewLoaderLoadingLabel)
         }
     }
 }
