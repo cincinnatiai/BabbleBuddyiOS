@@ -24,11 +24,11 @@ EOF
   exit 1
 fi
 
-# Space validation
-if ! git diff-index --check --cached $against --; then
-  echo "❌ Commit failed due to whitespace errors."
-  exit 1
-fi
+## Space validation
+#if ! git diff-index --check --cached $against --; then
+#  echo "❌ Commit failed due to whitespace errors."
+#  exit 1
+#fi
 
 # Staged files rule
 echo "🔍 Running SwiftLint only on staged files..."

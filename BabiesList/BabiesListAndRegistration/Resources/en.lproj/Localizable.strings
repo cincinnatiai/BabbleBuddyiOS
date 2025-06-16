@@ -1,0 +1,50 @@
+/* 
+  Localizable.strings
+  BabiesList
+
+  Created by Trainee on 4/21/25.
+  
+*/
+
+// MARK: Baby list feature
+"Fatal_Error_Message" = "init(coder:) has not been implemented";
+"BabyTableViewCell_Description_Label" = "Description: ";
+"BabiesListView_AlertMessage_Title" = "Error";
+"BabiesListView_AlertAction_Label" = "Ok";
+
+// MARK: Baby registration feature
+"BabyRegistrationView_Screen_Title" = "Baby registration";`
+"BabyRegistrationView_FirstName_Title" = "First Name";
+"BabyRegistrationView_FirstName_PlaceHolder" = "Enter baby's name";
+"BabyRegistrationView_LastName_Title" = "Last Name";
+"BabyRegistrationView_LastName_PlaceHolder" = "Enter baby's last name";
+"BabyRegistrationView_DateOfBirth_Title" = "Date of Birth";
+"BabyRegistrationView_Gender_Title" = "Gender";
+"BabyRegistrationView_GenderPicker_Male_Text" = "Male";
+"BabyRegistrationView_GenderPicker_Female_Text" = "Female";
+"BabyRegistrationView_BirthWeight_Title" = "Birth Weight";
+"BabyRegistrationView_BirthWeight_PlaceHolder" = "Enter baby's weight (Optional)";
+"BabyRegistrationView_BirthWeightPicker_Kilograms_Text" = "kg";
+"BabyRegistrationView_BirthWeightPicker_Pounds_Text" = "lb";
+"BabyRegistrationView_BirthHeight_Title" = "Birth Height";
+"BabyRegistrationView_BirthHeight_PlaceHolder" = "Enter baby's height (Optional)";
+"BabyRegistrationView_BirthHeightPicker_Centimeters_Text" = "cm";
+"BabyRegistrationView_BirthHeightPicker_Inches_Text" = "in";
+"BabyRegistrationView_BloodType_Title" = "Blood Type";
+"BabyRegistrationView_BloodType_PlaceHolder" = "Enter baby's blood type (Optional)";
+"BabyRegistrationView_Allergies_Title" = "Allergies";
+"BabyRegistrationView_Allergies_PlaceHolder" = "Enter allergy (Optional)";
+"BabyRegistrationView_Submit_Button_Text" = "Submit";
+"BabyRegistrationView_Baby_Info_Section_Title" = "Baby information";
+"BabyRegistrationView_Baby_Measurements_Section_Title" = "Baby measurements";
+"BabyRegistrationView_Medical_Info_Section_Title" = "Medical information";
+
+"CustomDatePicker_Button_Title" = "Select";
+
+"ValidationErrors_EmptyFirstName_Text" = "First name is required";
+"ValidationErrors_EmptyLastName_Text" = "Last name is required";
+"ValidationErrors_EmptyGender_Text" = "Gender is required";
+"ValidationErrors_EmptyWeightUnit_Text" = "Weight unit is required";
+"ValidationErrors_InvalidWeightValue_Text" = "Birth weight must be a number";
+"ValidationErrors_EmptyHeightUnit_Text" = "Height unit is required";
+"ValidationErrors_InvalidHeightValue_Text" = "Birth height must be a number";

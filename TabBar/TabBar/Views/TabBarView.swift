@@ -1,9 +1,7 @@
-import Foundation
-import Combine
 import UIKit
 import SwiftUI
 
-public struct TabBarViewV2: View {
+public struct TabBarView: View {
     private let tabs: [TabItem]
 
     public init(tabs: [TabItem]) {
