@@ -60,6 +60,7 @@ public class BabiesListView: UIViewController {
         observeViewModel()
         loadViewDesign()
         setupFloatingActionButton()
+
         title = localizedStrings.BabyListViewScreenTitle
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always

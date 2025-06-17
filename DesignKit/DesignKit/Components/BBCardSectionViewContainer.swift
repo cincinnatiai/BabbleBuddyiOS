@@ -51,6 +51,8 @@ public struct BBCardSectionViewContainer<Content: View>: View {
 
             content()
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+
         .padding()
         .background(
             RoundedRectangle(cornerRadius: cardCornerRadius)
@@ -58,4 +60,5 @@ public struct BBCardSectionViewContainer<Content: View>: View {
                 .shadow(color: Color.black.opacity(0.05), radius: 6, x: 0, y: 2)
         )
     }
+    
 }

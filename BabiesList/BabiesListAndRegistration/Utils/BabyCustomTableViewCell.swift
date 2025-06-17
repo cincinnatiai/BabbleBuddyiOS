@@ -1,69 +1,39 @@
-//
-//  BabyCustomTableViewCell.swift
-//  babiesList
-//
-//  Created by Trainee on 4/8/25.
-//
-
-import Foundation
 import UIKit
+import SwiftUI
+import DesignKit
 
-class BabyTableViewCell: UITableViewCell {
-    private let localizedStrings = BabiesListLocalizedStringKeys.self
-    
-    private lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = .systemFont(ofSize: SizeConstants.CGFSize20, weight: .bold)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private lazy var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private lazy var verticalStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = SizeConstants.CGFSize4
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-        
-    }()
-    
-    
-    
+final class BabyTableViewCell: UITableViewCell {
+    private var hostingController: UIHostingController<BabyCardView>?
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
-        setupConstraints()
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError(localizedStrings.FatalErrorMessage)
-    }
-}
 
-extension BabyTableViewCell {
-    private func setupViews() {
-        verticalStack.addArrangedSubview(nameLabel)
-        verticalStack.addArrangedSubview(descriptionLabel)
-        contentView.addSubview(verticalStack)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
-    
-    private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            verticalStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: ConstraintConstants.constraintConstantCG12),
-            verticalStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: ConstraintConstants.constraintConstantCG16),
-            verticalStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: ConstraintConstants.contstraintConstantNegativeCG16),
-            verticalStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: ConstraintConstants.contstraintConstantNegativeCG12)
-        ])
-    }
-    
+
     func configureInfo(with baby: DisplayableBabyItem) {
-        nameLabel.text = baby.title
-        descriptionLabel.text = " \(localizedStrings.BabyTableViewCellDescriptionLabel) \(String(describing: baby.details?[0]))"
+        let view = BabyCardView(
+            name: baby.title,
+            imageURL: baby.imageURL ?? "",
+            description: baby.details?.first ?? "N/A"
+        )
+
+        let hosting = UIHostingController(rootView: view)
+        hosting.view.translatesAutoresizingMaskIntoConstraints = false
+
+        hostingController?.view.removeFromSuperview()
+        hostingController?.removeFromParent()
+
+        contentView.addSubview(hosting.view)
+        hostingController = hosting
+
+        NSLayoutConstraint.activate([
+            hosting.view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            hosting.view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            hosting.view.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            hosting.view.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+        ])
     }
 }

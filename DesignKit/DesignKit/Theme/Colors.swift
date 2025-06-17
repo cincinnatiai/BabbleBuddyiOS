@@ -1,12 +1,12 @@
 import SwiftUI
 
-enum AppColor {
-    static let primary = Color("Primary")
-    static let secondary = Color("Secondary")
-    static let background = Color("Background")
-    static let cardBackground = Color.white
-    static let textPrimary = Color("TextPrimary")
-    static let textSecondary = Color("TextSecondary")
-    static let error = Color("Error")
-    static let success = Color("Success")
+public enum AppColor {
+    public static let primary = Color("Primary")
+    public static let secondary = Color("Secondary")
+    public static let background = Color("Background")
+    public static let cardBackground = Color.white
+    public static let textPrimary = Color("TextPrimary")
+    public static let textSecondary = Color("TextSecondary")
+    public static let error = Color("Error")
+    public static let success = Color("Success")
 }
