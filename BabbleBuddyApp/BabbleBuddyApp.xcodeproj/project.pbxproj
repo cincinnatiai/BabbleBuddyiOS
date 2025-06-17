@@ -9,17 +9,17 @@
 /* Begin PBXBuildFile section */
 		966FCD2B2DFC9E2A008B4114 /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD2A2DFC9E2A008B4114 /* DesignKit.framework */; };
 		966FCD2C2DFC9E2A008B4114 /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD2A2DFC9E2A008B4114 /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		966FCD2E2DFC9E2E008B4114 /* BabiesList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD2D2DFC9E2E008B4114 /* BabiesList.framework */; };
-		966FCD2F2DFC9E2E008B4114 /* BabiesList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD2D2DFC9E2E008B4114 /* BabiesList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		966FCD312DFC9E3A008B4114 /* NetworkingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD302DFC9E3A008B4114 /* NetworkingKit.framework */; };
 		966FCD322DFC9E3A008B4114 /* NetworkingKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD302DFC9E3A008B4114 /* NetworkingKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		966FCD342DFC9EE2008B4114 /* BabiesList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD332DFC9EE2008B4114 /* BabiesList.framework */; };
-		966FCD352DFC9EE2008B4114 /* BabiesList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 966FCD332DFC9EE2008B4114 /* BabiesList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D1022DC22DFB80A200E1CF2E /* BabyRegistrationModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1022DC12DFB80A200E1CF2E /* BabyRegistrationModule.framework */; };
 		D1022DC32DFB80A200E1CF2E /* BabyRegistrationModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D1022DC12DFB80A200E1CF2E /* BabyRegistrationModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D113A8132DFFFE0400FAB64D /* BabiesListAndRegistration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D113A8122DFFFE0400FAB64D /* BabiesListAndRegistration.framework */; };
+		D113A8142DFFFE0400FAB64D /* BabiesListAndRegistration.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D113A8122DFFFE0400FAB64D /* BabiesListAndRegistration.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D11465E52E00D11A0006E12E /* AuthLibrarySPM in Frameworks */ = {isa = PBXBuildFile; productRef = D11465E42E00D11A0006E12E /* AuthLibrarySPM */; };
 		D14624C72DF9416300E052AE /* TabBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14624C62DF9416300E052AE /* TabBar.framework */; };
 		D14624C82DF9416300E052AE /* TabBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D14624C62DF9416300E052AE /* TabBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EC1EC3062DBA9B8900CEE588 /* AuthLibrarySPM in Frameworks */ = {isa = PBXBuildFile; productRef = EC1EC3052DBA9B8900CEE588 /* AuthLibrarySPM */; };
+		D1694B282DFE54770033719F /* CoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1694B272DFE54770033719F /* CoreKit.framework */; };
+		D1694B292DFE54770033719F /* CoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D1694B272DFE54770033719F /* CoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECC8882C2DB6F10500848C01 /* SplashViewModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */; };
 		ECC8882D2DB6F10500848C01 /* SplashViewModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ECD4A23B2DC3FEB60094E06D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = ECD4A23A2DC3FEB60094E06D /* FirebaseAnalytics */; };
@@ -38,12 +38,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				966FCD352DFC9EE2008B4114 /* BabiesList.framework in Embed Frameworks */,
 				D1022DC32DFB80A200E1CF2E /* BabyRegistrationModule.framework in Embed Frameworks */,
 				966FCD322DFC9E3A008B4114 /* NetworkingKit.framework in Embed Frameworks */,
-				966FCD2F2DFC9E2E008B4114 /* BabiesList.framework in Embed Frameworks */,
+				D113A8142DFFFE0400FAB64D /* BabiesListAndRegistration.framework in Embed Frameworks */,
 				966FCD2C2DFC9E2A008B4114 /* DesignKit.framework in Embed Frameworks */,
 				D14624C82DF9416300E052AE /* TabBar.framework in Embed Frameworks */,
+				D1694B292DFE54770033719F /* CoreKit.framework in Embed Frameworks */,
 				ECC8882D2DB6F10500848C01 /* SplashViewModule.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -57,7 +57,9 @@
 		966FCD302DFC9E3A008B4114 /* NetworkingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		966FCD332DFC9EE2008B4114 /* BabiesList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabiesList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1022DC12DFB80A200E1CF2E /* BabyRegistrationModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabyRegistrationModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D113A8122DFFFE0400FAB64D /* BabiesListAndRegistration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabiesListAndRegistration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14624C62DF9416300E052AE /* TabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1694B272DFE54770033719F /* CoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SplashViewModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BabbleBuddyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -89,20 +91,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECD4A2412DC3FEB60094E06D /* FirebaseDatabase in Frameworks */,
+				D11465E52E00D11A0006E12E /* AuthLibrarySPM in Frameworks */,
 				ECC8882C2DB6F10500848C01 /* SplashViewModule.framework in Frameworks */,
 				ECD4A2472DC3FEB60094E06D /* FirebaseStorage in Frameworks */,
-				EC1EC3062DBA9B8900CEE588 /* AuthLibrarySPM in Frameworks */,
 				D1022DC22DFB80A200E1CF2E /* BabyRegistrationModule.framework in Frameworks */,
 				966FCD312DFC9E3A008B4114 /* NetworkingKit.framework in Frameworks */,
 				ECD4A23F2DC3FEB60094E06D /* FirebaseCrashlytics in Frameworks */,
 				ECD4A23B2DC3FEB60094E06D /* FirebaseAnalytics in Frameworks */,
 				ECD4A23D2DC3FEB60094E06D /* FirebaseAuth in Frameworks */,
 				ECD4A2432DC3FEB60094E06D /* FirebaseFirestore in Frameworks */,
+				D113A8132DFFFE0400FAB64D /* BabiesListAndRegistration.framework in Frameworks */,
 				966FCD2B2DFC9E2A008B4114 /* DesignKit.framework in Frameworks */,
-				966FCD342DFC9EE2008B4114 /* BabiesList.framework in Frameworks */,
 				D14624C72DF9416300E052AE /* TabBar.framework in Frameworks */,
 				ECD4A2452DC3FEB60094E06D /* FirebaseRemoteConfig in Frameworks */,
-				966FCD2E2DFC9E2E008B4114 /* BabiesList.framework in Frameworks */,
+				D1694B282DFE54770033719F /* CoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +114,8 @@
 		ECC888292DB6F0FD00848C01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D113A8122DFFFE0400FAB64D /* BabiesListAndRegistration.framework */,
+				D1694B272DFE54770033719F /* CoreKit.framework */,
 				966FCD332DFC9EE2008B4114 /* BabiesList.framework */,
 				966FCD302DFC9E3A008B4114 /* NetworkingKit.framework */,
 				966FCD2D2DFC9E2E008B4114 /* BabiesList.framework */,
@@ -162,7 +166,6 @@
 			);
 			name = BabbleBuddyApp;
 			packageProductDependencies = (
-				EC1EC3052DBA9B8900CEE588 /* AuthLibrarySPM */,
 				ECD4A23A2DC3FEB60094E06D /* FirebaseAnalytics */,
 				ECD4A23C2DC3FEB60094E06D /* FirebaseAuth */,
 				ECD4A23E2DC3FEB60094E06D /* FirebaseCrashlytics */,
@@ -170,6 +173,7 @@
 				ECD4A2422DC3FEB60094E06D /* FirebaseFirestore */,
 				ECD4A2442DC3FEB60094E06D /* FirebaseRemoteConfig */,
 				ECD4A2462DC3FEB60094E06D /* FirebaseStorage */,
+				D11465E42E00D11A0006E12E /* AuthLibrarySPM */,
 			);
 			productName = BabbleBuddyApp;
 			productReference = F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */;
@@ -183,7 +187,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					F57B508C2D92F15700834E68 = {
 						CreatedOnToolsVersion = 16.2;
@@ -201,8 +205,8 @@
 			mainGroup = F57B50842D92F15700834E68;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				EC1EC3042DBA9B8900CEE588 /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */,
 				ECD4A2392DC3FEB60094E06D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D11465E32E00D11A0006E12E /* XCLocalSwiftPackageReference "../../AuthLibrarySPM" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F57B508E2D92F15700834E68 /* Products */;
@@ -263,7 +267,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T66WJZW8RX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BabbleBuddyApp/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Allow FaceID";
@@ -292,7 +295,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = T66WJZW8RX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BabbleBuddyApp/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Allow FaceID";
@@ -319,6 +321,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -349,6 +352,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = T66WJZW8RX;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -382,6 +386,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -412,6 +417,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = T66WJZW8RX;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -456,15 +462,14 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		EC1EC3042DBA9B8900CEE588 /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/cincinnatiai/AuthLibrarySPM.git";
-			requirement = {
-				branch = develop;
-				kind = branch;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		D11465E32E00D11A0006E12E /* XCLocalSwiftPackageReference "../../AuthLibrarySPM" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../AuthLibrarySPM;
 		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
 		ECD4A2392DC3FEB60094E06D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -476,9 +481,8 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		EC1EC3052DBA9B8900CEE588 /* AuthLibrarySPM */ = {
+		D11465E42E00D11A0006E12E /* AuthLibrarySPM */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = EC1EC3042DBA9B8900CEE588 /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */;
 			productName = AuthLibrarySPM;
 		};
 		ECD4A23A2DC3FEB60094E06D /* FirebaseAnalytics */ = {

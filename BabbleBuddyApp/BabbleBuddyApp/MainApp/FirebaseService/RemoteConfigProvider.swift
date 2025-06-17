@@ -18,7 +18,7 @@ class RemoteConfigProvider {
         case unableToLoadConfig
         case unknownError(String)
     }
-    
+
     func fetchURLs(completion: @escaping (Result<[String: Any], FirestoreServiceError>) -> Void) {
         dataBase.collection("ios_configs")
           .document("configs")

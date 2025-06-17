@@ -5,7 +5,7 @@
       location = "group:BabbleBuddyApp/BabbleBuddyApp.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:BabiesList/BabiesList.xcodeproj">
+      location = "group:BabiesList/BabiesListAndRegistration.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:BabyRegistrationModule/BabyRegistrationModule.xcodeproj">

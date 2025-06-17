@@ -1,9 +1,7 @@
-import Foundation
-import Combine
 import UIKit
 import SwiftUI
 
-public struct TabBarViewV2: View {
+public struct TabBarView: View {
     private let tabs: [TabItem]
 
     public init(tabs: [TabItem]) {
@@ -27,10 +25,11 @@ public struct TabBarViewV2: View {
         switch tab.content {
         case .swiftUIView(let view):
             NavigationStack {
-            view
+                view
             }
         case .viewController(let vc):
-            ViewControllerWrapper(viewController: vc)
+            let nav = UINavigationController(rootViewController: vc)
+            ViewControllerWrapper(viewController: nav)
         }
     }
 }
