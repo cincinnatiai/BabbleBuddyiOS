@@ -5,7 +5,7 @@
 //  Created by Noel Hiram Pat Angulo on 6/16/25.
 //
 
-public protocol CreateBabyRequestProtocol {
+public protocol CreateBabyRequestProtocol: Codable {
     var accountType: String { get }
     var clientId: String { get }
     var description: String { get }

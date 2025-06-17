@@ -8,6 +8,8 @@
 import Foundation
 import Security
 
+// TODO: Unify all apps keychains to this one
+
 public final class KeychainHelper: KeychainStorable {
 
     public static let shared = KeychainHelper()

@@ -23,7 +23,7 @@ struct MainScreen: View {
         Group {
             AuthApp(authManager: authManager, authviewModel: authViewModel) { user in
                 if authViewModel.authState == .session(user: user) {
-                    TabBarView(tabs: TabBarItemsProvider.items())
+                    TabBarView(tabs: TabBarItemsProvider.items(userEmail: user))
                 }
             }
             .environmentObject(authManager)

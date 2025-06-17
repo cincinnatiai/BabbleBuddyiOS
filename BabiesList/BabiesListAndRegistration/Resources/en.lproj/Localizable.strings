@@ -11,9 +11,10 @@
 "BabyTableViewCell_Description_Label" = "Description: ";
 "BabiesListView_AlertMessage_Title" = "Error";
 "BabiesListView_AlertAction_Label" = "Ok";
+"BabyListView_Screen_Title" = "My Babies";
 
 // MARK: Baby registration feature
-"BabyRegistrationView_Screen_Title" = "Baby registration";`
+"BabyRegistrationView_Screen_Title" = "Baby registration";
 "BabyRegistrationView_FirstName_Title" = "First Name";
 "BabyRegistrationView_FirstName_PlaceHolder" = "Enter baby's name";
 "BabyRegistrationView_LastName_Title" = "Last Name";

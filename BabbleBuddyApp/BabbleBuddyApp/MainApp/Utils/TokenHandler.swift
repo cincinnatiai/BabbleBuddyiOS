@@ -9,7 +9,6 @@ public class TokenHandler: TokenManagerProtocol {
         public static let idToken = "idToken"
         public static let refreshToken = "refreshToken"
         public static let accessToken = "accessToken"
-        public static let baseURL = "baseURL"
     }
 
     public init() {}

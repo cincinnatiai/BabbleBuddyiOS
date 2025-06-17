@@ -17,15 +17,6 @@ public class BabiesListView: UIViewController {
 
     // MARK: - UI Components
 
-    private lazy var babiesTableView: UITableView = {
-        let tableView = UITableView(frame: .zero)
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.register(BabyTableViewCell.self, forCellReuseIdentifier: Constants.tableViewCellIdentifier)
-        return tableView
-    }()
-
     private lazy var loader: UIActivityIndicatorView = {
         let loader = UIActivityIndicatorView()
         loader.style = .large
@@ -33,6 +24,18 @@ public class BabiesListView: UIViewController {
         loader.hidesWhenStopped = true
         return loader
     }()
+
+    private lazy var babyListView: BBGenericListBuilder<DisplayableBabyItem, BabyTableViewCell> = {
+        let view = BBGenericListBuilder<DisplayableBabyItem, BabyTableViewCell>()
+        view.configureCell = { cell, baby in
+            cell.configureInfo(with: baby)
+        }
+        view.didSelectItem = { baby in
+            // TODO: Navigate to details screen
+        }
+        return view
+    }()
+
 
     // MARK: - Initialization
 
@@ -57,13 +60,17 @@ public class BabiesListView: UIViewController {
         observeViewModel()
         loadViewDesign()
         setupFloatingActionButton()
+        title = localizedStrings.BabyListViewScreenTitle
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
     }
 
     // MARK: - UI Setup
 
     /// Adds the table view and sets up constraints.
     func setupTableView() {
-        view.addSubview(babiesTableView)
+        view.addSubview(babyListView)
+        babyListView.translatesAutoresizingMaskIntoConstraints = false
         setupConstraintsTableView()
     }
 
@@ -79,10 +86,11 @@ public class BabiesListView: UIViewController {
     /// Sets layout constraints for the table view.
     func setupConstraintsTableView() {
         NSLayoutConstraint.activate([
-            babiesTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            babiesTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            babiesTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            babiesTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
+            babyListView.topAnchor
+                .constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            babyListView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            babyListView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            babyListView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
     }
 
@@ -115,8 +123,7 @@ public class BabiesListView: UIViewController {
     /// Displays the given baby list in the table view.
     /// - Parameter babies: Array of babies to render.
     func display(babies: [DisplayableBabyItem]) {
-        self.displayableBabies.append(contentsOf: babies)
-        babiesTableView.reloadData()
+        babyListView.items = babies
     }
 
     // MARK: - Loader Handling
@@ -149,29 +156,6 @@ public class BabiesListView: UIViewController {
     }
 }
 
-// MARK: - UITableViewDataSource & UITableViewDelegate
-
-extension BabiesListView: UITableViewDataSource, UITableViewDelegate {
-    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return displayableBabies.count
-    }
-
-    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: Constants.tableViewCellIdentifier,
-            for: indexPath
-        ) as? BabyTableViewCell else {
-            return UITableViewCell()
-        }
-        cell.configureInfo(with: displayableBabies[indexPath.row])
-        return cell
-    }
-
-    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-}
-
 // MARK: - Navigation with Floating Action Button
 // TODO: Navigate to screen
 
@@ -185,13 +169,13 @@ extension BabiesListView {
         )
 
         let fabController = UIHostingController(rootView: fab)
-        
+
         addChild(fabController)
         view.addSubview(fabController.view)
-        
+
         fabController.didMove(toParent: self)
         fabController.view.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             fabController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             fabController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24)
@@ -200,9 +184,17 @@ extension BabiesListView {
 
     /// Navigates to a test registration view (needs to be adaoted to the one that will be used).
     private func navigateToRegistration() {
-        let registrationVC = UIViewController()
-        registrationVC.view.backgroundColor = .systemGroupedBackground
-        registrationVC.title = "Test View"
+        let registrationViewModel = viewModel.createBabyRegistrationViewModel()
+        let registrationView = BabyRegistrationView(viewModel: registrationViewModel) { [weak self] in
+            // TODO: Delete this once details is implemented
+            DispatchQueue.main.async {
+                self?.navigationController?.popViewController(animated: true)
+                self?.viewModel.initialize()
+            }
+
+        }
+        let registrationVC = UIHostingController(rootView: registrationView)
+        registrationVC.title = localizedStrings.BabyRegistrationScreenTitle
         navigationController?.pushViewController(registrationVC, animated: true)
     }
 }

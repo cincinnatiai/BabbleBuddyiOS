@@ -74,7 +74,48 @@ public class BBAServiceImplementation: BBAServiceProtocol {
     }
 
     public func createBaby(request: CreateBabyRequestProtocol) async throws -> Bool {
-        // TODO: Implement the call
+        guard !baseURL.isEmpty, !token.isEmpty else {
+            throw ServiceErrors.unknown(
+                NSError(domain: Constants.Error.buildRequest, code: ServiceErrorCode.missingAuthData, userInfo: [
+                    NSLocalizedDescriptionKey: Constants.Error.missingURL
+                ])
+            )
+        }
+
+        guard var components = URLComponents(string: baseURL) else {
+            throw ServiceErrors.invalidURL
+        }
+
+        components.queryItems = [
+            URLQueryItem(name: "action", value: "create")
+        ]
+
+        guard let requestURL = components.url else {
+            throw ServiceErrors.invalidURL
+        }
+
+        var urlRequest = URLRequest(url: requestURL)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        
+        let requestBody = try encoder.encode(request)
+
+        urlRequest.httpBody = requestBody
+
+        let (data, response) = try await performRequest(urlRequest)
+
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw ServiceErrors.invalidResponse
+        }
+
+        guard (200...299).contains(httpResponse.statusCode) else {
+            throw ErrorMapper.HTTPErrorHandler(httpResponse.statusCode)
+        }
+
         return true
     }
 }

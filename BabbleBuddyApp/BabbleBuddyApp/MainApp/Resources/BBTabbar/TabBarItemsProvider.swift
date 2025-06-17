@@ -14,7 +14,7 @@ typealias L10n = LocalizedStringKeys
 enum TabBarItemsProvider {
     /// TabBarItemsProvider.Items() will inject to the TabBar Module the items on the tab bar navigation  bar, the order of the items is determined
     /// with their position of the Items() array
-    static func items() -> [TabItem] {
+    static func items(userEmail: String) -> [TabItem] {
         return [
             TabItem(
                 title: L10n.HomeScreenTabItemTitle,
@@ -24,7 +24,8 @@ enum TabBarItemsProvider {
             TabItem(
                 title: L10n.BabiesListTabItemTitle,
                 icon: "figure.and.child.holdinghands",
-                viewController: TabBarScreenProvider.makeBabiesListView()
+                viewController: TabBarScreenProvider
+                    .makeBabiesListView(userEmail: userEmail)
             ),
             TabItem(
                 title: L10n.SettingsScreenTabItemTitle,

@@ -14,12 +14,16 @@ public struct BabyRegistrationView: View {
     private let localizedStrings = BabiesListLocalizedStringKeys.self
     private let bloodTypes = ["A+","A-","B+","B-","AB+","AB-","O+","O-"]
 
-    public init(viewModel: BabyRegistrationViewModel) {
+    // TODO: Delete this when implementing details
+    let onComplete: () -> Void
+
+    public init(viewModel: BabyRegistrationViewModel, onComplete: @escaping () -> Void) {
         self.viewModel = viewModel
+        self.onComplete = onComplete
     }
 
     public var body: some View {
-        BBVStack(screenTitle: localizedStrings.BabyRegistrationScreenTitle) {
+        BBVStack {
             BBCardSectionViewContainer(
                 title: localizedStrings.BabyRegistrationViewBabyInfoSectionTitle,
                 icon: Image(systemName: "face.smiling")
@@ -35,8 +39,16 @@ public struct BabyRegistrationView: View {
                         closingButtonLabel: localizedStrings.CustomDatePickerButtonTitle
                     )
                     Picker("", selection: $viewModel.selectedGender) {
-                        Text(localizedStrings.BabyRegistrationViewGenderPickerMaleText).tag(BabyRegistrationResources.GenderKeys.Male.rawValue)
-                        Text(localizedStrings.BabyRegistrationViewPickerFemaleText).tag(BabyRegistrationResources.GenderKeys.Female.rawValue)
+                        Text(
+                            localizedStrings.BabyRegistrationViewPickerMaleText
+                        )
+                        .tag(BabyRegistrationResources.GenderKeys.male.rawValue)
+                        Text(
+                            localizedStrings.BabyRegistrationViewPickerFemaleText
+                        )
+                        .tag(
+                            BabyRegistrationResources.GenderKeys.female.rawValue
+                        )
                     }
                     .pickerStyle(.segmented)
                 }
@@ -51,7 +63,7 @@ public struct BabyRegistrationView: View {
                         inputPlaceHolder: localizedStrings.BabyRegistrationViewBirthWeightTitle,
                         inputBinder: $viewModel.birthWeight, keyboardType: .decimalPad)
                     Picker("", selection: $viewModel.selectedWeightUnit) {
-                        Text(localizedStrings.BabyRegistrationViewBirthWeightPickerKilogramsText).tag(BabyRegistrationResources.UnitsKeys.kg.rawValue)
+                        Text(localizedStrings.BabyRegistrationViewBirthWeightKilogramsText).tag(BabyRegistrationResources.UnitsKeys.kg.rawValue)
                         Text(localizedStrings.BabyRegistrationViewBirthWeightPickerPoundsText).tag(BabyRegistrationResources.UnitsKeys.lbs.rawValue)
                     }
                     .pickerStyle(.segmented)
@@ -107,6 +119,11 @@ public struct BabyRegistrationView: View {
                     .foregroundColor(.white)
                     .cornerRadius(BabyRegistrationResources.CGConstants.buttonCornerRadius)
             }
+            .onReceive(viewModel.$didCreateSuccessfully) { success in
+                if success {
+                    onComplete()
+                }
+            }
             if let errorMessage = viewModel.errorMessage {
                 Text(errorMessage).bold()
                     .foregroundColor(.red)
@@ -116,8 +133,4 @@ public struct BabyRegistrationView: View {
             }
         }
     }
-}
-
-#Preview {
-    BabyRegistrationView(viewModel: BabyRegistrationViewModel())
 }

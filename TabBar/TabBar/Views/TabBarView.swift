@@ -25,10 +25,11 @@ public struct TabBarView: View {
         switch tab.content {
         case .swiftUIView(let view):
             NavigationStack {
-            view
+                view
             }
         case .viewController(let vc):
-            ViewControllerWrapper(viewController: vc)
+            let nav = UINavigationController(rootViewController: vc)
+            ViewControllerWrapper(viewController: nav)
         }
     }
 }

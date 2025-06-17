@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D113A8642E00BC5A00FAB64D /* BabiesListAndRegistration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC8C457B2DB3039D00BABAFC /* BabiesListAndRegistration.framework */; };
+		D11465EA2E00E4D60006E12E /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11465E92E00E4D60006E12E /* DesignKit.framework */; };
+		D11465EB2E00E4D60006E12E /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D11465E92E00E4D60006E12E /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,8 +22,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D11465EC2E00E4D60006E12E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D11465EB2E00E4D60006E12E /* DesignKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		D113A8602E00BC5A00FAB64D /* BabiesListAndRegistrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BabiesListAndRegistrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D11465E92E00E4D60006E12E /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC8C457B2DB3039D00BABAFC /* BabiesListAndRegistration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BabiesListAndRegistration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -51,17 +68,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D11465EA2E00E4D60006E12E /* DesignKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D11465E82E00E4D60006E12E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D11465E92E00E4D60006E12E /* DesignKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EC8C45712DB3039D00BABAFC = {
 			isa = PBXGroup;
 			children = (
 				D113A8382E00BAF700FAB64D /* BabiesListAndRegistration */,
 				D113A8612E00BC5A00FAB64D /* BabiesListAndRegistrationTests */,
+				D11465E82E00E4D60006E12E /* Frameworks */,
 				EC8C457C2DB3039D00BABAFC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -119,6 +146,7 @@
 				EC8C45772DB3039D00BABAFC /* Sources */,
 				EC8C45782DB3039D00BABAFC /* Frameworks */,
 				EC8C45792DB3039D00BABAFC /* Resources */,
+				D11465EC2E00E4D60006E12E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
