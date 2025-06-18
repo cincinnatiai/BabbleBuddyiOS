@@ -1,18 +1,25 @@
 import SwiftUI
 
 struct EmptyStateView: View {
-    let title: String
-    let message: String?
-    let image: Image?
-    let actionTitle: String?
-    let action: (() -> Void)?
+    // MARK: - Layout Constants
+        var imageSize: CGFloat = 80
+        var cornerRadius: CGFloat = 8
+
+    // MARK: - Content
+        let title: String
+        let message: String?
+        let image: Image?
+        let actionTitle: String?
+        let action: (() -> Void)?
     
     init(
         title: String,
         message: String? = nil,
         image: Image? = Image(systemName: "tray"),
         actionTitle: String? = nil,
-        action: (() -> Void)? = nil
+        action: (() -> Void)? = nil,
+        imageSize: CGFloat = 80,
+        cornerRadius: CGFloat = 8
     )
     {
         self.title = title
@@ -20,6 +27,8 @@ struct EmptyStateView: View {
         self.image = image
         self.actionTitle = actionTitle
         self.action = action
+        self.imageSize = imageSize
+        self.cornerRadius = cornerRadius
     }
     var body: some View {
         VStack{
@@ -27,7 +36,7 @@ struct EmptyStateView: View {
                 image
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 80, height: 80)
+                    .frame(width: imageSize, height: imageSize)
                     .foregroundColor(.gray.opacity(0.6))
             }
             Text(title)
@@ -43,7 +52,7 @@ struct EmptyStateView: View {
                 Button(actionTitle, action: action)
                     .foregroundColor(.white)
                     .buttonStyle(.borderedProminent)
-                    .padding(.top, 8)
+                    .padding(.top, cornerRadius)
             }
         }
     }
@@ -60,7 +69,9 @@ struct EmptyStateView: View {
             message: "Start by adding your baby's journal.",
             image: Image(systemName: "person.crop.circle.badge.plus"),
             actionTitle: "Get Started",
-            action: {}
+            action: {},
+            imageSize: 100,
+            cornerRadius: 12
         )
     }
 }
