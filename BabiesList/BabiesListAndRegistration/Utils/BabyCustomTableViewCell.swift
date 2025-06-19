@@ -3,7 +3,7 @@ import SwiftUI
 import DesignKit
 
 final class BabyTableViewCell: UITableViewCell {
-    private var hostingController: UIHostingController<BabyCardView>?
+    private var hostingController: UIHostingController<BBCardView>?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -13,11 +13,12 @@ final class BabyTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configureInfo(with baby: DisplayableBabyItem) {
-        let view = BabyCardView(
-            name: baby.title,
-            imageURL: baby.imageURL ?? "",
-            description: baby.details?.first ?? "N/A"
+    func configure(with item: BabyCardDisplayModel) {
+        let view = BBCardView(
+            name: item.baby.title,
+            description: item.baby.details?.first ?? "N/A",
+            imageURL: item.baby.imageURL,
+            type: .baby(gender: item.gender)
         )
 
         let hosting = UIHostingController(rootView: view)

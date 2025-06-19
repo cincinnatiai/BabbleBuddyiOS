@@ -54,26 +54,42 @@ public class BabiesListViewModel {
     }
 
     // MARK: Private methods
-    private func transformToDisplayableBabies(response: [BabiesResponseProtocol]) async -> [DisplayableBabyItem] {
-        let babies = response.compactMap { element -> DisplayableBabyItem? in
+    private func transformToDisplayableBabies(response: [BabiesResponseProtocol]) async -> [BabyCardDisplayModel] {
+        return response.compactMap { element in
             guard
                 let baby = element.account,
                 let babyName = baby.title,
                 let babyDescription = baby.description
             else { return nil }
-            return DisplayableBabyItem(
+
+            let gender = extractGender(from: baby.metadata)
+
+            let displayItem = DisplayableBabyItem(
                 imageURL: "",
                 title: babyName,
                 details: [babyDescription]
             )
+
+            return BabyCardDisplayModel(baby: displayItem, gender: gender)
         }
-        return babies
     }
+
+    private func extractGender(from metadata: String?) -> String? {
+        guard
+            let data = metadata?.data(using: .utf8),
+            let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+            let gender = json["gender"] as? String
+        else { return nil }
+
+        return gender
+    }
+
+
 
     public enum BabiesState: Equatable {
         case loading
         case error(String)
-        case success([DisplayableBabyItem])
+        case success([BabyCardDisplayModel])
 
         public static func == (lhs: BabiesState, rhs: BabiesState) -> Bool {
             switch (lhs, rhs) {

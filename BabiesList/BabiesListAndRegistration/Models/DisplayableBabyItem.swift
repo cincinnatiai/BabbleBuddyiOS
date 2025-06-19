@@ -5,7 +5,10 @@
 //  Created by Trainee on 4/8/25.
 //
 
-import Foundation
+public struct BabyCardDisplayModel {
+    let baby: DisplayableBabyItem
+    let gender: String?
+}
 
 public struct DisplayableBabyItem {
     let imageURL: String?

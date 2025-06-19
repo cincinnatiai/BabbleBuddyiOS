@@ -25,10 +25,10 @@ public class BabiesListView: UIViewController {
         return loader
     }()
 
-    private lazy var babyListView: BBGenericListBuilder<DisplayableBabyItem, BabyTableViewCell> = {
-        let view = BBGenericListBuilder<DisplayableBabyItem, BabyTableViewCell>()
+    private lazy var babyListView: BBGenericListBuilder<BabyCardDisplayModel, BabyTableViewCell> = {
+        let view = BBGenericListBuilder<BabyCardDisplayModel, BabyTableViewCell>()
         view.configureCell = { cell, baby in
-            cell.configureInfo(with: baby)
+            cell.configure(with: baby)
         }
         view.didSelectItem = { baby in
             // TODO: Navigate to details screen
@@ -123,7 +123,7 @@ public class BabiesListView: UIViewController {
 
     /// Displays the given baby list in the table view.
     /// - Parameter babies: Array of babies to render.
-    func display(babies: [DisplayableBabyItem]) {
+    func display(babies: [BabyCardDisplayModel]) {
         babyListView.items = babies
     }
 

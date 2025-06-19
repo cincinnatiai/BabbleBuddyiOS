@@ -4,10 +4,6 @@
 //
 //  Created by Noel Hiram Pat Angulo on 6/15/25.
 //
-
-import Foundation
-import BabiesListAndRegistration
-
 public struct CreateBabyRequestModel: Codable, CreateBabyRequestProtocol {
     public let accountType: String
     public let clientId: String

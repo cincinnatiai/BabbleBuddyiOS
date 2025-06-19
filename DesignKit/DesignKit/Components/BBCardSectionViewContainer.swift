@@ -20,10 +20,11 @@ public struct BBCardSectionViewContainer<Content: View>: View {
     let icon: Image?
     let content: () -> Content
 
-    // MARK: Dimensions
+    // MARK: - Layout Constants
     private let verticalSpacing: CGFloat = 16
-    private let titleAndIconHorizontalSpacing: CGFloat = 16
-    private let cardCornerRadius: CGFloat = 16
+    private let titleAndIconSpacing: CGFloat = 16
+    private let cornerRadius: CGFloat = 16
+    private let iconSize: CGFloat = 48
 
     public init(
         title: String? = nil,
@@ -38,27 +39,28 @@ public struct BBCardSectionViewContainer<Content: View>: View {
     public var body: some View {
         VStack(alignment: .leading, spacing: verticalSpacing) {
             if let title = title {
-                HStack(spacing: titleAndIconHorizontalSpacing) {
+                BBHStack {
                     if let icon = icon {
                         icon
-                            .foregroundColor(.gray)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 48, height: 48)
+                            .padding(6)
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
                     Text(title)
                         .font(.headline)
                         .foregroundStyle(.primary)
                 }
             }
-
             content()
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-
         .padding()
         .background(
-            RoundedRectangle(cornerRadius: cardCornerRadius)
+            RoundedRectangle(cornerRadius: cornerRadius)
                 .fill(Color(.systemBackground))
                 .shadow(color: Color.black.opacity(0.05), radius: 6, x: 0, y: 2)
         )
     }
-    
 }
