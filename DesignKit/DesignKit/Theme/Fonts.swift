@@ -1,9 +1,9 @@
 import SwiftUI
 
-enum AppTextStyle {
-    case title, subtitle, body, caption, button
+public enum AppTextStyle {
+   case title, subtitle, body, caption, button
 
-    var font: Font {
+   public var font: Font {
         switch self {
         case .title:
             return .system(size: 28, weight: .bold, design: .rounded)
@@ -20,7 +20,7 @@ enum AppTextStyle {
 }
 
 extension Text {
-    func textStyle(_ style: AppTextStyle) -> some View {
+   public func textStyle(_ style: AppTextStyle) -> some View {
         self.font(style.font)
     }
 }
