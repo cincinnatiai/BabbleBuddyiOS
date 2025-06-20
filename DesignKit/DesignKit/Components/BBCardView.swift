@@ -1,6 +1,9 @@
 import SwiftUI
 
+/// A card view used to display baby or event-related information in a stylized container.
 public struct BBCardView: View {
+    // MARK: - Properties
+
     let name: String
     let imageURL: String
     let description: String
@@ -12,7 +15,7 @@ public struct BBCardView: View {
         self.imageURL = imageURL ?? ""
         self.type = type
     }
-    
+
     public var body: some View {
         BBCardSectionViewContainer(title: name, icon: iconView) {
             Text(description)
@@ -20,6 +23,8 @@ public struct BBCardView: View {
                 .foregroundColor(AppColor.textSecondary)
         }
     }
+
+    // MARK: - Icon View
 
     private var iconView: Image? {
         switch type {
@@ -30,11 +35,12 @@ public struct BBCardView: View {
                 return Image(uiImage: uiImage)
             }
             return Image(systemName: gender == "female" ? "figure.stand.dress" : "figure.stand")
-
         case .event(let eventType):
             return Image(systemName: eventIcon(for: eventType))
         }
     }
+
+    // MARK: - Helpers
 
     private func eventIcon(for type: EventType) -> String {
         switch type {
@@ -50,12 +56,13 @@ public struct BBCardView: View {
     }
 }
 
-// MARK: Cases for type of card that can be displayed
+// MARK: - Enum Definitions
+
 public enum BabyCardType {
     case baby(gender: String?)
     case event(EventType)
 }
 
-public enum EventType: String {
+public enum EventType: String, CaseIterable {
     case feed, pee, poop, sleep, play, weight, height, headSize
 }
