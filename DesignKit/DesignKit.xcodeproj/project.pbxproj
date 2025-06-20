@@ -6,7 +6,23 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		11711AEB2E05F4D400198671 /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F57B50AF2D92F2A200834E68 /* DesignKit.framework */; };
+		11711AF42E05F51F00198671 /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 11711AF32E05F51F00198671 /* ViewInspector */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		11711AEC2E05F4D400198671 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F57B50A62D92F2A200834E68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F57B50AE2D92F2A200834E68;
+			remoteInfo = DesignKit;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		11711AE72E05F4D400198671 /* DesignKitTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DesignKitTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57B50AF2D92F2A200834E68 /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -21,6 +37,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		11711AE82E05F4D400198671 /* DesignKitTest */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DesignKitTest;
+			sourceTree = "<group>";
+		};
 		F57B50B12D92F2A200834E68 /* DesignKit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -32,6 +53,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		11711AE42E05F4D400198671 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11711AEB2E05F4D400198671 /* DesignKit.framework in Frameworks */,
+				11711AF42E05F51F00198671 /* ViewInspector in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F57B50AC2D92F2A200834E68 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -46,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				F57B50B12D92F2A200834E68 /* DesignKit */,
+				11711AE82E05F4D400198671 /* DesignKitTest */,
 				F57B50B02D92F2A200834E68 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				F57B50AF2D92F2A200834E68 /* DesignKit.framework */,
+				11711AE72E05F4D400198671 /* DesignKitTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,6 +103,30 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		11711AE62E05F4D400198671 /* DesignKitTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11711AF02E05F4D400198671 /* Build configuration list for PBXNativeTarget "DesignKitTest" */;
+			buildPhases = (
+				11711AE32E05F4D400198671 /* Sources */,
+				11711AE42E05F4D400198671 /* Frameworks */,
+				11711AE52E05F4D400198671 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				11711AED2E05F4D400198671 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				11711AE82E05F4D400198671 /* DesignKitTest */,
+			);
+			name = DesignKitTest;
+			packageProductDependencies = (
+				11711AF32E05F51F00198671 /* ViewInspector */,
+			);
+			productName = DesignKitTest;
+			productReference = 11711AE72E05F4D400198671 /* DesignKitTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F57B50AE2D92F2A200834E68 /* DesignKit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F57B50B72D92F2A200834E68 /* Build configuration list for PBXNativeTarget "DesignKit" */;
@@ -101,8 +157,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					11711AE62E05F4D400198671 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					F57B50AE2D92F2A200834E68 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -117,17 +177,28 @@
 			);
 			mainGroup = F57B50A52D92F2A200834E68;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				11711AF12E05F51200198671 /* XCRemoteSwiftPackageReference "ViewInspector" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F57B50B02D92F2A200834E68 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				F57B50AE2D92F2A200834E68 /* DesignKit */,
+				11711AE62E05F4D400198671 /* DesignKitTest */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		11711AE52E05F4D400198671 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F57B50AD2D92F2A200834E68 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -138,6 +209,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		11711AE32E05F4D400198671 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F57B50AB2D92F2A200834E68 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -147,7 +225,49 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		11711AED2E05F4D400198671 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F57B50AE2D92F2A200834E68 /* DesignKit */;
+			targetProxy = 11711AEC2E05F4D400198671 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		11711AEE2E05F4D400198671 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Cincinnati.DesignKitTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		11711AEF2E05F4D400198671 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Cincinnati.DesignKitTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		F57B50B82D92F2A200834E68 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -342,6 +462,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		11711AF02E05F4D400198671 /* Build configuration list for PBXNativeTarget "DesignKitTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11711AEE2E05F4D400198671 /* Debug */,
+				11711AEF2E05F4D400198671 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F57B50A92D92F2A200834E68 /* Build configuration list for PBXProject "DesignKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -361,6 +490,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		11711AF12E05F51200198671 /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		11711AF32E05F51F00198671 /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11711AF12E05F51200198671 /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F57B50A62D92F2A200834E68 /* Project object */;
 }
