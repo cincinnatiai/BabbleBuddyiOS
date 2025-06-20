@@ -36,24 +36,25 @@ public struct BBCardView: View {
             }
             return Image(systemName: gender == "female" ? "figure.stand.dress" : "figure.stand")
         case .event(let eventType):
-            return Image(systemName: eventIcon(for: eventType))
+            return Image(eventIcon(for: eventType))
         }
     }
-
-    // MARK: - Helpers
 
     private func eventIcon(for type: EventType) -> String {
         switch type {
-        case .feed: return "fork.knife.circle"
-        case .pee: return "drop.fill"
-        case .poop: return "leaf.fill"
-        case .sleep: return "bed.double.fill"
-        case .play: return "gamecontroller.fill"
-        case .weight: return "scalemass.fill"
-        case .height: return "arrow.up.and.down"
-        case .headSize: return "person.crop.square"
+        case .feed: return "feeding-bottle"
+        case .pee: return "pee-icon"
+        case .poop: return "poop-icon"
+        case .sleep: return "sleeping-icon"
+        case .play: return "play-icon"
+        case .weight: return "wheight-icon"
+        case .height: return "height-icon"
+        case .headSize: return "head-size"
+        case .more: return "ellipsis.circle"
+        case .less: return "chevron.up.circle"
         }
     }
+
 }
 
 // MARK: - Enum Definitions
@@ -63,6 +64,28 @@ public enum BabyCardType {
     case event(EventType)
 }
 
+//public enum EventType: String, CaseIterable {
+//    case feed, pee, poop, sleep, play, weight, height, headSize, more
+//
+//    static var primary: [EventType] {
+//        [.feed, .pee, .poop, .sleep, .play, .more]
+//    }
+//
+//    static var secondary: [EventType] {
+//        [.feed, .pee, .poop, .sleep, .play, .weight, .height, .headSize]
+//    }
+//}
+
 public enum EventType: String, CaseIterable {
-    case feed, pee, poop, sleep, play, weight, height, headSize
+    case feed, pee, poop, sleep, play
+    case weight, height, headSize
+    case more, less
+
+    static var primary: [EventType] {
+        [.feed, .pee, .poop, .sleep, .play, .more]
+    }
+
+    static var secondary: [EventType] {
+        [.weight, .height, .headSize, .less]
+    }
 }

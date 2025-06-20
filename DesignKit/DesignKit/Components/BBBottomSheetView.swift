@@ -1,14 +1,14 @@
 import SwiftUI
 
 public struct BBBottomSheetView: View {
+    private let verticalSpacing: CGFloat = 16
+    private let itemSpacing: CGFloat = 8
+    private let cornerRadius: CGFloat = 20
+    private let topPadding: CGFloat = 16
+
     let title: String
     let onTapEvent: (EventType) -> Void
-
-    private let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
+    @State private var showMoreEvents = false
 
     public init(title: String, onTapEvent: @escaping (EventType) -> Void) {
         self.title = title
@@ -16,23 +16,31 @@ public struct BBBottomSheetView: View {
     }
 
     public var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: verticalSpacing) {
             Text(title)
                 .font(.title2)
                 .bold()
-                .padding(.top)
+                .padding(.top, topPadding)
 
-            LazyVGrid(columns: columns, spacing: 12) {
-                ForEach(EventType.allCases, id: \.self) { type in
+            VStack(spacing: itemSpacing) {
+                let items = showMoreEvents ? EventType.secondary : EventType.primary
+                ForEach(items, id: \.self) { type in
                     BBJournalEventItem(type: type) {
-                        onTapEvent(type)
+                        switch type {
+                        case .more:
+                            withAnimation { showMoreEvents = true }
+                        case .less:
+                            withAnimation { showMoreEvents = false }
+                        default:
+                            onTapEvent(type)
+                        }
                     }
                 }
             }
         }
         .padding()
         .background(Color(.systemBackground))
-        .cornerRadius(20)
+        .cornerRadius(cornerRadius)
     }
 }
 
