@@ -7,140 +7,48 @@
 
 import XCTest
 @testable import TabBar
+import SwiftUICore
 
 final class TabBarViewModelUnitTests: XCTestCase {
     
-    var viewModel: TabBarViewModel!
+    var viewModel: TabItem!
     var viewControllersProvider: () -> [String: UIViewController] = { [:] }
     
     override func setUpWithError() throws {
         try super.setUpWithError()
-        viewModel = TabBarViewModel(viewControllersProvider: viewControllersProvider)
+        viewModel = TabItem(title: "String", icon: "String", viewController: UIViewController())
     }
-
+    
     override func tearDownWithError() throws {
         viewModel = nil
         viewControllersProvider = { [:] }
         try super.tearDownWithError()
     }
     
-    func testInitialStateIsLoading() {
-        XCTAssertEqual(viewModel.screensState, .loading)
-    }
-    
-    func testConfigureTabsSucceedsWithExpectedViewController() async {
+    func testTabItemSwiftUIViewContent() {
         // Given
-        let settingsVC = await UIViewController()
-        let homeVC = await UIViewController()
-            
-            viewControllersProvider = {
-                return [
-                    "settings": settingsVC,
-                    "home": homeVC
-                ]
-            }
-            
-            viewModel = TabBarViewModel(viewControllersProvider: viewControllersProvider)
-        
-        let expectation = XCTestExpectation()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { expectation.fulfill() }
-        
-        // When
-        viewModel.initialize()
+        let dummyView = Text("Test")
+        let tabItem = TabItem(title: "SwiftUI", icon: "doc", view: dummyView)
         
         // Then
-        await fulfillment(of: [expectation], timeout: 1.0)
-
-            if case .success(let viewControllers) = viewModel.screensState {
-                XCTAssertEqual(viewControllers.count, 2)
-                XCTAssertTrue(viewControllers.first is UINavigationController)
-            } else {
-                XCTFail("Unexpected state: \(viewModel.screensState)")
-            }
-        }
-    
-    func testConfigureTabsWithEmptyDictionarySucceedsWithNoViewControllers() async {
-        let expectation = XCTestExpectation()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { expectation.fulfill() }
-        
-        // When
-        viewModel.initialize()
-        
-        // Then
-        await fulfillment(of: [expectation], timeout: 1.0)
-            if case .success(let viewControllers) = viewModel.screensState {
-                XCTAssertTrue(viewControllers.isEmpty)
-            } else {
-
-                XCTFail("Unexpected state: \(viewModel.screensState)")
-            }
-        }
-    
-    func testConfigureTabsSucceedsWithUnexpectedViewController() async {
-        // Given
-        let unknownVC = await UIViewController()
-        viewControllersProvider = {
-            return [
-                "unknown": unknownVC
-            ]
-        }
-            
-        viewModel = TabBarViewModel(viewControllersProvider: viewControllersProvider)
-
-        let expectation = XCTestExpectation()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { expectation.fulfill() }
-        
-        // When
-        viewModel.initialize()
-        
-        // Then
-        await fulfillment(of: [expectation], timeout: 1.0)
-        
-        await MainActor.run {
-            if case .success(let viewControllers) = viewModel.screensState {
-                XCTAssertEqual(viewControllers.count, 1)
-                XCTAssertEqual(viewControllers.first?.tabBarItem.title, "Default")
-            } else {
-                XCTFail("Unexpected state: \(viewModel.screensState)")
-            }
+        switch tabItem.content {
+        case .swiftUIView(let anyView):
+            XCTAssertNotNil(anyView)
+        default:
+            XCTFail("Expected .swiftUIView case, got \(tabItem.content)")
         }
     }
-    
-    func testViewControllersAreInCorrectOrder() async {
+    func testTabItemUIViewControllerContent() {
         // Given
-        let expectedOrderKeys = ["Home", "Settings", "Default"]
-        let unknownVC = await UIViewController()
-        let settingsVC = await UIViewController()
-        let homeVC = await UIViewController()
-        viewControllersProvider = {
-            return [
-                "unknown": unknownVC,
-                "settings": settingsVC,
-                "home": homeVC
-            ]
-        }
-            
-        viewModel = TabBarViewModel(viewControllersProvider: viewControllersProvider)
-
-        let expectation = XCTestExpectation()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { expectation.fulfill() }
-        
-        // When
-        viewModel.initialize()
+        let dummyVC = UIViewController()
+        let tabItem = TabItem(title: "UIKit", icon: "gear", viewController: dummyVC)
         
         // Then
-        await fulfillment(of: [expectation], timeout: 1.0)
-        
-        await MainActor.run {
-            if case .success(let viewControllers) = viewModel.screensState {
-                let sortedViewControllers = viewControllers.compactMap { navigationController -> String? in
-                    return (navigationController.tabBarItem.title)}
-                
-                XCTAssertEqual(viewControllers.count, viewControllersProvider().count)
-                XCTAssertEqual(sortedViewControllers, expectedOrderKeys)
-            } else {
-                XCTFail("Unexpected state: \(viewModel.screensState)")
-            }
+        switch tabItem.content {
+        case .viewController(let vc):
+            XCTAssertEqual(vc, dummyVC)
+        default:
+            XCTFail("Expected .viewController case, got \(tabItem.content)")
         }
     }
     
