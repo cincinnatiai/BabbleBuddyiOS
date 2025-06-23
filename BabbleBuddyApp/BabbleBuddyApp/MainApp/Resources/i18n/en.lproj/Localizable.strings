@@ -12,5 +12,5 @@
 
 // MARK: TabBar titles:
 "TAB_BAR_SETTINGS_ITEM_TITLE" = "Settings";
-"TAB_BAR__HOME_ITEM_TITLE" = "Home";
+"TAB_BAR_JOURNAL_ITEM_TITLE" = "Journal";
 "TAB_BAR_BABIES_LIST_ITEM_TITLE" = "My Babies";

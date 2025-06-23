@@ -8,6 +8,7 @@
 import SwiftUI
 import TabBar
 import AuthLibrarySPM
+import BabyJournal
 
 typealias L10n = LocalizedStringKeys
 
@@ -18,8 +19,8 @@ enum TabBarItemsProvider {
         return [
             TabItem(
                 title: L10n.HomeScreenTabItemTitle,
-                icon: "house",
-                view: HomeScreen()
+                icon: "book.pages",
+                view: BabyJournalView()
             ),
             TabItem(
                 title: L10n.BabiesListTabItemTitle,
