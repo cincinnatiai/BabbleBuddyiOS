@@ -9,6 +9,7 @@ xcuserdata/
 
 ## Scheme management
 xcshareddata/
+BabbleBuddy.xcworkspace/xcshareddata/swiftpm/Package.resolved
 
 ## Obj-C/Swift specific
 *.hmap
@@ -28,6 +29,7 @@ playground.xcworkspace
 
 ## macOS files
 .DS_Store
+BabbleBuddyApp/.DS_Store
 
 ## Workspace data
 *.xcworkspace/xcuserdata/
