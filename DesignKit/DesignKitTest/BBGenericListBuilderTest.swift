@@ -17,7 +17,7 @@ class BBGenericListBuilderTests: XCTestCase {
         
         let tableView = listBuilder.subviews.first(where: { $0 is UITableView })
         
-        let rows = listBuilder.tableView(listBuilder.testTableView, numberOfRowsInSection: 0)
+        let rows = listBuilder.tableView(listBuilder.debug_tableView, numberOfRowsInSection: 0)
         XCTAssertEqual(rows, 3, "TableView should have 3 rows")
     }
     
@@ -32,7 +32,7 @@ class BBGenericListBuilderTests: XCTestCase {
             expectation.fulfill()
         }
         
-        _ = listBuilder.tableView(listBuilder.testTableView, cellForRowAt: IndexPath(row: 0, section: 0))
+        _ = listBuilder.tableView(listBuilder.debug_tableView, cellForRowAt: IndexPath(row: 0, section: 0))
         waitForExpectations(timeout: 1)
     }
     
@@ -46,7 +46,7 @@ class BBGenericListBuilderTests: XCTestCase {
         }
 
         let indexPath = IndexPath(row: 1, section: 0)
-        listBuilder.tableView(listBuilder.testTableView, didSelectRowAt: indexPath)
+        listBuilder.tableView(listBuilder.debug_tableView, didSelectRowAt: indexPath)
 
         XCTAssertEqual(selected, "B")
     }

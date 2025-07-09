@@ -16,10 +16,6 @@ public class BBGenericListBuilder<T, Cell>: UIView, UITableViewDataSource, UITab
         }
     }
     
-    public var testTableView: UITableView {
-        return tableView
-    }
-    
     public var configureCell: ((Cell, T) -> Void)?
     public var didSelectItem: ((T) -> Void)?
     private let cellIdentifier: String
@@ -73,3 +69,11 @@ public class BBGenericListBuilder<T, Cell>: UIView, UITableViewDataSource, UITab
         didSelectItem?(items[indexPath.row])
     }
 }
+
+#if DEBUG
+extension BBGenericListBuilder {
+    var debug_tableView: UITableView {
+        return self.tableView
+    }
+}
+#endif
