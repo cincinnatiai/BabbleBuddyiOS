@@ -10,11 +10,14 @@ import Combine
 
 public class BBGenericListBuilder<T, Cell>: UIView, UITableViewDataSource, UITableViewDelegate where Cell: UITableViewCell {
     
-    
     public var items: [T] = [] {
         didSet {
             tableView.reloadData()
         }
+    }
+    
+    public var testTableView: UITableView {
+        return tableView
     }
     
     public var configureCell: ((Cell, T) -> Void)?
