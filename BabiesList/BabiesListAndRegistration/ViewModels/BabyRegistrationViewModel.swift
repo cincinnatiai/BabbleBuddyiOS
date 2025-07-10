@@ -26,11 +26,13 @@ public final class BabyRegistrationViewModel: ObservableObject {
     @Published private(set) var didCreateSuccessfully = false
 
     // MARK: Private properties
-    private let createAPI: (CreateBabyRequestProtocol) async throws -> Bool
+    private let createAPI: (
+        CreateBabyRequestProtocol
+    ) async throws -> CreateBabyResponseProtocol
     private let userEmail: String
 
     // MARK: Initializer
-    public init(userEmail: String,createAPI: @escaping (CreateBabyRequestProtocol) async throws -> Bool) {
+    public init(userEmail: String,createAPI: @escaping (CreateBabyRequestProtocol) async throws -> CreateBabyResponseProtocol) {
         self.userEmail = userEmail
         self.createAPI = createAPI
     }
@@ -45,7 +47,6 @@ public final class BabyRegistrationViewModel: ObservableObject {
 
     func submit() {
         Task {
-
             let formatter = ISO8601DateFormatter()
             let dobString = formatter.string(from: dateOfBirth)
 
@@ -91,7 +92,7 @@ public final class BabyRegistrationViewModel: ObservableObject {
             do {
                 let success = try await createAPI(request)
                 await MainActor.run {
-                    if success {
+                    if !success.created.isEmpty {
                         self.errorMessage = nil
                         didCreateSuccessfully = true
                     } else {

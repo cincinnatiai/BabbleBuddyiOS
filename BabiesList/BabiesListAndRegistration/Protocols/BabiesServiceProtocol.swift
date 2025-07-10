@@ -6,7 +6,7 @@
 //
 
 public protocol BBAServiceProtocol {
-    func fetchBabies() async -> Result<[BabiesResponseProtocol], Error>
+    func fetchBabies() async throws -> [BabiesResponseProtocol]
 
-    func createBaby(request: CreateBabyRequestProtocol) async throws -> Bool
+    func createBaby(request: CreateBabyRequestProtocol) async throws -> CreateBabyResponseProtocol
 }

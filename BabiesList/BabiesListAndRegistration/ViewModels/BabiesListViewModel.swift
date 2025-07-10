@@ -13,13 +13,13 @@ public class BabiesListViewModel {
     @Published var babiesState: BabiesState = .loading
 
     // MARK: Private properties
-    private var accountApi: () async -> Result<[BabiesResponseProtocol], Error>
+    private var accountApi: () async throws -> [BabiesResponseProtocol]
     private let babyService: BBAServiceProtocol
     private let userEmail: String
 
     // MARK: Initializer
     public init(
-        accountApi: @escaping () async -> Result<[BabiesResponseProtocol], Error>,
+        accountApi: @escaping () async throws -> [BabiesResponseProtocol],
         babyService: BBAServiceProtocol,
         userEmail: String
     ) {
@@ -32,14 +32,13 @@ public class BabiesListViewModel {
     func initialize() {
         babiesState = .loading
         Task {
-            let response = await accountApi()
-            switch response {
-            case .success(let result):
-                let babies = await transformToDisplayableBabies(response: result)
+            do {
+                let response = try await accountApi()
+                let babies = await transformToDisplayableBabies(response: response)
                 await MainActor.run {
                     babiesState = .success(babies)
                 }
-            case.failure(let error):
+            } catch {
                 await MainActor.run {
                     babiesState = .error(error.localizedDescription)
                 }

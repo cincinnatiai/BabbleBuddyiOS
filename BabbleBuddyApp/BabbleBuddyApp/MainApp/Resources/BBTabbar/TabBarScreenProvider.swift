@@ -10,6 +10,7 @@ import TabBar
 import AuthLibrarySPM
 import CoreKit
 import BabiesListAndRegistration
+import NetworkingKit
 
 public class TabBarScreenProvider {
     static func makeBabiesListView(userEmail: String) -> UIViewController {
@@ -19,17 +20,19 @@ public class TabBarScreenProvider {
             !baseURL.isEmpty, !idToken.isEmpty
         else {
             // TODO: If there is no baseURL or idToken no view should exist, here should be performed sign out
-            let vc = UIViewController()
-            vc.title = "Error no baseURL or idToken"
-            return vc
+            let viewController = UIViewController()
+            viewController.title = "Error no baseURL or idToken"
+            return viewController
         }
 
+        let networkClient = NetworkClient(token: idToken)
+
         let service = BBAServiceImplementation(
-            baseURL: baseURL, token: idToken
+            client: networkClient, baseURL: baseURL
         )
 
         let viewModel = BabiesListViewModel(accountApi: {
-            await service.fetchBabies()
+            try await service.fetchBabies()
         }, babyService: service, userEmail: userEmail
         )
 

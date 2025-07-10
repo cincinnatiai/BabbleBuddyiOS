@@ -1,121 +1,72 @@
 import Foundation
 import BabiesListAndRegistration
+import NetworkingKit
 
-public class BBAServiceImplementation: BBAServiceProtocol {
-    private let decoder: JSONDecoder = JSONDecoder()
-    private let session: URLSession = URLSession.shared
-    private let token: String
+class BBAServiceImplementation: BBAServiceProtocol {
+    private let client: NetworkClientProtocol
     private let baseURL: String
 
-    public init(baseURL: String, token: String) {
+    init(client: NetworkClient, baseURL: String) {
+        self.client = client
         self.baseURL = baseURL
-        self.token = token
     }
 
-    public func fetchBabies() async -> Result<[BabiesResponseProtocol], Error> {
-        do {
-            let request = try buildRequest()
-            let (data, response) = try await performRequest(request)
-            return try decodeResponse(data, response)
-                .map { $0 as [any BabiesResponseProtocol] }
-        } catch {
-            return .failure(error)
-        }
-    }
-
-    private func performRequest(_ request: URLRequest) async throws -> (Data, URLResponse) {
-        do {
-            return try await session.data(for: request)
-        } catch let urlError as URLError {
-            throw ServiceErrors.networkError(urlError)
-        }
-    }
-
-    private func decodeResponse(_ data: Data, _ response: URLResponse) throws -> Result<[BabiesResponseModel], Error> {
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw ServiceErrors.invalidResponse
-        }
-        guard (200...299).contains(httpResponse.statusCode) else {
-            throw ErrorMapper.HTTPErrorHandler(httpResponse.statusCode)
-        }
-        do {
-            let babies = try decoder.decode([BabiesResponseModel].self, from: data)
-            return .success(babies)
-        } catch {
-            return .failure(ServiceErrors.decodingError)
-        }
-    }
-
-    private func buildRequest() throws -> URLRequest {
-        guard !baseURL.isEmpty, !token.isEmpty else {
-            throw ServiceErrors.unknown(
-                NSError(domain: Constants.Error.buildRequest, code: ServiceErrorCode.missingAuthData, userInfo: [
-                    NSLocalizedDescriptionKey: Constants.Error.missingURL
-                ])
-            )
-        }
-
+    func fetchBabies() async throws -> [BabiesResponseProtocol] {
         guard var components = URLComponents(string: baseURL) else {
             throw ServiceErrors.invalidURL
         }
 
         components.queryItems = [
-            URLQueryItem(name: "action", value: Constants.Endpoint.fetchAccounts)
-        ]
-
-        guard let requestURL = components.url else {
-            throw ServiceErrors.invalidURL
-        }
-
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = Constants.Request.httpMethod
-        request.setValue("Bearer \(token)", forHTTPHeaderField: Constants.Request.authorizationHeader)
-        return request
-    }
-
-    public func createBaby(request: CreateBabyRequestProtocol) async throws -> Bool {
-        guard !baseURL.isEmpty, !token.isEmpty else {
-            throw ServiceErrors.unknown(
-                NSError(domain: Constants.Error.buildRequest, code: ServiceErrorCode.missingAuthData, userInfo: [
-                    NSLocalizedDescriptionKey: Constants.Error.missingURL
-                ])
+            URLQueryItem(
+                name: "action",
+                value: NetworkConstants.Endpoint.fetchAccounts
             )
-        }
-
-        guard var components = URLComponents(string: baseURL) else {
-            throw ServiceErrors.invalidURL
-        }
-
-        components.queryItems = [
-            URLQueryItem(name: "action", value: "create")
         ]
 
-        guard let requestURL = components.url else {
+        guard let url = components.url else {
             throw ServiceErrors.invalidURL
         }
 
-        var urlRequest = URLRequest(url: requestURL)
-        urlRequest.httpMethod = "POST"
-        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let endpoint = EndPointModel(
+            url: url,
+            method: .POST,
+            headers: [:],
+            body: nil
+        )
 
-        let encoder = JSONEncoder()
-        encoder.keyEncodingStrategy = .convertToSnakeCase
-        
-        let requestBody = try encoder.encode(request)
-
-        urlRequest.httpBody = requestBody
-
-        let (data, response) = try await performRequest(urlRequest)
-
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw ServiceErrors.invalidResponse
-        }
-
-        guard (200...299).contains(httpResponse.statusCode) else {
-            throw ErrorMapper.HTTPErrorHandler(httpResponse.statusCode)
-        }
-
-        return true
+        return try await client.request(endpoint: endpoint, responseType: [BabiesResponseModel].self)
     }
+
+    func createBaby(request: CreateBabyRequestProtocol) async throws -> CreateBabyResponseProtocol {
+            guard var components = URLComponents(string: baseURL) else {
+                throw ServiceErrors.invalidURL
+            }
+
+            components.queryItems = [
+                URLQueryItem(name: "action", value: "create")
+            ]
+
+            guard let url = components.url else {
+                throw ServiceErrors.invalidURL
+            }
+
+            let encoder = JSONEncoder()
+            encoder.keyEncodingStrategy = .convertToSnakeCase
+            let body = try encoder.encode(request)
+
+        let endpoint = EndPointModel(
+                url: url,
+                method: .POST,
+                headers: [:],
+                body: body
+            )
+
+        let response = try await client
+            .request(
+                endpoint: endpoint,
+                responseType: CreateBabyResponseModel.self
+            )
+
+        return response as CreateBabyResponseProtocol
+        }
 }
