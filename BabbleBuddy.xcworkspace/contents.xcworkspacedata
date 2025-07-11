@@ -25,4 +25,7 @@
    <FileRef
       location = "group:NetworkingKit/NetworkingKit.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:BabyJournal/BabyJournal.xcodeproj">
+   </FileRef>
 </Workspace>

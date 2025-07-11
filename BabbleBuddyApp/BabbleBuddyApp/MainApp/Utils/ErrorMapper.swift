@@ -1,4 +1,5 @@
 import Foundation
+import NetworkingKit
 
 public enum ErrorMapper {
     public static func HTTPErrorHandler(_ statusCode: Int) -> ServiceErrors {
