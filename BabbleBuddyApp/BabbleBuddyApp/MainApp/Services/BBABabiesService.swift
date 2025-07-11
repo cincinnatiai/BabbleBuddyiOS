@@ -2,7 +2,7 @@ import Foundation
 import BabiesListAndRegistration
 import NetworkingKit
 
-class BBAServiceImplementation: BBAServiceProtocol {
+class BBABabiesServiceImplementation: BBABabiesServiceProtocol {
     private let client: NetworkClientProtocol
     private let baseURL: String
 
@@ -38,28 +38,28 @@ class BBAServiceImplementation: BBAServiceProtocol {
     }
 
     func createBaby(request: CreateBabyRequestProtocol) async throws -> CreateBabyResponseProtocol {
-            guard var components = URLComponents(string: baseURL) else {
-                throw ServiceErrors.invalidURL
-            }
+        guard var components = URLComponents(string: baseURL) else {
+            throw ServiceErrors.invalidURL
+        }
 
-            components.queryItems = [
-                URLQueryItem(name: "action", value: "create")
-            ]
+        components.queryItems = [
+            URLQueryItem(name: "action", value: "create")
+        ]
 
-            guard let url = components.url else {
-                throw ServiceErrors.invalidURL
-            }
+        guard let url = components.url else {
+            throw ServiceErrors.invalidURL
+        }
 
-            let encoder = JSONEncoder()
-            encoder.keyEncodingStrategy = .convertToSnakeCase
-            let body = try encoder.encode(request)
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        let body = try encoder.encode(request)
 
         let endpoint = EndPointModel(
-                url: url,
-                method: .POST,
-                headers: [:],
-                body: body
-            )
+            url: url,
+            method: .POST,
+            headers: [:],
+            body: body
+        )
 
         let response = try await client
             .request(
@@ -68,5 +68,5 @@ class BBAServiceImplementation: BBAServiceProtocol {
             )
 
         return response as CreateBabyResponseProtocol
-        }
+    }
 }

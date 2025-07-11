@@ -14,13 +14,13 @@ public class BabiesListViewModel {
 
     // MARK: Private properties
     private var accountApi: () async throws -> [BabiesResponseProtocol]
-    private let babyService: BBAServiceProtocol
+    private let babyService: BBABabiesServiceProtocol
     private let userEmail: String
 
     // MARK: Initializer
     public init(
         accountApi: @escaping () async throws -> [BabiesResponseProtocol],
-        babyService: BBAServiceProtocol,
+        babyService: BBABabiesServiceProtocol,
         userEmail: String
     ) {
         self.accountApi = accountApi

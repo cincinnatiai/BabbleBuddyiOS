@@ -64,18 +64,6 @@ public enum BabyCardType {
     case event(EventType)
 }
 
-//public enum EventType: String, CaseIterable {
-//    case feed, pee, poop, sleep, play, weight, height, headSize, more
-//
-//    static var primary: [EventType] {
-//        [.feed, .pee, .poop, .sleep, .play, .more]
-//    }
-//
-//    static var secondary: [EventType] {
-//        [.feed, .pee, .poop, .sleep, .play, .weight, .height, .headSize]
-//    }
-//}
-
 public enum EventType: String, CaseIterable {
     case feed, pee, poop, sleep, play
     case weight, height, headSize
@@ -88,4 +76,13 @@ public enum EventType: String, CaseIterable {
     static var secondary: [EventType] {
         [.weight, .height, .headSize, .less]
     }
+
+    public var eventName: String {
+           switch self {
+           case .feed:
+               return "EAT"
+           default:
+               return self.rawValue.uppercased()
+           }
+       }
 }

@@ -20,7 +20,7 @@ enum TabBarItemsProvider {
             TabItem(
                 title: L10n.HomeScreenTabItemTitle,
                 icon: "book.pages",
-                view: BabyJournalView()
+                view: TabBarScreenProvider.makeJournalView()
             ),
             TabItem(
                 title: L10n.BabiesListTabItemTitle,

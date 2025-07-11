@@ -11,6 +11,7 @@ import AuthLibrarySPM
 import CoreKit
 import BabiesListAndRegistration
 import NetworkingKit
+import BabyJournal
 
 public class TabBarScreenProvider {
     static func makeBabiesListView(userEmail: String) -> UIViewController {
@@ -27,7 +28,7 @@ public class TabBarScreenProvider {
 
         let networkClient = NetworkClient(token: idToken)
 
-        let service = BBAServiceImplementation(
+        let service = BBABabiesServiceImplementation(
             client: networkClient, baseURL: baseURL
         )
 
@@ -37,5 +38,22 @@ public class TabBarScreenProvider {
         )
 
         return BabiesListView(viewModel: viewModel)
+    }
+
+    static func makeJournalView() -> any View {
+        guard
+            let baseURL = KeychainHelper.shared.read(forKey: BabbleBuddyAppResources.KeychainKeys.baseURL.rawValue),
+            let idToken = KeychainHelper.shared.read(forKey: BabbleBuddyAppResources.KeychainKeys.idToken.rawValue),
+            !baseURL.isEmpty, !idToken.isEmpty
+        else {
+            let view = EmptyView()
+            return view
+        }
+
+        let networkClient = NetworkClient(token: idToken)
+
+        let service = BBAJournalService(client: networkClient, baseURL: baseURL)
+
+        return BabyJournalView(service: service)
     }
 }
