@@ -8,9 +8,6 @@
       location = "group:BabiesList/BabiesListAndRegistration.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:BabyRegistrationModule/BabyRegistrationModule.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:SplashViewModule/SplashViewModule.xcodeproj">
    </FileRef>
    <FileRef

@@ -51,9 +51,16 @@ public class TabBarScreenProvider {
         }
 
         let networkClient = NetworkClient(token: idToken)
+        let babyService = BBABabiesServiceImplementation(
+            client: networkClient,
+            baseURL: baseURL
+        )
+        let journalService = BBAJournalService(client: networkClient, baseURL: baseURL)
+        let viewModel = BabyJournalViewModel(
+            journalService: journalService,
+            babiesService: babyService
+        )
 
-        let service = BBAJournalService(client: networkClient, baseURL: baseURL)
-
-        return BabyJournalView(service: service)
+        return BabyJournalView(viewModel: viewModel)
     }
 }

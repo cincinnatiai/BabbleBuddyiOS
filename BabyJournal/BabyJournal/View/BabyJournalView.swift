@@ -1,106 +1,113 @@
 import SwiftUI
 import DesignKit
 
-// MARK: Journal Entries view needs to be developed
 public struct BabyJournalView: View {
+    @ObservedObject private var viewModel: BabyJournalViewModel
     @State private var showBottomSheet = false
-    @State private var journalResults: [any BabyEventProtocol] = []
+    @State private var selectedBabyName: String = ""
+    @State private var selectedBabyIndex: Int = 0
+    @State private var selectedDate: Date = Date()
 
-    private let service: BabyJournalServiceProtocol
-
-    public init(service: BabyJournalServiceProtocol) {
-        self.service = service
+    public init(viewModel: BabyJournalViewModel){
+        self.viewModel = viewModel
     }
 
     public var body: some View {
-        // TODO: The account range key is the unique identifier of the baby, its retreieved from the fetchbabies api account range_key, all this logic needs to be moved to the view's viewmodel, down below is just a hard coded example to fetch the events
-        let request = JournalRequestModel(
-            accountPartitionKey: "CincinnatiBabyService",
-            accountRangeKey:  "193daee5-480d-4329-89b0-f8e9dd561e79",
-            userId: "",
-            date: "2025-07-10",
-            lastRangeKey: ""
-        )
-
-        return VStack {
-            if !journalResults.isEmpty {
-                ForEach(journalResults, id: \.rangeKey) { result in
-                    VStack(alignment: .leading) {
-                        Text("Type: \(result.type)")
-                        Text("RangeKey: \(result.rangeKey)")
-                    }
+        screenContent
+            .sheet(isPresented: $showBottomSheet) {
+                BBBottomSheetView(title: "Select an event"){ event in
+                    viewModel
+                        .createJournalCreateRequest(
+                            event: event,
+                            selectedBabyIndex: selectedBabyIndex, selectedDate: selectedDate
+                        )
+                    showBottomSheet = false
                 }
-            } else {
-                Text("Loading...")
+                .presentationDetents([.medium])
             }
-            HStack {
+    }
+
+    @ViewBuilder
+    private var screenContent: some View {
+        switch viewModel.state {
+        case .loading:
+            ProgressView()
+                .frame(alignment: .center)
+        case .loaded(let babies, let events):
+            screen(babies: babies, events: events)
+        case .noBabies:
+            EmptyView()
+        case .error(error: let error):
+            Text("Error: \(error)")
+        }
+    }
+
+    private func screen(babies: [String], events: [BabyEventDisplayableInfo]) -> some View {
+        ZStack(alignment: .bottomTrailing) {
+            BBVStack(screenTitle: "Baby Journal") {
+                topContent(babies: babies)
+                Divider()
+                bodyContent(events: events)
+            }
+            BBHStack{
                 Spacer()
-                FloatingActionButton(
-                    iconName: "plus",
-                    accessibilityLabel: "Add journal event",
-                    action: {
-                        showBottomSheet = true
-                    }
-                )
-                .padding(.trailing, 24)
-                .padding(.bottom, 24)
+                BBFloatingActionButton(iconName: "plus") {
+                    showBottomSheet = true
+                }
+            }
+            .padding()
+        }
+        .background(AppColor.background.ignoresSafeArea())
+    }
+
+    @ViewBuilder
+    private func topContent(babies: [String]) -> some View {
+        BBHStack {
+            BBWheelPicker(
+                options: babies,
+                selected: $selectedBabyName,
+                title: babies[0],
+                doneButtonLabel: "Select"
+            ) { index in
+                selectedBabyIndex = index
+                viewModel
+                    .createJournalFetchRequest(
+                        selectedBabyIndex: index,
+                        selectedDate: selectedDate
+                    )
+            }
+            BBDatePicker(selectedDate: $selectedDate){
+                viewModel
+                    .createJournalFetchRequest(
+                        selectedBabyIndex: selectedBabyIndex,
+                        selectedDate: selectedDate
+                    )
             }
         }
         .onAppear {
-            Task {
-                do {
-                    let response = try await service.fetchJournalByDate(request: request)
-                    journalResults = response.results
-                } catch {
-                    print("ERROR:", error)
-                }
+            if selectedBabyName.isEmpty, let first = babies.first {
+                selectedBabyName = first
             }
         }
-        .sheet(isPresented: $showBottomSheet) {
-            BBBottomSheetView(title: "Select an event") { selectedEvent in
-                do {
-                    let requestBody = BabyEventBodyModel(
-                        unit: "",
-                        notes: "",
-                        duration: "",
-                        mood: "",
-                        temperature: "",
-                        feedingType: "",
-                        diaperDetails: "",
-                        sleepQuality: "",
-                        cryingReason: "",
-                        activityDetails: ""
-                    )
+    }
 
-                    let bodyData = try JSONEncoder().encode(requestBody)
-                    let bodyString = String(data: bodyData, encoding: .utf8)!
-
-                    let request = BabyJournalEventRequestModel(
-                        accountPartitionKey: "CincinnatiBabyService",
-                        accountRangeKey: "193daee5-480d-4329-89b0-f8e9dd561e79",
-                        body: bodyString,
-                        dayDate: "2025-07-10",
-                        file: "",
-                        quantity: 0,
-                        timestamp: "2025-07-10T04:46:00.000Z",
-                        type: selectedEvent.eventName,
-                        unit: "",
-                        userId: "e2aff9ae-2102-4049-830e-912ec4b9a5b0"
-                    )
-
-                    Task {
-                        do {
-                            try await service.createJournalEntry(request: request)
-                            showBottomSheet = false
-                        } catch {
-                            // TODO: HANDLE ERROR
-                        }
-                    }
-                } catch {
-                    // TODO: HANDLE JSON ENCODING ERROR, THIS SHOULD NOT BE NECESSARY WHEN MOVED TO THE VM
-                }
+    @ViewBuilder
+    private func bodyContent(events: [BabyEventDisplayableInfo]) -> some View {
+        if events.isEmpty {
+            Spacer()
+            EmptyStateView(
+                title: "No events",
+                message: "Please add events to your journal"
+            )
+        } else {
+            ForEach(events.indices, id: \.self) { index in
+                let event = events[index]
+                BBCardView(
+                    name: event.eventType,
+                    description: event.eventDate,
+                    type: .event(.feed)
+                )
             }
         }
-
     }
 }

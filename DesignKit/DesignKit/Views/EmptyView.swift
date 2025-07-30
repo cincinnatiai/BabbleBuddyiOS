@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct EmptyStateView: View {
+public struct EmptyStateView: View {
     // MARK: - Layout Constants
         var imageSize: CGFloat = 80
         var cornerRadius: CGFloat = 8
@@ -12,7 +12,7 @@ struct EmptyStateView: View {
         let actionTitle: String?
         let action: (() -> Void)?
     
-    init(
+    public init(
         title: String,
         message: String? = nil,
         image: Image? = Image(systemName: "tray"),
@@ -30,7 +30,7 @@ struct EmptyStateView: View {
         self.imageSize = imageSize
         self.cornerRadius = cornerRadius
     }
-    var body: some View {
+    public var body: some View {
         VStack{
             if let image = image {
                 image
