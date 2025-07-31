@@ -10,7 +10,6 @@ import Combine
 
 public class BBGenericListBuilder<T, Cell>: UIView, UITableViewDataSource, UITableViewDelegate where Cell: UITableViewCell {
     
-    
     public var items: [T] = [] {
         didSet {
             tableView.reloadData()
@@ -70,3 +69,11 @@ public class BBGenericListBuilder<T, Cell>: UIView, UITableViewDataSource, UITab
         didSelectItem?(items[indexPath.row])
     }
 }
+
+#if DEBUG
+extension BBGenericListBuilder {
+    var debug_tableView: UITableView {
+        return self.tableView
+    }
+}
+#endif
