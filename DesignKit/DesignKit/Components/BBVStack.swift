@@ -21,6 +21,7 @@ import SwiftUI
 
 public struct BBVStack<Content: View>: View {
     private let content: () -> Content
+    private let scrollable: Bool
 
     // MARK: Dimensions
     private let horizontalPaddding: CGFloat = 24
@@ -32,21 +33,32 @@ public struct BBVStack<Content: View>: View {
     // MARK: Initializer
     public init(
         screenTitle: String? = nil,
+        scrollable: Bool = true,
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.screenTitle = screenTitle
+        self.scrollable = scrollable
         self.content = content
     }
 
     public var body: some View {
-        ScrollView(showsIndicators: false) {
-            VStack(alignment: .leading, spacing: verticalSpacing) {
-                content()
+        if scrollable {
+            ScrollView(showsIndicators: false) {
+                screenContent()
             }
-            .padding(.horizontal, horizontalPaddding)
-            .padding(.top, topPadding)
-            .padding(.bottom, bottomPadding)
+        } else {
+            screenContent()
         }
+    }
+
+    @ViewBuilder
+    private func screenContent() -> some View {
+        VStack(alignment: .center, spacing: verticalSpacing) {
+            content()
+        }
+        .padding(.horizontal, horizontalPaddding)
+        .padding(.top, topPadding)
+        .padding(.bottom, bottomPadding)
         .applyIf(screenTitle != nil) { view in
             view.navigationTitle(screenTitle!)
         }

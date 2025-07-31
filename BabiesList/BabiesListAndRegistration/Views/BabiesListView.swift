@@ -163,7 +163,7 @@ public class BabiesListView: UIViewController {
 extension BabiesListView {
     /// Adds the floating action button to the screen and configures its tap action.
     private func setupFloatingActionButton() {
-        let fab = FloatingActionButton(
+        let fab = BBFloatingActionButton(
             iconName: "plus",
             accessibilityLabel: "Register new baby",
             action: { self.navigateToRegistration() }

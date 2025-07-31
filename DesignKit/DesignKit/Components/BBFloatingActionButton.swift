@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct FloatingActionButton: View {
+public struct BBFloatingActionButton: View {
     private let iconName: String
     private let action: () -> Void
     private let accessibilityLabel: String

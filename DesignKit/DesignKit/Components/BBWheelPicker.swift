@@ -16,21 +16,29 @@ public struct BBWheelPicker: View {
     @Binding var selected: String
     private let title: String
     private let doneButtonLabel: String
+    private var onSelection: (Int) -> Void = {_ in}
+
     @State private var isPresented = false
+    @State private var internalSelectedIndex: Int = 0
 
     // MARK: Dimensions
     private let selectorCornerRadius: CGFloat = 10
     private let pickerFrameMaxHeight: CGFloat = 200
 
-    public init(options: [String], selected: Binding<String>, title: String, doneButtonLabel: String) {
+    public init(options: [String], selected: Binding<String>, title: String, doneButtonLabel: String,
+                onSelection: @escaping (Int) -> Void = {_ in}) {
         self.options = options
         self._selected = selected
         self.title = title
         self.doneButtonLabel = doneButtonLabel
+        self.onSelection = onSelection
     }
 
     public var body: some View {
         Button(action: {
+            if let initialIndex = options.firstIndex(of: selected), !selected.isEmpty {
+                internalSelectedIndex = initialIndex
+            }
             isPresented.toggle()
         }) {
             HStack {
@@ -49,10 +57,10 @@ public struct BBWheelPicker: View {
         .sheet(isPresented: $isPresented) {
             VStack {
                 Spacer()
-                Picker(selection: $selected, label: Text("")) {
-                    ForEach(options, id: \.self) {
-                        Text($0)
-                            .tag($0)
+                Picker(selection: $internalSelectedIndex, label: Text("")) {
+                    ForEach(options.indices, id: \.self) { index in
+                        Text(options[index])
+                            .tag(index)
                     }
                 }
                 .pickerStyle(.wheel)
@@ -62,6 +70,10 @@ public struct BBWheelPicker: View {
                 Divider()
 
                 Button(doneButtonLabel) {
+                    if options.indices.contains(internalSelectedIndex) {
+                        selected = options[internalSelectedIndex]
+                        onSelection(internalSelectedIndex)
+                    }
                     isPresented = false
                 }
                 .padding(.bottom)

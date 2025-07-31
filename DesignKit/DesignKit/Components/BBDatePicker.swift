@@ -16,10 +16,16 @@ public struct BBDatePicker: View {
     @Binding private var selectedDate: Date
     private let closingButtonLabel: String
     @State private var isPickerVisible = false
+    private let onDateSelected: () -> Void
 
-    public init(selectedDate: Binding<Date>, closingButtonLabel: String = "Select") {
+    public init(
+        selectedDate: Binding<Date>,
+        closingButtonLabel: String = "Select",
+        onDateSelected: @escaping () -> Void = {}
+    ) {
         _selectedDate = selectedDate
         self.closingButtonLabel = closingButtonLabel
+        self.onDateSelected = onDateSelected
     }
 
     public var body: some View {
@@ -46,6 +52,7 @@ public struct BBDatePicker: View {
 
                 Button(closingButtonLabel) {
                     isPickerVisible = false
+                    onDateSelected()
                 }
                 .font(.headline)
             }
