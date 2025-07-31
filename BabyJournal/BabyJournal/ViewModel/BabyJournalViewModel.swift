@@ -173,7 +173,6 @@ final public class BabyJournalViewModel: ObservableObject {
 
     private func getSleepStatus() -> String {
         let sleepState = userDefaults.getString(key: sleepStart)
-
         if sleepState == nil {
             userDefaults
                 .set(
@@ -182,18 +181,14 @@ final public class BabyJournalViewModel: ObservableObject {
                 )
             return sleepStart
         } else {
-            userDefaults
-                .set(
-                    value: formatDateToISO8601UTCString(date: Date()),
-                    key: sleepEnd
-                )
+            // TODO: here goes the logic to get the sleep time interval
+            userDefaults.removeValue(key: sleepStart)
             return sleepEnd
         }
     }
 
     private func getPlayStatus() -> String {
         let playState = userDefaults.getString(key: playStart)
-
         if playState == nil {
             userDefaults
                 .set(
@@ -202,11 +197,8 @@ final public class BabyJournalViewModel: ObservableObject {
                 )
             return playStart
         } else {
-            userDefaults
-                .set(
-                    value: formatDateToISO8601UTCString(date: Date()),
-                    key: playEnd
-                )
+            // TODO: here goes the logic to get the play time interval
+            userDefaults.removeValue(key: playStart)
             return playEnd
         }
     }
