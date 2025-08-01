@@ -50,6 +50,11 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D1F779042E3D21E70073E41C /* Coordinators */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +73,7 @@
 		96B4D7562E047B56006AF33B = {
 			isa = PBXGroup;
 			children = (
+				D1F779042E3D21E70073E41C /* Coordinators */,
 				D15F92752E2082A100697D9C /* Models */,
 				D15F92622E20534D00697D9C /* Protocols */,
 				96B4D7622E047B56006AF33B /* BabyJournal */,
@@ -124,6 +130,7 @@
 				96B4D7622E047B56006AF33B /* BabyJournal */,
 				D15F92622E20534D00697D9C /* Protocols */,
 				D15F92752E2082A100697D9C /* Models */,
+				D1F779042E3D21E70073E41C /* Coordinators */,
 			);
 			name = BabyJournal;
 			packageProductDependencies = (

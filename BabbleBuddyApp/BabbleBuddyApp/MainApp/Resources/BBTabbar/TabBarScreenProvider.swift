@@ -14,6 +14,32 @@ import NetworkingKit
 import BabyJournal
 
 public class TabBarScreenProvider {
+    static private let idToken: String = {
+        guard let token = KeychainHelper.shared.read(forKey: BabbleBuddyAppResources.KeychainKeys.idToken.rawValue) else {
+            return ""
+        }
+        return token
+    }()
+
+    static private let baseURL: String = {
+        guard let token = KeychainHelper.shared.read(
+            forKey: BabbleBuddyAppResources.KeychainKeys.baseURL.rawValue
+        ) else {
+            return ""
+        }
+        return token
+    }()
+
+    static private let networkClient = NetworkClient(token: idToken)
+
+    static private let babyService = BBABabiesServiceImplementation(
+        client: networkClient,
+        baseURL: baseURL
+    )
+
+    static private let journalService = BBAJournalService(client: networkClient, baseURL: baseURL)
+
+
     static func makeBabiesListView(userEmail: String) -> UIViewController {
         guard
             let baseURL = KeychainHelper.shared.read(forKey: BabbleBuddyAppResources.KeychainKeys.baseURL.rawValue),
@@ -41,26 +67,13 @@ public class TabBarScreenProvider {
     }
 
     static func makeJournalView() -> any View {
-        guard
-            let baseURL = KeychainHelper.shared.read(forKey: BabbleBuddyAppResources.KeychainKeys.baseURL.rawValue),
-            let idToken = KeychainHelper.shared.read(forKey: BabbleBuddyAppResources.KeychainKeys.idToken.rawValue),
-            !baseURL.isEmpty, !idToken.isEmpty
-        else {
-            let view = EmptyView()
-            return view
-        }
-
-        let networkClient = NetworkClient(token: idToken)
-        let babyService = BBABabiesServiceImplementation(
-            client: networkClient,
-            baseURL: baseURL
-        )
-        let journalService = BBAJournalService(client: networkClient, baseURL: baseURL)
-        let viewModel = BabyJournalViewModel(
-            journalService: journalService,
-            babiesService: babyService
+        let coordinator = BabyJournalViewCoordinator(
+            baseUrl: baseURL,
+            idToken: idToken,
+            babyService: babyService,
+            journalService: journalService
         )
 
-        return BabyJournalView(viewModel: viewModel)
+        return coordinator.navigateToBabyJournalView()
     }
 }
