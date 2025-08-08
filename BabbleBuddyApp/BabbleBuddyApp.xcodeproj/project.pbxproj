@@ -16,6 +16,8 @@
 		D11465E52E00D11A0006E12E /* AuthLibrarySPM in Frameworks */ = {isa = PBXBuildFile; productRef = D11465E42E00D11A0006E12E /* AuthLibrarySPM */; };
 		D14624C72DF9416300E052AE /* TabBar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14624C62DF9416300E052AE /* TabBar.framework */; };
 		D14624C82DF9416300E052AE /* TabBar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D14624C62DF9416300E052AE /* TabBar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D16892862E46673D0055E697 /* SettingsModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D16892852E46673D0055E697 /* SettingsModule.framework */; };
+		D16892872E46673D0055E697 /* SettingsModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D16892852E46673D0055E697 /* SettingsModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D1694B282DFE54770033719F /* CoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1694B272DFE54770033719F /* CoreKit.framework */; };
 		D1694B292DFE54770033719F /* CoreKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D1694B272DFE54770033719F /* CoreKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D1977A1A2E1F20050090EB8D /* BabyJournal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1977A192E1F20050090EB8D /* BabyJournal.framework */; };
@@ -41,6 +43,7 @@
 				966FCD322DFC9E3A008B4114 /* NetworkingKit.framework in Embed Frameworks */,
 				D1977A1B2E1F20050090EB8D /* BabyJournal.framework in Embed Frameworks */,
 				D113A8142DFFFE0400FAB64D /* BabiesListAndRegistration.framework in Embed Frameworks */,
+				D16892872E46673D0055E697 /* SettingsModule.framework in Embed Frameworks */,
 				966FCD2C2DFC9E2A008B4114 /* DesignKit.framework in Embed Frameworks */,
 				D14624C82DF9416300E052AE /* TabBar.framework in Embed Frameworks */,
 				D1694B292DFE54770033719F /* CoreKit.framework in Embed Frameworks */,
@@ -59,6 +62,7 @@
 		D1022DC12DFB80A200E1CF2E /* BabyRegistrationModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabyRegistrationModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D113A8122DFFFE0400FAB64D /* BabiesListAndRegistration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabiesListAndRegistration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D14624C62DF9416300E052AE /* TabBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TabBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D16892852E46673D0055E697 /* SettingsModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SettingsModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1694B272DFE54770033719F /* CoreKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1977A192E1F20050090EB8D /* BabyJournal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabyJournal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECC8882A2DB6F0FD00848C01 /* SplashViewModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SplashViewModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +106,7 @@
 				ECD4A2432DC3FEB60094E06D /* FirebaseFirestore in Frameworks */,
 				D1977A1A2E1F20050090EB8D /* BabyJournal.framework in Frameworks */,
 				D113A8132DFFFE0400FAB64D /* BabiesListAndRegistration.framework in Frameworks */,
+				D16892862E46673D0055E697 /* SettingsModule.framework in Frameworks */,
 				966FCD2B2DFC9E2A008B4114 /* DesignKit.framework in Frameworks */,
 				D14624C72DF9416300E052AE /* TabBar.framework in Frameworks */,
 				ECD4A2452DC3FEB60094E06D /* FirebaseRemoteConfig in Frameworks */,
@@ -115,6 +120,7 @@
 		ECC888292DB6F0FD00848C01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D16892852E46673D0055E697 /* SettingsModule.framework */,
 				D1977A192E1F20050090EB8D /* BabyJournal.framework */,
 				D113A8122DFFFE0400FAB64D /* BabiesListAndRegistration.framework */,
 				D1694B272DFE54770033719F /* CoreKit.framework */,
