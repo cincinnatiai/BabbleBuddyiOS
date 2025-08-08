@@ -20,7 +20,7 @@ public class TabBarScreenProvider {
         }
         return token
     }()
-
+    
     static private let baseURL: String = {
         guard let token = KeychainHelper.shared.read(
             forKey: BabbleBuddyAppResources.KeychainKeys.baseURL.rawValue
@@ -29,43 +29,26 @@ public class TabBarScreenProvider {
         }
         return token
     }()
-
+    
     static private let networkClient = NetworkClient(token: idToken)
-
+    
     static private let babyService = BBABabiesServiceImplementation(
         client: networkClient,
         baseURL: baseURL
     )
-
+    
     static private let journalService = BBAJournalService(client: networkClient, baseURL: baseURL)
-
-
+    
     static func makeBabiesListView(userEmail: String) -> UIViewController {
-        guard
-            let baseURL = KeychainHelper.shared.read(forKey: BabbleBuddyAppResources.KeychainKeys.baseURL.rawValue),
-            let idToken = KeychainHelper.shared.read(forKey: BabbleBuddyAppResources.KeychainKeys.idToken.rawValue),
-            !baseURL.isEmpty, !idToken.isEmpty
-        else {
-            // TODO: If there is no baseURL or idToken no view should exist, here should be performed sign out
-            let viewController = UIViewController()
-            viewController.title = "Error no baseURL or idToken"
-            return viewController
-        }
-
-        let networkClient = NetworkClient(token: idToken)
-
-        let service = BBABabiesServiceImplementation(
-            client: networkClient, baseURL: baseURL
+        
+        let coordinator = BabiesListCoordinator(
+            accountApi: { try await babyService.fetchBabies() },
+            babyService: babyService,
+            userEmail: userEmail
         )
-
-        let viewModel = BabiesListViewModel(accountApi: {
-            try await service.fetchBabies()
-        }, babyService: service, userEmail: userEmail
-        )
-
-        return BabiesListView(viewModel: viewModel)
+        return coordinator.navigateToBabiesListVeiw()
     }
-
+    
     static func makeJournalView() -> any View {
         let coordinator = BabyJournalViewCoordinator(
             baseUrl: baseURL,
@@ -73,7 +56,6 @@ public class TabBarScreenProvider {
             babyService: babyService,
             journalService: journalService
         )
-
         return coordinator.navigateToBabyJournalView()
     }
 }
