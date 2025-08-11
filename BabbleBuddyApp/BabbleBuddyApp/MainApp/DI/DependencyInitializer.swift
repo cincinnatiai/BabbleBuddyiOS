@@ -17,7 +17,6 @@ class DependencyInitializer {
     static let sharedAuthManager: AuthManager = AuthManager()
     static let sharedAuthViewModel: AuthViewModel = AuthViewModel(authManager: sharedAuthManager)
     static let sharedTokenHandler: TokenHandler = TokenHandler()
-    static let sharedConfigurationService: ConfigurationService = ConfigurationService(remoteConfigProvider: RemoteConfigProvider())
 
     // MARK: - Initialization
 
@@ -40,9 +39,6 @@ class DependencyInitializer {
 
         container.register(TokenHandler.self) {
             DependencyInitializer.sharedTokenHandler
-        }
-        container.register(ConfigurationService.self) {
-            DependencyInitializer.sharedConfigurationService
         }
     }
 }
