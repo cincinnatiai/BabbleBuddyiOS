@@ -42,11 +42,10 @@ public class TabBarScreenProvider {
     static func makeBabiesListView(userEmail: String) -> UIViewController {
         
         let coordinator = BabiesListCoordinator(
-            accountApi: { try await babyService.fetchBabies() },
             babyService: babyService,
             userEmail: userEmail
         )
-        return coordinator.navigateToBabiesListVeiw()
+        return coordinator.navigateToBabiesListView()
     }
     
     static func makeJournalView() -> any View {

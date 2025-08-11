@@ -13,17 +13,14 @@ public class BabiesListViewModel {
     @Published var babiesState: BabiesState = .loading
 
     // MARK: Private properties
-    private var accountApi: () async throws -> [BabiesResponseProtocol]
     private let babyService: BBABabiesServiceProtocol
     private let userEmail: String
 
     // MARK: Initializer
     public init(
-        accountApi: @escaping () async throws -> [BabiesResponseProtocol],
         babyService: BBABabiesServiceProtocol,
         userEmail: String
     ) {
-        self.accountApi = accountApi
         self.babyService = babyService
         self.userEmail = userEmail
     }
@@ -33,7 +30,7 @@ public class BabiesListViewModel {
         babiesState = .loading
         Task {
             do {
-                let response = try await accountApi()
+                let response = try await babyService.fetchBabies()
                 let babies = await transformToDisplayableBabies(response: response)
                 await MainActor.run {
                     babiesState = .success(babies)
