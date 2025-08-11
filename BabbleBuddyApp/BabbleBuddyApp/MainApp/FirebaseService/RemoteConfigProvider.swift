@@ -8,30 +8,33 @@
 import Foundation
 import FirebaseFirestore
 
+// TODO: Create a protocol
 class RemoteConfigProvider {
-    
+
     private lazy var dataBase = Firestore.firestore()
 
     enum FirestoreServiceError: Error {
         case documentNotFound
-        case unableToSaveConfig
-        case unableToLoadConfig
         case unknownError(String)
     }
 
-    func fetchURLs(completion: @escaping (Result<[String: Any], FirestoreServiceError>) -> Void) {
-        dataBase.collection("ios_configs")
-          .document("configs")
-          .getDocument { (document, error) in
-            if let error = error {
-              completion(.failure(.unknownError(error.localizedDescription)))
-              return
+    func fetchBaseUrl() async throws -> String {
+        do {
+            let configuration = try await dataBase
+                .collection("ios_configs")
+                .document("configs")
+                .getDocument()
+
+            guard configuration.exists,
+                  let data = configuration.data(),
+                  let baseUrl = data["bfs_endpoint"] as? String,
+                  !baseUrl.isEmpty else {
+                throw FirestoreServiceError.documentNotFound
             }
-            guard let document = document, document.exists, let data = document.data() else {
-              completion(.failure(.documentNotFound))
-              return
-            }
-            completion(.success(data))
-          }
-      }
+
+            return baseUrl
+        } catch {
+            throw FirestoreServiceError.unknownError(error.localizedDescription)
+        }
+    }
 }

@@ -14,6 +14,7 @@ public class BabiesListView: UIViewController {
     private var displayableBabies: [DisplayableBabyItem] = []
     private var subscription = [AnyCancellable]()
     private let localizedStrings = BabiesListLocalizedStringKeys.self
+    private let onAddBabyTapped: ( UINavigationController ) -> Void
 
     // MARK: - UI Components
 
@@ -41,8 +42,12 @@ public class BabiesListView: UIViewController {
 
     /// Creates a new `BabiesListView` with a provided view model.
     /// - Parameter viewModel: The view model responsible for fetching and providing baby data.
-    public init(viewModel: BabiesListViewModel) {
+    public init(
+        viewModel: BabiesListViewModel,
+        onAddBabyTapped: @escaping ( UINavigationController ) -> Void
+    ) {
         self.viewModel = viewModel
+        self.onAddBabyTapped = onAddBabyTapped
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -158,15 +163,16 @@ public class BabiesListView: UIViewController {
 }
 
 // MARK: - Navigation with Floating Action Button
-// TODO: Navigate to screen
 
 extension BabiesListView {
     /// Adds the floating action button to the screen and configures its tap action.
     private func setupFloatingActionButton() {
+        guard let nav = self.navigationController else { return }
+
         let fab = BBFloatingActionButton(
             iconName: "plus",
             accessibilityLabel: "Register new baby",
-            action: { self.navigateToRegistration() }
+            action: { self.onAddBabyTapped(nav) }
         )
 
         let fabController = UIHostingController(rootView: fab)
@@ -181,21 +187,5 @@ extension BabiesListView {
             fabController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
             fabController.view.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -24)
         ])
-    }
-
-    /// Navigates to a test registration view (needs to be adaoted to the one that will be used).
-    private func navigateToRegistration() {
-        let registrationViewModel = viewModel.createBabyRegistrationViewModel()
-        let registrationView = BabyRegistrationView(viewModel: registrationViewModel) { [weak self] in
-            // TODO: Delete this once details is implemented
-            DispatchQueue.main.async {
-                self?.navigationController?.popViewController(animated: true)
-                self?.viewModel.initialize()
-            }
-
-        }
-        let registrationVC = UIHostingController(rootView: registrationView)
-        registrationVC.title = localizedStrings.BabyRegistrationScreenTitle
-        navigationController?.pushViewController(registrationVC, animated: true)
     }
 }

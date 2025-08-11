@@ -10,15 +10,11 @@ import BabiesListAndRegistration
 import SwiftUI
 
 public final class BabyJournalViewCoordinator: BBCoordinator {
-    private let baseUrl: String
-    private let idToken: String
     private var viewModel: BabyJournalViewModel?
     private let babyService: BBABabiesServiceProtocol
     private let journalService: BabyJournalServiceProtocol
 
-    public init(baseUrl: String, idToken: String, babyService: BBABabiesServiceProtocol, journalService: BabyJournalServiceProtocol) {
-        self.baseUrl = baseUrl
-        self.idToken = idToken
+    public init(babyService: BBABabiesServiceProtocol, journalService: BabyJournalServiceProtocol) {
         self.babyService = babyService
         self.journalService = journalService
         /// For this particular case, since the tabbar contains the navigation stack and the navigationController, we just need to provide the screen to the tabbar

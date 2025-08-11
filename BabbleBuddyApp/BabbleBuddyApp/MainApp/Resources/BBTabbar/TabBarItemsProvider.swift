@@ -8,14 +8,12 @@
 import SwiftUI
 import TabBar
 import AuthLibrarySPM
-import BabyJournal
 
 typealias L10n = LocalizedStringKeys
 
 enum TabBarItemsProvider {
-    /// TabBarItemsProvider.Items() will inject to the TabBar Module the items on the tab bar navigation  bar, the order of the items is determined
-    /// with their position of the Items() array
-    static func items(userEmail: String) -> [TabItem] {
+    /// Use the TabItem from the TabBar module
+    static func items() -> [TabItem] {
         return [
             TabItem(
                 title: L10n.HomeScreenTabItemTitle,
@@ -26,7 +24,7 @@ enum TabBarItemsProvider {
                 title: L10n.BabiesListTabItemTitle,
                 icon: "figure.and.child.holdinghands",
                 viewController: TabBarScreenProvider
-                    .makeBabiesListView(userEmail: userEmail)
+                    .makeBabiesListView()
             ),
             TabItem(
                 title: L10n.SettingsScreenTabItemTitle,

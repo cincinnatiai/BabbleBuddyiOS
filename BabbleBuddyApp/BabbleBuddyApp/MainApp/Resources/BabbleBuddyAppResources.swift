@@ -20,5 +20,6 @@ enum BabbleBuddyAppResources {
     enum KeychainKeys: String {
         case idToken
         case baseURL
+        case userName
     }
 }

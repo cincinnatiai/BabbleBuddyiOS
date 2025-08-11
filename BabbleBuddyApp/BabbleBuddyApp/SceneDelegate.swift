@@ -5,15 +5,19 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var mainCoordinator: MainCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         _ = DependencyInitializer()
-        // TODO: Create the App coordinator
-        let mainScreen = { UIHostingController(rootView: MainScreen()) }
-        let splashViewModel = SplashViewModel(mainScreen: mainScreen)
-        let splashViewController = SplashViewController(splashViewModel: splashViewModel)
-        let navigationController = UINavigationController(rootViewController: splashViewController)
+
+        let navigationController = UINavigationController()
+        mainCoordinator = MainCoordinator(
+            navigationController: navigationController
+        )
+        guard let mainCoordinator else { return }
+
+        mainCoordinator.start()
 
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = navigationController
@@ -21,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
-}
+    }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
 
