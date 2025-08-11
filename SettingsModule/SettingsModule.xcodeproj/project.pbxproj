@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D168915D2E46669B0055E697 /* SettingsModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D16891512E46669B0055E697 /* SettingsModule.framework */; };
+		F9C390B12E4670FC00256566 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C390B02E4670FC00256566 /* SettingsScreen.swift */; };
+		F9C391CA2E467B2C00256566 /* AppLanguage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C391C92E467B2C00256566 /* AppLanguage.swift */; };
+		F9C391CC2E467B4200256566 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C391CB2E467B4200256566 /* BundleExtension.swift */; };
+		F9C391CE2E467B5800256566 /* LanguageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9C391CD2E467B5800256566 /* LanguageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +27,10 @@
 /* Begin PBXFileReference section */
 		D16891512E46669B0055E697 /* SettingsModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SettingsModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D168915C2E46669B0055E697 /* SettingsModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SettingsModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9C390B02E4670FC00256566 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		F9C391C92E467B2C00256566 /* AppLanguage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLanguage.swift; sourceTree = "<group>"; };
+		F9C391CB2E467B4200256566 /* BundleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
+		F9C391CD2E467B5800256566 /* LanguageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -34,11 +42,6 @@
 		D16891602E46669B0055E697 /* SettingsModuleTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = SettingsModuleTests;
-			sourceTree = "<group>";
-		};
-		D168916B2E4666C50055E697 /* Views */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -65,7 +68,7 @@
 		D16891472E46669B0055E697 = {
 			isa = PBXGroup;
 			children = (
-				D168916B2E4666C50055E697 /* Views */,
+				F9C391C82E467B0500256566 /* Resources */,
 				D16891532E46669B0055E697 /* SettingsModule */,
 				D16891602E46669B0055E697 /* SettingsModuleTests */,
 				D16891522E46669B0055E697 /* Products */,
@@ -79,6 +82,17 @@
 				D168915C2E46669B0055E697 /* SettingsModuleTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F9C391C82E467B0500256566 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F9C391C92E467B2C00256566 /* AppLanguage.swift */,
+				F9C391CB2E467B4200256566 /* BundleExtension.swift */,
+				F9C391CD2E467B5800256566 /* LanguageManager.swift */,
+				F9C390B02E4670FC00256566 /* SettingsScreen.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,7 +123,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				D16891532E46669B0055E697 /* SettingsModule */,
-				D168916B2E4666C50055E697 /* Views */,
 			);
 			name = SettingsModule;
 			packageProductDependencies = (
@@ -201,6 +214,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9C391CC2E467B4200256566 /* BundleExtension.swift in Sources */,
+				F9C390B12E4670FC00256566 /* SettingsScreen.swift in Sources */,
+				F9C391CA2E467B2C00256566 /* AppLanguage.swift in Sources */,
+				F9C391CE2E467B5800256566 /* LanguageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

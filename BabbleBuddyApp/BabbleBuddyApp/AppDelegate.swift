@@ -8,12 +8,19 @@
 import UIKit
 import Firebase
 import FirebaseFirestore
+import SettingsModule
+import BabiesListAndRegistration
+import SplashViewModule
+import TabBar
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        LanguageManager.shared.registerModule(BabiesListLanguageConfig())
+        LanguageManager.shared.registerModule(SplashViewLanguageConfig())
+        LanguageManager.shared.registerModule(TabBarLanguageConfig())
         return true
     }
 

@@ -1,0 +1,51 @@
+/* 
+  Localizable.strings
+  BabiesList
+
+  Created by Trainee on 4/21/25.
+  
+*/
+
+// MARK: Baby list feature
+"Fatal_Error_Message" = "init(coder:)가 구현되지 않았습니다.";
+"BabyTableViewCell_Description_Label" = "설명: ";
+"BabiesListView_AlertMessage_Title" = "오류";
+"BabiesListView_AlertAction_Label" = "좋아요";
+"BabyListView_Screen_Title" = "내 아기들";
+
+// MARK: Baby registration feature
+"BabyRegistrationView_Screen_Title" = "아기 등록";
+"BabyRegistrationView_FirstName_Title" = "이름";
+"BabyRegistrationView_FirstName_PlaceHolder" = "아기 이름을 입력하세요";
+"BabyRegistrationView_LastName_Title" = "성";
+"BabyRegistrationView_LastName_PlaceHolder" = "아기의 성을 입력하세요";
+"BabyRegistrationView_DateOfBirth_Title" = "생일";
+"BabyRegistrationView_Gender_Title" = "성별";
+"BabyRegistrationView_GenderPicker_Male_Text" = "남성";
+"BabyRegistrationView_GenderPicker_Female_Text" = "여성";
+"BabyRegistrationView_BirthWeight_Title" = "출생 체중";
+"BabyRegistrationView_BirthWeight_PlaceHolder" = "아기의 체중을 입력하세요(선택사항)";
+"BabyRegistrationView_BirthWeightPicker_Kilograms_Text" = "킬로그램";
+"BabyRegistrationView_BirthWeightPicker_Pounds_Text" = "파운드";
+"BabyRegistrationView_BirthHeight_Title" = "출생 키";
+"BabyRegistrationView_BirthHeight_PlaceHolder" = "아기의 키를 입력하세요 (선택사항)";
+"BabyRegistrationView_BirthHeightPicker_Centimeters_Text" = "센티미터";
+"BabyRegistrationView_BirthHeightPicker_Inches_Text" = "인치";
+"BabyRegistrationView_BloodType_Title" = "혈액형";
+"BabyRegistrationView_BloodType_PlaceHolder" = "아기의 혈액형을 입력하세요 (선택사항)";
+"BabyRegistrationView_Allergies_Title" = "알레르기";
+"BabyRegistrationView_Allergies_PlaceHolder" = "알레르기 입력 (선택사항)";
+"BabyRegistrationView_Submit_Button_Text" = "제출하다";
+"BabyRegistrationView_Baby_Info_Section_Title" = "아기 정보";
+"BabyRegistrationView_Baby_Measurements_Section_Title" = "아기 치수";
+"BabyRegistrationView_Medical_Info_Section_Title" = "의료 정보";
+
+"CustomDatePicker_Button_Title" = "선택하다";
+
+"ValidationErrors_EmptyFirstName_Text" = "이름은 필수입니다";
+"ValidationErrors_EmptyLastName_Text" = "성이 필요합니다";
+"ValidationErrors_EmptyGender_Text" = "성별이 필요합니다";
+"ValidationErrors_EmptyWeightUnit_Text" = "무게 단위가 필요합니다";
+"ValidationErrors_InvalidWeightValue_Text" = "출생 체중은 숫자여야 합니다.";
+"ValidationErrors_EmptyHeightUnit_Text" = "높이 단위가 필요합니다";
+"ValidationErrors_InvalidHeightValue_Text" = "출생 키는 숫자여야 합니다.";

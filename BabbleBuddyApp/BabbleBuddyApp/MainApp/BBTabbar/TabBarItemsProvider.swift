@@ -30,7 +30,7 @@ enum TabBarItemsProvider {
             TabItem(
                 title: L10n.SettingsScreenTabItemTitle,
                 icon: "gearshape",
-                viewController: SettingsScreen()
+                view: SettingsScreen()
             ),
             TabItem(
                 title: "Sign out",
