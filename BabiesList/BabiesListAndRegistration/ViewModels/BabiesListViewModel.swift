@@ -13,19 +13,16 @@ public class BabiesListViewModel {
     @Published var babiesState: BabiesState = .loading
 
     // MARK: Private properties
-    private var accountApi: () async throws -> [BabiesResponseProtocol]
     private let babyService: BBABabiesServiceProtocol
-    private let userEmail: String
+    private let onSuccessFetchedBabies: (String) -> Void
 
     // MARK: Initializer
     public init(
-        accountApi: @escaping () async throws -> [BabiesResponseProtocol],
         babyService: BBABabiesServiceProtocol,
-        userEmail: String
+        onSuccessFetchedBabies: @escaping (String) -> Void
     ) {
-        self.accountApi = accountApi
         self.babyService = babyService
-        self.userEmail = userEmail
+        self.onSuccessFetchedBabies = onSuccessFetchedBabies
     }
 
     // MARK: Public methods
@@ -33,8 +30,15 @@ public class BabiesListViewModel {
         babiesState = .loading
         Task {
             do {
-                let response = try await accountApi()
+                let response = try await babyService.fetchBabies()
                 let babies = await transformToDisplayableBabies(response: response)
+                let user = response[0].accountProfile?.encryptedEmail?
+                    .base64DecodedString()
+
+                if let user = user {
+                    onSuccessFetchedBabies(user)
+                }
+                
                 await MainActor.run {
                     babiesState = .success(babies)
                 }
@@ -44,12 +48,6 @@ public class BabiesListViewModel {
                 }
             }
         }
-    }
-
-    func createBabyRegistrationViewModel() -> BabyRegistrationViewModel {
-        return BabyRegistrationViewModel(userEmail: userEmail, createAPI: { request in
-            try await self.babyService.createBaby(request: request)
-        })
     }
 
     // MARK: Private methods

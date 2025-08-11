@@ -3,10 +3,10 @@ import AWSMobileClientXCF
 
 class AWSConfigManager {
     static let shared = AWSConfigManager()
-    
+
     public init() {}
 
-    func loadConfig() -> [String: Any]? {
+    private func loadConfig() -> [String: Any]? {
 
         guard let path = Bundle.main.path(forResource: "AWSConfig", ofType: "plist"),
               let data = FileManager.default.contents(atPath: path) else {

@@ -26,15 +26,13 @@ public final class BabyRegistrationViewModel: ObservableObject {
     @Published private(set) var didCreateSuccessfully = false
 
     // MARK: Private properties
-    private let createAPI: (
-        CreateBabyRequestProtocol
-    ) async throws -> CreateBabyResponseProtocol
+    private let babyService: BBABabiesServiceProtocol
     private let userEmail: String
 
     // MARK: Initializer
-    public init(userEmail: String,createAPI: @escaping (CreateBabyRequestProtocol) async throws -> CreateBabyResponseProtocol) {
+    public init(userEmail: String, babyService: BBABabiesServiceProtocol) {
         self.userEmail = userEmail
-        self.createAPI = createAPI
+        self.babyService = babyService
     }
 
     var onSubmit: ((BabyRegistrationData) -> Void)?
@@ -90,7 +88,7 @@ public final class BabyRegistrationViewModel: ObservableObject {
             )
 
             do {
-                let success = try await createAPI(request)
+                let success = try await babyService.createBaby(request: request)
                 await MainActor.run {
                     if !success.created.isEmpty {
                         self.errorMessage = nil

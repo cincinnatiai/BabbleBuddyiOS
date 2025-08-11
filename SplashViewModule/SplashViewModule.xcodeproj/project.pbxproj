@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		86DD7D0C2DA5D5A8005D214C /* SplashViewModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DD7D012DA5D5A8005D214C /* SplashViewModule.framework */; };
+		D16894182E4675700055E697 /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D16894172E4675700055E697 /* DesignKit.framework */; };
+		D16894192E4675700055E697 /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D16894172E4675700055E697 /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -20,9 +22,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		D168941A2E4675700055E697 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D16894192E4675700055E697 /* DesignKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		86DD7D012DA5D5A8005D214C /* SplashViewModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SplashViewModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86DD7D0B2DA5D5A8005D214C /* SplashViewModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SplashViewModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D16894172E4675700055E697 /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -56,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D16894182E4675700055E697 /* DesignKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +110,7 @@
 		ECC888312DB6F1A200848C01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D16894172E4675700055E697 /* DesignKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,6 +136,7 @@
 				86DD7CFD2DA5D5A8005D214C /* Sources */,
 				86DD7CFE2DA5D5A8005D214C /* Frameworks */,
 				86DD7CFF2DA5D5A8005D214C /* Resources */,
+				D168941A2E4675700055E697 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
