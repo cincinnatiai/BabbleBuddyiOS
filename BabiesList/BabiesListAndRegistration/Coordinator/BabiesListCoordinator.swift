@@ -10,8 +10,6 @@ import SwiftUI
 
 public final class BabiesListCoordinator: BBCoordinator {
     // MARK: Private properties
-    private let baseUrl: String
-    private let idToken: String
     private var viewModel: BabiesListViewModel?
     private var navigationController: UINavigationController?
     private let babyService: BBABabiesServiceProtocol
@@ -20,12 +18,8 @@ public final class BabiesListCoordinator: BBCoordinator {
 
     // MARK: Initialize
     public init(
-        baseUrl: String,
-        idToken: String,
         babyService: BBABabiesServiceProtocol
     ) {
-        self.baseUrl = baseUrl
-        self.idToken = idToken
         self.babyService = babyService
         start()
     }

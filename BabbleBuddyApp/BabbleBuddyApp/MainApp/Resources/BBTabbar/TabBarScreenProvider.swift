@@ -14,6 +14,7 @@ import NetworkingKit
 import BabyJournal
 
 public class TabBarScreenProvider {
+    // MARK: Shared resources
     static private let idToken: String = {
         guard let token = KeychainHelper.shared.read(
             forKey: BabbleBuddyAppResources.KeychainKeys.idToken.rawValue
@@ -41,10 +42,9 @@ public class TabBarScreenProvider {
 
     static private let journalService = BBAJournalService(client: networkClient, baseURL: baseURL)
 
+    // MARK: Views
     static func makeBabiesListView() -> UIViewController {
         let coordinator = BabiesListCoordinator(
-            baseUrl: baseURL,
-            idToken: idToken,
             babyService: babyService
         )
 
@@ -53,8 +53,6 @@ public class TabBarScreenProvider {
 
     static func makeJournalView() -> any View {
         let coordinator = BabyJournalViewCoordinator(
-            baseUrl: baseURL,
-            idToken: idToken,
             babyService: babyService,
             journalService: journalService
         )
