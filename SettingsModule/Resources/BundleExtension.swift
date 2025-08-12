@@ -11,6 +11,7 @@ public enum ModuleIdentifier {
     case babiesListModule
     case splashViewModule
     case tabBarModule
+    case settingsModule
 }
 
 private var bundleOverrides: [ModuleIdentifier: Bundle] = [:]
@@ -26,5 +27,19 @@ public extension Bundle {
         } else {
             return Bundle(for: identifierType)
         }
+    }
+}
+
+final class SettingsModuleIndentifier {}
+
+public struct SettingsLanguageConfig: LanguageConfigurableModule {
+    public var moduleId: ModuleIdentifier = .settingsModule
+    public var baseBundle: Bundle = Bundle(for: SettingsModuleIndentifier.self)
+    public init() {}
+}
+
+extension Bundle {
+    public static var settingsModule: Bundle {
+        return bundle(for: .settingsModule, identifierType: SettingsModuleIndentifier.self)
     }
 }

@@ -3,6 +3,7 @@ import UIKit
 import Combine
 import SwiftUI
 import DesignKit
+import SettingsModule
 
 /// A view controller that displays a list of babies and manages user interaction.
 /// Includes loading indicator, error handling, and navigation via a floating action button.
@@ -13,8 +14,10 @@ public class BabiesListView: UIViewController {
     private var viewModel: BabiesListViewModel
     private var displayableBabies: [DisplayableBabyItem] = []
     private var subscription = [AnyCancellable]()
-    private let localizedStrings = BabiesListLocalizedStringKeys.self
     private let onAddBabyTapped: ( UINavigationController ) -> Void
+    private var localizedStrings: BabiesListLocalizedStringKeys.Type {
+        return BabiesListLocalizedStringKeys.self
+    }
 
     // MARK: - UI Components
 
@@ -52,7 +55,7 @@ public class BabiesListView: UIViewController {
     }
 
     required init?(coder: NSCoder) {
-        fatalError(localizedStrings.FatalErrorMessage)
+        fatalError(BabiesListLocalizedStringKeys.FatalErrorMessage)
     }
 
     // MARK: - Lifecycle
@@ -65,7 +68,12 @@ public class BabiesListView: UIViewController {
         observeViewModel()
         loadViewDesign()
         setupFloatingActionButton()
-
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(languageDidChange(_:)),
+            name: .languageDidChange,
+            object: nil
+        )
         title = localizedStrings.BabyListViewScreenTitle
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
@@ -159,6 +167,10 @@ public class BabiesListView: UIViewController {
             style: .default
         ))
         present(alertMessage, animated: true)
+    }
+
+    @objc func languageDidChange(_ notification: Notification) {
+        title = localizedStrings.BabyListViewScreenTitle
     }
 }
 

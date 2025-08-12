@@ -20,6 +20,7 @@ public final class LanguageManager: ObservableObject {
         didSet {
             saveLanguage(currentLanguage)
             reloadBundles()
+            NotificationCenter.default.post(name: .languageDidChange, object: currentLanguage)
         }
     }
     
@@ -61,4 +62,8 @@ public final class LanguageManager: ObservableObject {
         }
         return baseBundle
     }
+}
+
+public extension Notification.Name {
+    static let languageDidChange = Notification.Name("languageDidChange")
 }

@@ -14,8 +14,3 @@ extension Bundle {
         return bundle(for: .splashViewModule, identifierType: SplashViewModuleIdentifier.self)
     }
 }
-//extension Bundle {
-//    static var splashViewModule: Bundle {
-//        return Bundle(for: SplashViewModuleIdentifier.self)
-//    }
-//}

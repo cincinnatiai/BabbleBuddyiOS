@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LanguageManager.shared.registerModule(BabiesListLanguageConfig())
         LanguageManager.shared.registerModule(SplashViewLanguageConfig())
         LanguageManager.shared.registerModule(TabBarLanguageConfig())
+        LanguageManager.shared.registerModule(SettingsLanguageConfig())
         return true
     }
 
