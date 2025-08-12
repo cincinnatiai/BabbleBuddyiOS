@@ -12,14 +12,16 @@ import SwiftUI
 import TabBar
 import AWSMobileClientXCF
 import SplashViewModule
+import Combine
 
 final class MainCoordinator: ObservableObject, BBCoordinator {
     // MARK: Private properties
-    private var authManager: AuthManager?
     private let navigationController: UINavigationController
     private var splashViewCoordinator: SplashViewModuleCoordinator?
     private var authViewModel: AuthViewModel?
     private let tokenHandler = TokenHandler()
+    private lazy var authManager = AuthManager(tokenProtocol: tokenHandler)
+    private var cancellables: Set<AnyCancellable> = []
 
     // MARK: Initializer
     init(navigationController: UINavigationController) {
@@ -36,41 +38,32 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
         }
         splashViewCoordinator?.start()
         authViewModel = AuthViewModel(
-            authManager: getAuthManager()
+            authManager: authManager
         )
     }
 
     // MARK: Internal methods
     func createView() {
-        AWSMobileClient.default().initialize { [weak self] (state, error) in
-            guard let self else { return }
-            Task {
-                await MainActor.run {
-                    switch state {
-                    case .signedIn:
-                        self.authManager?.isLoggedIn = true
-                        self.navigateToSwiftUIView(view: TabBarView(tabs: TabBarItemsProvider.items()))
-                    default:
-                        guard let authViewModel = self.authViewModel else {
-                            return
-                        }
-                        let authScreen =  AuthApp(
-                            authManager: self.getAuthManager(),
-                            authviewModel: authViewModel
-                        ) { user in
-                            if authViewModel.authState ==
-                                .session(user: user) {
-                                TabBarView(tabs: TabBarItemsProvider.items())
-                            }
-                        }
-                        self.navigateToSwiftUIView(view: authScreen)
-                    }
+        authManager.authStateSubject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] awsState in
+                guard let self else { return }
+                switch awsState {
+                case .session:
+                    self.navigateToSwiftUIView(
+                        view: TabBarView(tabs: TabBarItemsProvider.items())
+                    )
+                case .login, .signUp, .confirmCode:
+                    guard let authVM = self.authViewModel else { return }
+                    let authScreen = AuthApp(
+                        authManager: self.authManager,
+                        authviewModel: authVM
+                    ) { user in }
+                    self.navigateToSwiftUIView(view: authScreen)
                 }
+
             }
-            if error != nil {
-                // TODO: Pass this error to the error module
-            }
-        }
+            .store(in: &cancellables)
     }
 
     // MARK: Private methods
@@ -81,8 +74,6 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
             do {
                 let baseUrl = try await remoteConfigurationProvider.fetchBaseUrl()
                 KeychainHelper.shared.save(baseUrl, forKey: BabbleBuddyAppResources.KeychainKeys.baseURL.rawValue)
-                authManager?.initializeAWS()
-                authManager?.checkUserState()
                 createView()
             } catch {
                 // TODO: Pass this error to the error module
@@ -109,18 +100,12 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
                 /// This wrapp is needed due to the settings view of the auth library,
                 /// we need to get rid of that view and build our own that call the sign out from the library
                 let wrappedValueForAuthLibrary = view.environmentObject(
-                    getAuthManager()
+                    authManager
                 )
                 let host = UIHostingController(rootView: wrappedValueForAuthLibrary)
                 navigationController.setNavigationBarHidden(true, animated: false)
                 navigationController.setViewControllers([host], animated: animated)
             }
         }
-    }
-
-    private func getAuthManager() -> AuthManager {
-        let authMngr = AuthManager(tokenProtocol: self.tokenHandler)
-        self.authManager = authMngr
-        return authMngr
     }
 }
