@@ -28,8 +28,6 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
 
     func start() {
         initializeAWSConfig()
-        let authMngr = AuthManager(tokenProtocol: tokenHandler)
-        authManager = authMngr
         splashViewCoordinator = SplashViewModuleCoordinator(
             navigationController: navigationController,
             appLogo: "BabbleBuddyLogo"
@@ -37,9 +35,8 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
             self?.setupConfigurations()
         }
         splashViewCoordinator?.start()
-        guard let authManager else { return }
         authViewModel = AuthViewModel(
-            authManager: authMngr
+            authManager: getAuthManager()
         )
     }
 
@@ -57,10 +54,8 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
                         guard let authViewModel = self.authViewModel else {
                             return
                         }
-                        let authMngr = AuthManager(tokenProtocol: self.tokenHandler)
-                        self.authManager = authMngr
                         let authScreen =  AuthApp(
-                            authManager: authMngr,
+                            authManager: self.getAuthManager(),
                             authviewModel: authViewModel
                         ) { user in
                             if authViewModel.authState ==
@@ -113,9 +108,9 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
             await MainActor.run {
                 /// This wrapp is needed due to the settings view of the auth library,
                 /// we need to get rid of that view and build our own that call the sign out from the library
-                let authMngr = AuthManager(tokenProtocol: self.tokenHandler)
-                self.authManager = authMngr
-                let wrappedValueForAuthLibrary = view.environmentObject(authMngr)
+                let wrappedValueForAuthLibrary = view.environmentObject(
+                    getAuthManager()
+                )
                 let host = UIHostingController(rootView: wrappedValueForAuthLibrary)
                 navigationController.setNavigationBarHidden(true, animated: false)
                 navigationController.setViewControllers([host], animated: animated)
@@ -123,4 +118,9 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
         }
     }
 
+    private func getAuthManager() -> AuthManager {
+        let authMngr = AuthManager(tokenProtocol: self.tokenHandler)
+        self.authManager = authMngr
+        return authMngr
+    }
 }
