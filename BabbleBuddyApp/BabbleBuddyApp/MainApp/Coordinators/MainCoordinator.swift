@@ -15,10 +15,11 @@ import SplashViewModule
 
 final class MainCoordinator: ObservableObject, BBCoordinator {
     // MARK: Private properties
-    private lazy var authManager = AuthManager()
+    private var authManager: AuthManager?
     private let navigationController: UINavigationController
     private var splashViewCoordinator: SplashViewModuleCoordinator?
     private var authViewModel: AuthViewModel?
+    private let tokenHandler = TokenHandler()
 
     // MARK: Initializer
     init(navigationController: UINavigationController) {
@@ -27,6 +28,8 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
 
     func start() {
         initializeAWSConfig()
+        let authMngr = AuthManager(tokenProtocol: tokenHandler)
+        authManager = authMngr
         splashViewCoordinator = SplashViewModuleCoordinator(
             navigationController: navigationController,
             appLogo: "BabbleBuddyLogo"
@@ -34,8 +37,9 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
             self?.setupConfigurations()
         }
         splashViewCoordinator?.start()
+        guard let authManager else { return }
         authViewModel = AuthViewModel(
-            authManager: self.authManager
+            authManager: authMngr
         )
     }
 
@@ -47,14 +51,16 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
                 await MainActor.run {
                     switch state {
                     case .signedIn:
-                        self.authManager.isLoggedIn = true
+                        self.authManager?.isLoggedIn = true
                         self.navigateToSwiftUIView(view: TabBarView(tabs: TabBarItemsProvider.items()))
                     default:
                         guard let authViewModel = self.authViewModel else {
                             return
                         }
+                        let authMngr = AuthManager(tokenProtocol: self.tokenHandler)
+                        self.authManager = authMngr
                         let authScreen =  AuthApp(
-                            authManager: self.authManager,
+                            authManager: authMngr,
                             authviewModel: authViewModel
                         ) { user in
                             if authViewModel.authState ==
@@ -75,15 +81,13 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
     // MARK: Private methods
     private func setupConfigurations() {
         let remoteConfigurationProvider = RemoteConfigProvider()
-        let tokenHandler = TokenHandler()
 
         Task {
             do {
                 let baseUrl = try await remoteConfigurationProvider.fetchBaseUrl()
                 KeychainHelper.shared.save(baseUrl, forKey: BabbleBuddyAppResources.KeychainKeys.baseURL.rawValue)
-                authManager.setTokenProtocol(tokenHandler)
-                authManager.initializeAWS()
-                authManager.checkUserState()
+                authManager?.initializeAWS()
+                authManager?.checkUserState()
                 createView()
             } catch {
                 // TODO: Pass this error to the error module
@@ -109,7 +113,9 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
             await MainActor.run {
                 /// This wrapp is needed due to the settings view of the auth library,
                 /// we need to get rid of that view and build our own that call the sign out from the library
-                let wrappedValueForAuthLibrary = view.environmentObject(authManager)
+                let authMngr = AuthManager(tokenProtocol: self.tokenHandler)
+                self.authManager = authMngr
+                let wrappedValueForAuthLibrary = view.environmentObject(authMngr)
                 let host = UIHostingController(rootView: wrappedValueForAuthLibrary)
                 navigationController.setNavigationBarHidden(true, animated: false)
                 navigationController.setViewControllers([host], animated: animated)
