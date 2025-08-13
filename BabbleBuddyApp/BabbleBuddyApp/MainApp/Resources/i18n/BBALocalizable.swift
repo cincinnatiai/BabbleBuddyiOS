@@ -6,9 +6,10 @@
 //
 
 enum LocalizedStringKeys {
-    static let HomeScreenLabel = "HomeScreen_Label".localized
-    static let ViewLoaderLoadingLabel = "ViewLoader_Loading_Label".localized
-    static let HomeScreenTabItemTitle = "TAB_BAR_JOURNAL_ITEM_TITLE".localized
-    static let SettingsScreenTabItemTitle = "TAB_BAR_SETTINGS_ITEM_TITLE".localized
-    static let BabiesListTabItemTitle = "TAB_BAR_BABIES_LIST_ITEM_TITLE".localized
+    static var HomeScreenLabel: String { "HomeScreen_Label".localized }
+    static var ViewLoaderLoadingLabel: String { "ViewLoader_Loading_Label".localized }
+    static var HomeScreenTabItemTitle: String { "TAB_BAR_JOURNAL_ITEM_TITLE".localized }
+    static var SettingsScreenTabItemTitle: String { "TAB_BAR_SETTINGS_ITEM_TITLE".localized }
+    static var BabiesListTabItemTitle: String { "TAB_BAR_BABIES_LIST_ITEM_TITLE".localized }
+    static var SignOutTabItemTitle: String { "TAB_BAR_SIGN_OUT_TITLE".localized }
 }

@@ -10,6 +10,8 @@
 		86DD7D0C2DA5D5A8005D214C /* SplashViewModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86DD7D012DA5D5A8005D214C /* SplashViewModule.framework */; };
 		D16894182E4675700055E697 /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D16894172E4675700055E697 /* DesignKit.framework */; };
 		D16894192E4675700055E697 /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D16894172E4675700055E697 /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F9CB620B2E4D1211002695CE /* SettingsModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9CB620A2E4D1211002695CE /* SettingsModule.framework */; };
+		F9CB620C2E4D1211002695CE /* SettingsModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9CB620A2E4D1211002695CE /* SettingsModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +32,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D16894192E4675700055E697 /* DesignKit.framework in Embed Frameworks */,
+				F9CB620C2E4D1211002695CE /* SettingsModule.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,6 +43,7 @@
 		86DD7D012DA5D5A8005D214C /* SplashViewModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SplashViewModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86DD7D0B2DA5D5A8005D214C /* SplashViewModuleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SplashViewModuleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D16894172E4675700055E697 /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9CB620A2E4D1211002695CE /* SettingsModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SettingsModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -74,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D16894182E4675700055E697 /* DesignKit.framework in Frameworks */,
+				F9CB620B2E4D1211002695CE /* SettingsModule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +98,7 @@
 			children = (
 				86DD7D032DA5D5A8005D214C /* SplashViewModule */,
 				86DD7D0F2DA5D5A8005D214C /* SplashViewModuleTests */,
+				F9CB62092E4D1210002695CE /* Frameworks */,
 				86DD7D022DA5D5A8005D214C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -110,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				D16894172E4675700055E697 /* DesignKit.framework */,
+                F9CB620A2E4D1211002695CE /* SettingsModule.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

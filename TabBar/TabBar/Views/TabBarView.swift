@@ -1,7 +1,9 @@
 import UIKit
 import SwiftUI
+import SettingsModule
 
 public struct TabBarView: View {
+    @EnvironmentObject private var languageManager: LanguageManager
     private let tabs: [TabItem]
 
     public init(tabs: [TabItem]) {

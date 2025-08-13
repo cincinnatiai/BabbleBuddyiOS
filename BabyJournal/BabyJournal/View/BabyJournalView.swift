@@ -1,5 +1,6 @@
 import SwiftUI
 import DesignKit
+import SettingsModule
 
 public struct BabyJournalView: View {
     @ObservedObject private var viewModel: BabyJournalViewModel
@@ -7,6 +8,8 @@ public struct BabyJournalView: View {
     @State private var selectedBabyName: String = ""
     @State private var selectedBabyIndex: Int = 0
     @State private var selectedDate: Date = Date()
+    @ObservedObject var languageManager = LanguageManager.shared
+    private var localizedStrings: BabyJournalLocalizedStringKeys.Type { BabyJournalLocalizedStringKeys.self }
 
     public init(viewModel: BabyJournalViewModel){
         self.viewModel = viewModel
@@ -15,7 +18,7 @@ public struct BabyJournalView: View {
     public var body: some View {
         screenContent
             .sheet(isPresented: $showBottomSheet) {
-                BBBottomSheetView(title: "Select an event"){ event in
+                BBBottomSheetView(title: localizedStrings.BabyJournalViewSelectEventTitle){ event in
                     viewModel
                         .createJournalCreateRequest(
                             event: event,
@@ -38,13 +41,13 @@ public struct BabyJournalView: View {
         case .noBabies:
             EmptyView()
         case .error(error: let error):
-            Text("Error: \(error)")
+            Text("\(localizedStrings.BabyJournalViewErrorTitle) \(error)")
         }
     }
 
     private func screen(babies: [String], events: [BabyEventDisplayableInfo]) -> some View {
         ZStack(alignment: .bottomTrailing) {
-            BBVStack(screenTitle: "Baby Journal") {
+            BBVStack(screenTitle: localizedStrings.BabyJournalViewScreenTitle) {
                 topContent(babies: babies)
                 Divider()
                 bodyContent(events: events)
@@ -67,7 +70,7 @@ public struct BabyJournalView: View {
                 options: babies,
                 selected: $selectedBabyName,
                 title: babies[0],
-                doneButtonLabel: "Select"
+                doneButtonLabel: localizedStrings.BabyJournalViewSelectTitle
             ) { index in
                 selectedBabyIndex = index
                 viewModel
@@ -96,8 +99,8 @@ public struct BabyJournalView: View {
         if events.isEmpty {
             Spacer()
             EmptyStateView(
-                title: "No events",
-                message: "Please add events to your journal"
+                title: localizedStrings.BabyJournalViewNoEventsTitle,
+                message: localizedStrings.BabyJournalViewAddEventsTitle
             )
         } else {
             ForEach(events.indices, id: \.self) { index in

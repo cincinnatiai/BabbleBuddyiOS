@@ -6,8 +6,8 @@ extension String {
     }
 
     enum LocalizeStringKeys {
-        static let SplashViewErrorTitle = "SplashView_error_title".localized
-        static let SplashViewErrorMessage = "SplashView_error_message".localized
-        static let SplashViewErrorButton = "SplashView_error_button".localized
+        static var SplashViewErrorTitle: String { "SplashView_error_title".localized }
+        static var SplashViewErrorMessage: String { "SplashView_error_message".localized }
+        static var SplashViewErrorButton: String { "SplashView_error_button".localized }
     }
 }

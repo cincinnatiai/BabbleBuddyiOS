@@ -12,6 +12,7 @@ import SettingsModule
 import BabiesListAndRegistration
 import SplashViewModule
 import TabBar
+import BabyJournal
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LanguageManager.shared.registerModule(SplashViewLanguageConfig())
         LanguageManager.shared.registerModule(TabBarLanguageConfig())
         LanguageManager.shared.registerModule(SettingsLanguageConfig())
+        LanguageManager.shared.registerModule(BabbleBuddyLanguageConfig())
+        LanguageManager.shared.registerModule(BabyJournalLanguageConfig())
         return true
     }
 

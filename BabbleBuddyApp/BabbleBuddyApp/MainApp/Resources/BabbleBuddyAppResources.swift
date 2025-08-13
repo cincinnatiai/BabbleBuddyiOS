@@ -6,7 +6,7 @@ import Foundation
 /// resolving it via `NSLocalizedString`.
 extension String {
     var localized: String {
-        NSLocalizedString(self, comment: "")
+        return NSLocalizedString(self, tableName: nil, bundle: .babbleBuddyModule, comment: "")
     }
 }
 

@@ -10,11 +10,10 @@ import TabBar
 import AuthLibrarySPM
 import SettingsModule
 
-typealias L10n = LocalizedStringKeys
-
 enum TabBarItemsProvider {
     /// Use the TabItem from the TabBar module
     static func items() -> [TabItem] {
+        private static var L10n: LocalizedStringKeys.Type { LocalizedStringKeys.self }
         return [
             TabItem(
                 title: L10n.HomeScreenTabItemTitle,
@@ -33,7 +32,7 @@ enum TabBarItemsProvider {
                 view: SettingsScreen()
             ),
             TabItem(
-                title: "Sign out",
+                title: L10n.SignOutTabItemTitle,
                 icon: "bookmark",
                 view: SettingsView()
             )

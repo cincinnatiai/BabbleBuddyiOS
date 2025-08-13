@@ -12,6 +12,8 @@ public enum ModuleIdentifier {
     case splashViewModule
     case tabBarModule
     case settingsModule
+    case babbleBuddyModule
+    case babyJournalModule
 }
 
 private var bundleOverrides: [ModuleIdentifier: Bundle] = [:]
