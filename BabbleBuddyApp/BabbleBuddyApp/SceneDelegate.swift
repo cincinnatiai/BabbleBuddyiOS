@@ -1,4 +1,5 @@
 import UIKit
+import AuthLibrarySPM
 import SplashViewModule
 import SwiftUI
 
@@ -17,6 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         
         guard let mainCoordinator else { return }
+        
+        FeatureFlags.shared.setBiometricEnabled(false)
 
         mainCoordinator.start()
 
