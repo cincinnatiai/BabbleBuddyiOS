@@ -14,6 +14,7 @@ import AWSMobileClientXCF
 import SplashViewModule
 import Combine
 
+@MainActor
 final class MainCoordinator: ObservableObject, BBCoordinator {
     // MARK: Private properties
     private let navigationController: UINavigationController
@@ -50,9 +51,15 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
                 guard let self else { return }
                 switch awsState {
                 case .session:
-                    self.navigateToSwiftUIView(
-                        view: TabBarView(tabs: TabBarItemsProvider.items())
-                    )
+                    Task { [weak self] in
+                        guard let self else { return }
+                        let ready = await self.waitForTokensReady()
+                        if ready {
+                            self.navigateToSwiftUIView(
+                                view: TabBarView(tabs: TabBarItemsProvider.items())
+                            )
+                        }
+                    }
                 case .login, .signUp, .confirmCode:
                     guard let authVM = self.authViewModel else { return }
                     let authScreen = AuthApp(
@@ -77,6 +84,14 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
                 createView()
             } catch {
                 // TODO: Pass this error to the error module
+            }
+        }
+    }
+
+    private func checkTokensAndCreateView() {
+        Task {
+            if await waitForTokensReady() {
+                createView()
             }
         }
     }
@@ -106,6 +121,17 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
                 navigationController.setNavigationBarHidden(true, animated: false)
                 navigationController.setViewControllers([host], animated: animated)
             }
+        }
+    }
+
+    private func waitForTokensReady() async -> Bool {
+        await withCheckedContinuation { cont in
+            authManager.tokensReadyPublisher
+                .filter { $0 }
+                .prefix(1)
+                .receive(on: DispatchQueue.main)
+                .sink { _ in cont.resume(returning: true) }
+                .store(in: &cancellables)
         }
     }
 }
