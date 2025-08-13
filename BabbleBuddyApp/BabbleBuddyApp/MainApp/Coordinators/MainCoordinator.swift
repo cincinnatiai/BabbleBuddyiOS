@@ -12,13 +12,17 @@ import SwiftUI
 import TabBar
 import AWSMobileClientXCF
 import SplashViewModule
+import Combine
 
+@MainActor
 final class MainCoordinator: ObservableObject, BBCoordinator {
     // MARK: Private properties
-    private lazy var authManager = AuthManager()
     private let navigationController: UINavigationController
     private var splashViewCoordinator: SplashViewModuleCoordinator?
     private var authViewModel: AuthViewModel?
+    private let tokenHandler = TokenHandler()
+    private lazy var authManager = AuthManager(tokenProtocol: tokenHandler)
+    private var cancellables: Set<AnyCancellable> = []
 
     // MARK: Initializer
     init(navigationController: UINavigationController) {
@@ -35,58 +39,59 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
         }
         splashViewCoordinator?.start()
         authViewModel = AuthViewModel(
-            authManager: self.authManager
+            authManager: authManager
         )
     }
 
     // MARK: Internal methods
     func createView() {
-        AWSMobileClient.default().initialize { [weak self] (state, error) in
-            guard let self else { return }
-            Task {
-                await MainActor.run {
-                    switch state {
-                    case .signedIn:
-                        self.authManager.isLoggedIn = true
-                        self.navigateToSwiftUIView(view: TabBarView(tabs: TabBarItemsProvider.items()))
-                    default:
-                        guard let authViewModel = self.authViewModel else {
-                            return
+        authManager.authStateSubject
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] awsState in
+                guard let self else { return }
+                switch awsState {
+                case .session:
+                    Task { [weak self] in
+                        guard let self else { return }
+                        let ready = await self.waitForTokensReady()
+                        if ready {
+                            self.navigateToSwiftUIView(
+                                view: TabBarView(tabs: TabBarItemsProvider.items())
+                            )
                         }
-                        let authScreen =  AuthApp(
-                            authManager: self.authManager,
-                            authviewModel: authViewModel
-                        ) { user in
-                            if authViewModel.authState ==
-                                .session(user: user) {
-                                TabBarView(tabs: TabBarItemsProvider.items())
-                            }
-                        }
-                        self.navigateToSwiftUIView(view: authScreen)
                     }
+                case .login, .signUp, .confirmCode:
+                    guard let authVM = self.authViewModel else { return }
+                    let authScreen = AuthApp(
+                        authManager: self.authManager,
+                        authviewModel: authVM
+                    ) { user in }
+                    self.navigateToSwiftUIView(view: authScreen)
                 }
+
             }
-            if error != nil {
-                // TODO: Pass this error to the error module
-            }
-        }
+            .store(in: &cancellables)
     }
 
     // MARK: Private methods
     private func setupConfigurations() {
         let remoteConfigurationProvider = RemoteConfigProvider()
-        let tokenHandler = TokenHandler()
 
         Task {
             do {
                 let baseUrl = try await remoteConfigurationProvider.fetchBaseUrl()
                 KeychainHelper.shared.save(baseUrl, forKey: BabbleBuddyAppResources.KeychainKeys.baseURL.rawValue)
-                authManager.setTokenProtocol(tokenHandler)
-                authManager.initializeAWS()
-                authManager.checkUserState()
                 createView()
             } catch {
                 // TODO: Pass this error to the error module
+            }
+        }
+    }
+
+    private func checkTokensAndCreateView() {
+        Task {
+            if await waitForTokensReady() {
+                createView()
             }
         }
     }
@@ -109,7 +114,9 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
             await MainActor.run {
                 /// This wrapp is needed due to the settings view of the auth library,
                 /// we need to get rid of that view and build our own that call the sign out from the library
-                let wrappedValueForAuthLibrary = view.environmentObject(authManager)
+                let wrappedValueForAuthLibrary = view.environmentObject(
+                    authManager
+                )
                 let host = UIHostingController(rootView: wrappedValueForAuthLibrary)
                 navigationController.setNavigationBarHidden(true, animated: false)
                 navigationController.setViewControllers([host], animated: animated)
@@ -117,4 +124,14 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
         }
     }
 
+    private func waitForTokensReady() async -> Bool {
+        await withCheckedContinuation { cont in
+            authManager.tokensReadyPublisher
+                .filter { $0 }
+                .prefix(1)
+                .receive(on: DispatchQueue.main)
+                .sink { _ in cont.resume(returning: true) }
+                .store(in: &cancellables)
+        }
+    }
 }

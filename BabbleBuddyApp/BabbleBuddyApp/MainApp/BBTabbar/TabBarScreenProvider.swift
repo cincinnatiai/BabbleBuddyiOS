@@ -15,14 +15,7 @@ import BabyJournal
 
 public class TabBarScreenProvider {
     // MARK: Shared resources
-    static private let idToken: String = {
-        guard let token = KeychainHelper.shared.read(
-            forKey: BabbleBuddyAppResources.KeychainKeys.idToken.rawValue
-        ) else {
-            return ""
-        }
-        return token
-    }()
+    private static let tokenManager = TokenHandler()
 
     static private let baseURL: String = {
         guard let url = KeychainHelper.shared.read(
@@ -33,14 +26,19 @@ public class TabBarScreenProvider {
         return url
     }()
 
-    static private let networkClient = NetworkClient(token: idToken)
+    private static func createNetworkClient() -> NetworkClient {
+        NetworkClient(
+            token: tokenManager.getIdToken() ?? ""
+        )
+    }
 
-    static private let babyService = BBABabiesServiceImplementation(
-        client: networkClient,
-        baseURL: baseURL
-    )
+    private static var babyService: BBABabiesServiceImplementation {
+          BBABabiesServiceImplementation(client: createNetworkClient(), baseURL: baseURL)
+      }
 
-    static private let journalService = BBAJournalService(client: networkClient, baseURL: baseURL)
+      private static var journalService: BBAJournalService {
+          BBAJournalService(client: createNetworkClient(), baseURL: baseURL)
+      }
 
     // MARK: Views
     static func makeBabiesListView() -> UIViewController {
