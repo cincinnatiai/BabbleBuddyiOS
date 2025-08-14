@@ -1,0 +1,10 @@
+"FATAL_ERROR_MESSAGE" = "init(coder:)가 구현되지 않았습니다.";
+
+/// MARK: TabBarView Strings
+"TAB_BAR_VIEW_ERROR_ALERT_TITLE" = "오류";
+"TAB_BAR_VIEW_ERROR_ALERT_BUTTON" = "확인";
+
+/// MARK: TabBarViewModel Strings
+"TAB_BAR_VIEW_MODEL_SETTINGS_SCREEN_TITLE" = "설정";
+"TAB_BAR_VIEW_MODEL_HOME_SCREEN_TITLE" = "홈";
+"TAB_BAR_VIEW_MODEL_DEFAULT_SCREEN_TITLE" = "기본";

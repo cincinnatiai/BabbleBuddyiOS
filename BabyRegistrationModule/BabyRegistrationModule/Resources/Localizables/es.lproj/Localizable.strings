@@ -1,0 +1,43 @@
+/* 
+  Localizable.strings
+  BabyRegistrationModule
+
+  Created by Trainee on 4/24/25.
+  
+*/
+
+"BabyRegistrationView_Screen_Title" = "Registro del bebé";
+"BabyRegistrationView_FirstName_Title" = "Nombre";
+"BabyRegistrationView_FirstName_PlaceHolder" = "Ingresa el nombre del bebé";
+"BabyRegistrationView_LastName_Title" = "Apellido";
+"BabyRegistrationView_LastName_PlaceHolder" = "Ingresa el apellido del bebé";
+"BabyRegistrationView_DateOfBirth_Title" = "Fecha de nacimiento";
+"BabyRegistrationView_Gender_Title" = "Género";
+"BabyRegistrationView_GenderPicker_Male_Text" = "Masculino";
+"BabyRegistrationView_GenderPicker_Female_Text" = "Femenino";
+"BabyRegistrationView_BirthWeight_Title" = "Peso al nacer";
+"BabyRegistrationView_BirthWeight_PlaceHolder" = "Ingresa el peso del bebé (Opcional)";
+"BabyRegistrationView_BirthWeightPicker_Kilograms_Text" = "kg";
+"BabyRegistrationView_BirthWeightPicker_Pounds_Text" = "lb";
+"BabyRegistrationView_BirthHeight_Title" = "Estatura al nacer";
+"BabyRegistrationView_BirthHeight_PlaceHolder" = "Ingresa la estatura del bebé (Opcional)";
+"BabyRegistrationView_BirthHeightPicker_Centimeters_Text" = "cm";
+"BabyRegistrationView_BirthHeightPicker_Inches_Text" = "in";
+"BabyRegistrationView_BloodType_Title" = "Tipo de sangre";
+"BabyRegistrationView_BloodType_PlaceHolder" = "Ingresa el tipo de sangre del bebé (Opcional)";
+"BabyRegistrationView_Allergies_Title" = "Alergias";
+"BabyRegistrationView_Allergies_PlaceHolder" = "Ingresa alguna alergia (Opcional)";
+"BabyRegistrationView_Submit_Button_Text" = "Guardar";
+"BabyRegistrationView_Baby_Info_Section_Title" = "Información del bebé";
+"BabyRegistrationView_Baby_Measurements_Section_Title" = "Medidas del bebé";
+"BabyRegistrationView_Medical_Info_Section_Title" = "Información médica";
+
+"CustomDatePicker_Button_Title" = "Seleccionar";
+
+"ValidationErrors_EmptyFirstName_Text" = "El nombre es obligatorio";
+"ValidationErrors_EmptyLastName_Text" = "El apellido es obligatorio";
+"ValidationErrors_EmptyGender_Text" = "El género es obligatorio";
+"ValidationErrors_EmptyWeightUnit_Text" = "La unidad de peso es obligatoria";
+"ValidationErrors_InvalidWeightValue_Text" = "El peso al nacer debe ser un número";
+"ValidationErrors_EmptyHeightUnit_Text" = "La unidad de estatura es obligatoria";
+"ValidationErrors_InvalidHeightValue_Text" = "La estatura al nacer debe ser un número";

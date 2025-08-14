@@ -1,0 +1,10 @@
+"FATAL_ERROR_MESSAGE" = "init(coder:) has not been implemented";
+
+/// MARK: TabBarView Strings
+"TAB_BAR_VIEW_ERROR_ALERT_TITLE" = "Error";
+"TAB_BAR_VIEW_ERROR_ALERT_BUTTON" = "Ok";
+
+/// MARK: TabBarViewModel Strings
+"TAB_BAR_VIEW_MODEL_SETTINGS_SCREEN_TITLE" = "Settings";
+"TAB_BAR_VIEW_MODEL_HOME_SCREEN_TITLE" = "Home";
+"TAB_BAR_VIEW_MODEL_DEFAULT_SCREEN_TITLE" = "Default";

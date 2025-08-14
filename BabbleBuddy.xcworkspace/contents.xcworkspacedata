@@ -5,12 +5,27 @@
       location = "group:BabbleBuddyApp/BabbleBuddyApp.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:DesignKit/DesignKit.xcodeproj">
+      location = "group:BabiesList/BabiesListAndRegistration.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:NetworkingKit/NetworkingKit.xcodeproj">
+      location = "group:SplashViewModule/SplashViewModule.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:CoreKit/CoreKit.xcodeproj">
+      location = "group:TabBar/TabBar.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CoreKit/CoreKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DesignKit/DesignKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:NetworkingKit/NetworkingKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:BabyJournal/BabyJournal.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SettingsModule/SettingsModule.xcodeproj">
    </FileRef>
 </Workspace>

@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  BabyJournal
+
+  Created by Cincinnati Ai on 8/13/25.
+  
+*/
+// MARK: Baby journal feature
+"BabyJournalView_Screen_Title" = "Diario de bebés";
+"BabyJournalView_No_Events_Title" = "Sin eventos";
+"BabyJournalView_Add_Events_Title" = "Por favor, añade eventos a tu diario";
+"BabyJournalView_Select_Event_Title" = "Selecciona un evento";
+"BabyJournalView_Select_Title" = "Seleccionar";
+"BabyJournalView_Error_Title" = "Error";

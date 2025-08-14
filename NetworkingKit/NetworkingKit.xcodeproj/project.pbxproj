@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		86EC1DAB2DC52D1B00B31C00 /* BabiesList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabiesList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F57B50D22D92F65C00834E68 /* NetworkingKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NetworkingKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -21,6 +22,26 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		D1977A072E1F0BE40090EB8D /* Protocols */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		D1977A082E1F0BF70090EB8D /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D1977A0F2E1F0EA60090EB8D /* Implementations */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Implementations;
+			sourceTree = "<group>";
+		};
+		D1977A132E1F0F260090EB8D /* Utils */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		F57B50D42D92F65C00834E68 /* NetworkingKit */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -42,10 +63,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		86EC1DAA2DC52D1B00B31C00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				86EC1DAB2DC52D1B00B31C00 /* BabiesList.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F57B50C82D92F65C00834E68 = {
 			isa = PBXGroup;
 			children = (
+				D1977A132E1F0F260090EB8D /* Utils */,
+				D1977A0F2E1F0EA60090EB8D /* Implementations */,
+				D1977A082E1F0BF70090EB8D /* Models */,
+				D1977A072E1F0BE40090EB8D /* Protocols */,
 				F57B50D42D92F65C00834E68 /* NetworkingKit */,
+				86EC1DAA2DC52D1B00B31C00 /* Frameworks */,
 				F57B50D32D92F65C00834E68 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,6 +119,10 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				D1977A072E1F0BE40090EB8D /* Protocols */,
+				D1977A082E1F0BF70090EB8D /* Models */,
+				D1977A0F2E1F0EA60090EB8D /* Implementations */,
+				D1977A132E1F0F260090EB8D /* Utils */,
 				F57B50D42D92F65C00834E68 /* NetworkingKit */,
 			);
 			name = NetworkingKit;

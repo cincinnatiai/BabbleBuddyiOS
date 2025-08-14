@@ -6,12 +6,25 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestore
+import SettingsModule
+import BabiesListAndRegistration
+import SplashViewModule
+import TabBar
+import BabyJournal
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        FirebaseApp.configure()
+        LanguageManager.shared.registerModule(BabiesListLanguageConfig())
+        LanguageManager.shared.registerModule(SplashViewLanguageConfig())
+        LanguageManager.shared.registerModule(TabBarLanguageConfig())
+        LanguageManager.shared.registerModule(SettingsLanguageConfig())
+        LanguageManager.shared.registerModule(BabbleBuddyLanguageConfig())
+        LanguageManager.shared.registerModule(BabyJournalLanguageConfig())
         return true
     }
 

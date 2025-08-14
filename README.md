@@ -4,6 +4,18 @@
 ## Overview
 BabbleBuddy is a baby journal tracking iOS application built using modular Swift packages. The architecture supports reusable UI components, isolated feature modules, and clean networking layers.
 
+## Setup
+To start working on the project, you need to clone it by doing:
+
+- Clone the repo:
+    `git clone https://github.com/cincinnatiai/BabbleBuddyiOS.git`
+- On the terminal on project folder run:
+    `bash scripts/setup.sh`
+- Add the dependencys on SPM:
+    - https://github.com/cincinnatiai/AuthLibrarySPM (develop branch)
+    - https://github.com/firebase/firebase-ios-sdk
+- Add the firebase and AWS configuration files to the main app resources
+
 ### Architecture
 The project uses a modular architecture with Swift Package Manager, having as main module/entry point app: `BabbleBuddyApp`. Each feature or concern is separated into a module:
 
@@ -16,12 +28,11 @@ The project uses a modular architecture with Swift Package Manager, having as ma
 We follow Clean Architecture principles to ensure **separation of concerns**, **testability**, and **scalability** across our modular app structure.
 
 - **MVVM** is used in the presentation layer to manage UI logic
-- **Coordinators** are responsible for handling navigation flow
 - **Dependency Injection** is applied across layers for loose coupling and better testability
 
 ## Layered Structure
 
-- **Presentation Layer**: SwiftUI/UIKit Views, ViewModels, and Coordinators
+- **Presentation Layer**: SwiftUI/UIKit Views and ViewModels
 - **Domain Layer**: Business logic, Use Cases, and Interactors
 - **Data Layer**: Repositories, Network Services (APIs), and local databases
 
@@ -34,18 +45,8 @@ Below is a visual representation of how responsibilities are split across layers
 ![Clean Architecture in detail](https://github.com/user-attachments/assets/6cb42d21-79d5-4d01-897b-ed4409f7d4b6)
 
 This structure allows each layer to evolve independently, making the app more maintainable and flexible.
-
-## Setup
-To start working on the project, you need to clone it by doing:
-
-`git clone https://github.com/cincinnatiai/BabbleBuddyiOS.git` (be sure you are in the right directory where you want to clone it)
-
-If you find an issue when trying to run it, you can:
-- change the running version (if the project does not show any proper iOS simulator)
-  * Select the BabbleBuddyApp project target
-  * Go to "General" tab
-  * change the iOS deployment target
-  * Run the app (CMD +  R), once the app has been executed, change the iOS version to the latest (optional)
+ 
+ ## Creating modules
  
 ### Creating new module
 In the case you want to create a new module, you can:
@@ -66,9 +67,6 @@ The repository uses the following branches:
 
 - **`develop`**  
   The main integration branch for day-to-day development. All `feature` branches are branched from and merged back into `develop`.
-
-- **`prod`** *(optional)*  
-  Mirrors the deployed production code. Can be used to track what’s currently live, especially with CI/CD pipelines.
 
 - **`feature/xyz`**  
   Used for developing new features. Created from `develop` and merged back via Pull Requests (PRs) once reviewed and approved.
