@@ -11,9 +11,9 @@ import AuthLibrarySPM
 import SettingsModule
 
 enum TabBarItemsProvider {
+    private static var L10n: LocalizedStringKeys.Type { LocalizedStringKeys.self }
     /// Use the TabItem from the TabBar module
     static func items() -> [TabItem] {
-        private static var L10n: LocalizedStringKeys.Type { LocalizedStringKeys.self }
         return [
             TabItem(
                 title: L10n.HomeScreenTabItemTitle,

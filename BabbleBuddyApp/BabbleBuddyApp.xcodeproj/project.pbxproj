@@ -31,6 +31,7 @@
 		ECD4A2432DC3FEB60094E06D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = ECD4A2422DC3FEB60094E06D /* FirebaseFirestore */; };
 		ECD4A2452DC3FEB60094E06D /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = ECD4A2442DC3FEB60094E06D /* FirebaseRemoteConfig */; };
 		ECD4A2472DC3FEB60094E06D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = ECD4A2462DC3FEB60094E06D /* FirebaseStorage */; };
+		F923434C2E4D3A830041EF67 /* AuthLibrarySPM in Frameworks */ = {isa = PBXBuildFile; productRef = F923434B2E4D3A830041EF67 /* AuthLibrarySPM */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -103,6 +104,7 @@
 				ECD4A23F2DC3FEB60094E06D /* FirebaseCrashlytics in Frameworks */,
 				ECD4A23B2DC3FEB60094E06D /* FirebaseAnalytics in Frameworks */,
 				ECD4A23D2DC3FEB60094E06D /* FirebaseAuth in Frameworks */,
+				F923434C2E4D3A830041EF67 /* AuthLibrarySPM in Frameworks */,
 				ECD4A2432DC3FEB60094E06D /* FirebaseFirestore in Frameworks */,
 				D1977A1A2E1F20050090EB8D /* BabyJournal.framework in Frameworks */,
 				D113A8132DFFFE0400FAB64D /* BabiesListAndRegistration.framework in Frameworks */,
@@ -182,6 +184,7 @@
 				ECD4A2442DC3FEB60094E06D /* FirebaseRemoteConfig */,
 				ECD4A2462DC3FEB60094E06D /* FirebaseStorage */,
 				D11465E42E00D11A0006E12E /* AuthLibrarySPM */,
+				F923434B2E4D3A830041EF67 /* AuthLibrarySPM */,
 			);
 			productName = BabbleBuddyApp;
 			productReference = F57B508D2D92F15700834E68 /* BabbleBuddyApp.app */;
@@ -215,7 +218,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				ECD4A2392DC3FEB60094E06D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
-				D11465E32E00D11A0006E12E /* XCLocalSwiftPackageReference "../../AuthLibrarySPM" */,
+				F923434A2E4D3A830041EF67 /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F57B508E2D92F15700834E68 /* Products */;
@@ -471,13 +474,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		D11465E32E00D11A0006E12E /* XCLocalSwiftPackageReference "../../AuthLibrarySPM" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../AuthLibrarySPM;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		ECD4A2392DC3FEB60094E06D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -485,6 +481,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 11.12.0;
+			};
+		};
+		F923434A2E4D3A830041EF67 /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cincinnatiai/AuthLibrarySPM";
+			requirement = {
+				branch = develop;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -528,6 +532,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ECD4A2392DC3FEB60094E06D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		F923434B2E4D3A830041EF67 /* AuthLibrarySPM */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F923434A2E4D3A830041EF67 /* XCRemoteSwiftPackageReference "AuthLibrarySPM" */;
+			productName = AuthLibrarySPM;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

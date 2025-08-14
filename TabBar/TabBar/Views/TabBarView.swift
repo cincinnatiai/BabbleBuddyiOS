@@ -4,13 +4,14 @@ import SettingsModule
 
 public struct TabBarView: View {
     @EnvironmentObject private var languageManager: LanguageManager
-    private let tabs: [TabItem]
+    private let tabsProvider: () -> [TabItem]
 
-    public init(tabs: [TabItem]) {
-        self.tabs = tabs
+    public init(tabsProvider: @escaping () -> [TabItem]) {
+        self.tabsProvider = tabsProvider
     }
 
     public var body: some View {
+        let tabs = tabsProvider()
         TabView {
             ForEach(Array(tabs.enumerated()), id: \.offset) { _, tab in
                 tabContentView(tab)
