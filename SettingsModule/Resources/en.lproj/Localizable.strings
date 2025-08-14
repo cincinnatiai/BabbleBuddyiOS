@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  SettingsModule
+
+  Created by Cincinnati Ai on 8/12/25.
+  
+*/
+
+// MARK: Settings View feature
+"Settings_Screen_Title" = "Settings";
+"Settings_Section_Title" = "Language";

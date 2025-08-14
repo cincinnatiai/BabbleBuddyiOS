@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  BabbleBuddyApp
+
+  Created by Trainee on 4/24/25.
+  
+*/
+
+// MARK: Screen messages
+"HomeScreen_Label" = "로그인됨";
+"ViewLoader_Loading_Label" = "데이터 불러오는 중...";
+
+// MARK: TabBar titles:
+"TAB_BAR_SETTINGS_ITEM_TITLE" = "설정";
+"TAB_BAR_JOURNAL_ITEM_TITLE" = "저널";
+"TAB_BAR_BABIES_LIST_ITEM_TITLE" = "내 아기";
+"TAB_BAR_SIGN_OUT_TITLE" = "로그아웃";

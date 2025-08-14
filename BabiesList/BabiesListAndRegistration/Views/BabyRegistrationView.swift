@@ -8,11 +8,13 @@
 import Foundation
 import SwiftUI
 import DesignKit
+import SettingsModule
 
 public struct BabyRegistrationView: View {
     @ObservedObject var viewModel: BabyRegistrationViewModel
-    private let localizedStrings = BabiesListLocalizedStringKeys.self
     private let bloodTypes = ["A+","A-","B+","B-","AB+","AB-","O+","O-"]
+    @ObservedObject var languageManager = LanguageManager.shared
+    private var localizedStrings: BabiesListLocalizedStringKeys.Type { BabiesListLocalizedStringKeys.self }
 
     // TODO: Delete this when implementing details
     let onComplete: () -> Void

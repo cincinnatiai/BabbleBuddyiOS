@@ -13,6 +13,7 @@ import TabBar
 import AWSMobileClientXCF
 import SplashViewModule
 import Combine
+import SettingsModule
 
 @MainActor
 final class MainCoordinator: ObservableObject, BBCoordinator {
@@ -45,6 +46,7 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
 
     // MARK: Internal methods
     func createView() {
+        let languageManager = LanguageManager.shared
         authManager.authStateSubject
             .receive(on: DispatchQueue.main)
             .sink { [weak self] awsState in
@@ -55,9 +57,11 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
                         guard let self else { return }
                         let ready = await self.waitForTokensReady()
                         if ready {
-                            self.navigateToSwiftUIView(
-                                view: TabBarView(tabs: TabBarItemsProvider.items())
-                            )
+                            let view = TabBarView(tabsProvider: {
+                                TabBarItemsProvider.items()
+                            })
+                            .environmentObject(languageManager)
+                            self.navigateToSwiftUIView(view: view)
                         }
                     }
                 case .login, .signUp, .confirmCode:

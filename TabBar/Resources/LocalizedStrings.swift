@@ -14,13 +14,13 @@ extension String {
 
 /// Centralized static keys for localized strings used in the TabBar module.
 enum TabBarLocalizedStringKeys {
-    static let TabBarViewErrorAlertTitle = "TAB_BAR_VIEW_ERROR_ALERT_TITLE".localized
-    static let TabBarViewErrorAlertButton = "TAB_BAR_VIEW_ERROR_ALERT_BUTTON".localized
+    static var TabBarViewErrorAlertTitle: String { "TAB_BAR_VIEW_ERROR_ALERT_TITLE".localized }
+    static var TabBarViewErrorAlertButton: String { "TAB_BAR_VIEW_ERROR_ALERT_BUTTON".localized }
 
-    static let TabBarViewModelSettingsScreenTitle = "TAB_BAR_VIEW_MODEL_SETTINGS_SCREEN_TITLE".localized
-    static let TabBarViewModelHomeScreenTitle = "TAB_BAR_VIEW_MODEL_HOME_SCREEN_TITLE".localized
-    static let TabBarViewModelDefaultScreenTitle = "TAB_BAR_VIEW_MODEL_DEFAULT_SCREEN_TITLE".localized
-    static let FatalErrorMessage = "FATAL_ERROR_MESSAGE".localized
+    static var TabBarViewModelSettingsScreenTitle: String { "TAB_BAR_VIEW_MODEL_SETTINGS_SCREEN_TITLE".localized }
+    static var TabBarViewModelHomeScreenTitle: String { "TAB_BAR_VIEW_MODEL_HOME_SCREEN_TITLE".localized }
+    static var TabBarViewModelDefaultScreenTitle: String { "TAB_BAR_VIEW_MODEL_DEFAULT_SCREEN_TITLE".localized }
+    static var FatalErrorMessage: String { "FATAL_ERROR_MESSAGE".localized }
 }
 
 /// Not used, these icons now are deprecated because the parent app is injecting it to the library

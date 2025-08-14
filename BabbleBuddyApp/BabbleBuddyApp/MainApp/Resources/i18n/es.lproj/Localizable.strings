@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  BabbleBuddyApp
+
+  Created by Trainee on 4/24/25.
+  
+*/
+
+// MARK: Screen messages
+"HomeScreen_Label" = "Inicio de sesión";
+"ViewLoader_Loading_Label" = "Loading data...";
+
+// MARK: TabBar titles:
+"TAB_BAR_SETTINGS_ITEM_TITLE" = "Configuración";
+"TAB_BAR_JOURNAL_ITEM_TITLE" = "Diario";
+"TAB_BAR_BABIES_LIST_ITEM_TITLE" = "Mis bebés";
+"TAB_BAR_SIGN_OUT_TITLE" = "Cerrar sesión";

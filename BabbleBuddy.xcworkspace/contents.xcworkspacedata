@@ -25,4 +25,7 @@
    <FileRef
       location = "group:BabyJournal/BabyJournal.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:SettingsModule/SettingsModule.xcodeproj">
+   </FileRef>
 </Workspace>

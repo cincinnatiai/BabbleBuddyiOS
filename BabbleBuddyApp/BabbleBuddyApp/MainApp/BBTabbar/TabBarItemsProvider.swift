@@ -8,10 +8,10 @@
 import SwiftUI
 import TabBar
 import AuthLibrarySPM
-
-typealias L10n = LocalizedStringKeys
+import SettingsModule
 
 enum TabBarItemsProvider {
+    private static var L10n: LocalizedStringKeys.Type { LocalizedStringKeys.self }
     /// Use the TabItem from the TabBar module
     static func items() -> [TabItem] {
         return [
@@ -29,6 +29,11 @@ enum TabBarItemsProvider {
             TabItem(
                 title: L10n.SettingsScreenTabItemTitle,
                 icon: "gearshape",
+                view: SettingsScreen()
+            ),
+            TabItem(
+                title: L10n.SignOutTabItemTitle,
+                icon: "bookmark",
                 view: SettingsView()
             )
         ]

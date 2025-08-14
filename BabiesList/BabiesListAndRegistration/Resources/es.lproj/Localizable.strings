@@ -1,0 +1,51 @@
+/* 
+  Localizable.strings
+  BabiesList
+
+  Created by Trainee on 4/21/25.
+  
+*/
+
+// MARK: Baby list feature
+"Fatal_Error_Message" = "init(coder:) no se ha implementado";
+"BabyTableViewCell_Description_Label" = "Descripción: ";
+"BabiesListView_AlertMessage_Title" = "Error";
+"BabiesListView_AlertAction_Label" = "Ok";
+"BabyListView_Screen_Title" = "Mis bebés";
+
+// MARK: Baby registration feature
+"BabyRegistrationView_Screen_Title" = "Registro de bebés";
+"BabyRegistrationView_FirstName_Title" = "Nombre";
+"BabyRegistrationView_FirstName_PlaceHolder" = "Ingrese el nombre del bebé";
+"BabyRegistrationView_LastName_Title" = "Apellido";
+"BabyRegistrationView_LastName_PlaceHolder" = "Ingrese el apellido del bebé";
+"BabyRegistrationView_DateOfBirth_Title" = "Fecha de nacimiento";
+"BabyRegistrationView_Gender_Title" = "Genero";
+"BabyRegistrationView_GenderPicker_Male_Text" = "Masculino";
+"BabyRegistrationView_GenderPicker_Female_Text" = "Fememino";
+"BabyRegistrationView_BirthWeight_Title" = "Peso al nacer";
+"BabyRegistrationView_BirthWeight_PlaceHolder" = "Ingrese peso del bebé (Opcional)";
+"BabyRegistrationView_BirthWeightPicker_Kilograms_Text" = "kg";
+"BabyRegistrationView_BirthWeightPicker_Pounds_Text" = "lb";
+"BabyRegistrationView_BirthHeight_Title" = "Altura al nacer";
+"BabyRegistrationView_BirthHeight_PlaceHolder" = "Ingrese altura del bebé (Opcional)";
+"BabyRegistrationView_BirthHeightPicker_Centimeters_Text" = "cm";
+"BabyRegistrationView_BirthHeightPicker_Inches_Text" = "in";
+"BabyRegistrationView_BloodType_Title" = "Tipo de sangre";
+"BabyRegistrationView_BloodType_PlaceHolder" = "Ingrese tipo de sangre del bebé (Opcional)";
+"BabyRegistrationView_Allergies_Title" = "Alergias";
+"BabyRegistrationView_Allergies_PlaceHolder" = "Ingrese alergias (Opcional)";
+"BabyRegistrationView_Submit_Button_Text" = "Enviar";
+"BabyRegistrationView_Baby_Info_Section_Title" = "Informacion del bebé";
+"BabyRegistrationView_Baby_Measurements_Section_Title" = "Medidas del bebé";
+"BabyRegistrationView_Medical_Info_Section_Title" = "Información médica";
+
+"CustomDatePicker_Button_Title" = "Seleccionar";
+
+"ValidationErrors_EmptyFirstName_Text" = "El nombre es obligatorio";
+"ValidationErrors_EmptyLastName_Text" = "El apellido es obligatorio";
+"ValidationErrors_EmptyGender_Text" = "El genero es obligatorio";
+"ValidationErrors_EmptyWeightUnit_Text" = "Las unidades de peso son obligatorias";
+"ValidationErrors_InvalidWeightValue_Text" = "El peso al nacer debe ser un número";
+"ValidationErrors_EmptyHeightUnit_Text" = "Las unidades de la altura son obligatorias";
+"ValidationErrors_InvalidHeightValue_Text" = "La altura al nacer debe ser un número";
