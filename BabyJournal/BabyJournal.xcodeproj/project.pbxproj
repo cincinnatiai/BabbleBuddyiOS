@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		96B4D7752E04BFBF006AF33B /* DesignKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96B4D7742E04BFBF006AF33B /* DesignKit.framework */; };
 		96B4D7762E04BFBF006AF33B /* DesignKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96B4D7742E04BFBF006AF33B /* DesignKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D133A3622E56531800A07CF0 /* BabiesListAndRegistration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D133A3612E56531800A07CF0 /* BabiesListAndRegistration.framework */; };
+		D133A3632E56531800A07CF0 /* BabiesListAndRegistration.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D133A3612E56531800A07CF0 /* BabiesListAndRegistration.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F9CB62142E4D1271002695CE /* SettingsModule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9CB62132E4D1271002695CE /* SettingsModule.framework */; };
 		F9CB62152E4D1271002695CE /* SettingsModule.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F9CB62132E4D1271002695CE /* SettingsModule.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F9E13A442E4CFE8F00BD2E7D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F9E13A422E4CFE8F00BD2E7D /* Localizable.strings */; };
@@ -24,6 +26,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				96B4D7762E04BFBF006AF33B /* DesignKit.framework in Embed Frameworks */,
+				D133A3632E56531800A07CF0 /* BabiesListAndRegistration.framework in Embed Frameworks */,
 				F9CB62152E4D1271002695CE /* SettingsModule.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -34,6 +37,7 @@
 /* Begin PBXFileReference section */
 		96B4D7602E047B56006AF33B /* BabyJournal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BabyJournal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96B4D7742E04BFBF006AF33B /* DesignKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DesignKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D133A3612E56531800A07CF0 /* BabiesListAndRegistration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BabiesListAndRegistration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9CB62132E4D1271002695CE /* SettingsModule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SettingsModule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9E13A432E4CFE8F00BD2E7D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F9E13A452E4CFFF400BD2E7D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96B4D7752E04BFBF006AF33B /* DesignKit.framework in Frameworks */,
+				D133A3622E56531800A07CF0 /* BabiesListAndRegistration.framework in Frameworks */,
 				F9CB62142E4D1271002695CE /* SettingsModule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +107,7 @@
 		96B4D7732E04BFBF006AF33B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D133A3612E56531800A07CF0 /* BabiesListAndRegistration.framework */,
 				F9CB62132E4D1271002695CE /* SettingsModule.framework */,
 				96B4D7742E04BFBF006AF33B /* DesignKit.framework */,
 			);
