@@ -60,7 +60,7 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
                             let view = TabBarView(tabsProvider: {
                                 TabBarItemsProvider.items()
                             })
-                            .environmentObject(languageManager)
+                                .environmentObject(languageManager)
                             self.navigateToSwiftUIView(view: view)
                         }
                     }
@@ -68,8 +68,11 @@ final class MainCoordinator: ObservableObject, BBCoordinator {
                     guard let authVM = self.authViewModel else { return }
                     let authScreen = AuthApp(
                         authManager: self.authManager,
-                        authviewModel: authVM
-                    ) { user in }
+                        authViewModel: authVM,
+                        sessionView: { user in
+                            let vm = SessionViewModel(authViewModel: authVM, user: user)
+                        }
+                    )
                     self.navigateToSwiftUIView(view: authScreen)
                 }
 
