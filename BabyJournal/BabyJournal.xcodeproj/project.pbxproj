@@ -47,6 +47,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		11C7A9CA2E60B3C0002FEED7 /* Helpers */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		96B4D7622E047B56006AF33B /* BabyJournal */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BabyJournal;
@@ -86,6 +91,7 @@
 		96B4D7562E047B56006AF33B = {
 			isa = PBXGroup;
 			children = (
+				11C7A9CA2E60B3C0002FEED7 /* Helpers */,
 				F9E13A412E4CFE7E00BD2E7D /* Resources */,
 				D1F779042E3D21E70073E41C /* Coordinators */,
 				D15F92752E2082A100697D9C /* Models */,
@@ -152,6 +158,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				11C7A9CA2E60B3C0002FEED7 /* Helpers */,
 				96B4D7622E047B56006AF33B /* BabyJournal */,
 				D15F92622E20534D00697D9C /* Protocols */,
 				D15F92752E2082A100697D9C /* Models */,

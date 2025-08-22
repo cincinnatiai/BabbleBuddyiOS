@@ -12,3 +12,21 @@
 "BabyJournalView_Select_Event_Title" = "이벤트 선택";
 "BabyJournalView_Select_Title" = "선택";
 "BabyJournalView_Error_Title" = "오류";
+// MARK: Event Modal View
+"EventModalView_Screen_Title" = "이벤트 수정";
+"EventModalView_Event_Info" = "이벤트 정보";
+"EventModalView_Type" = "유형:";
+"EventModalView_Date" = "날짜:";
+"EventModalView_Details" = "세부 정보";
+"EventModalView_Unknown_Event_Type" = "알 수 없는 이벤트 유형입니다.";
+"EventModalView_Button_Save" = "저장";
+"EventModalView_Button_Delete" = "이벤트 삭제";
+"EventModalView_Button_Cancel" = "취소";
+"EventModalView_Mood" = "기분";
+// MARK: Events Forms
+"EventForms_Feeding_Type" = "수유 유형";
+"EventForms_Diaper_Dietels" = "기저귀 세부 사항";
+"EventForms_Sleep_Quality" = "수면 질";
+"EventForms_Activity_Details" = "활동 세부 사항";
+"EventForms_Crying_Reason" = "우는 이유";
+"EventForms_Temperature" = "체온";

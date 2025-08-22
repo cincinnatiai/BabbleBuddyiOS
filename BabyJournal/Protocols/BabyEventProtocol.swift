@@ -5,6 +5,8 @@
 //  Created by Noel Hiram Pat Angulo on 7/10/25.
 //
 
+import Foundation
+
 public protocol BabyEventProtocol: Codable {
     var partitionKey: String { get }
     var rangeKey: String { get }
@@ -19,4 +21,14 @@ public protocol BabyEventProtocol: Codable {
     var userId: String { get }
     var file: String { get }
     var timezone: String { get }
+}
+
+extension BabyEventProtocol {
+    var decodedBody: BabyEventBodyModel {
+        guard let data = body.data(using: .utf8),
+              let model = try? JSONDecoder().decode(BabyEventBodyModel.self, from: data) else {
+            return BabyEventBodyModel()
+        }
+        return model
+    }
 }

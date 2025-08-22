@@ -4,7 +4,7 @@ import SettingsModule
 
 public struct BabyJournalView: View {
     @ObservedObject private var viewModel: BabyJournalViewModel
-    @State private var showBottomSheet = false
+    @State private var activeModal: JournalModalType? = nil
     @State private var selectedBabyName: String = ""
     @State private var selectedBabyIndex: Int = 0
     @State private var selectedDate: Date = Date()
@@ -17,16 +17,36 @@ public struct BabyJournalView: View {
 
     public var body: some View {
         screenContent
-            .sheet(isPresented: $showBottomSheet) {
-                BBBottomSheetView(title: localizedStrings.BabyJournalViewSelectEventTitle){ event in
-                    viewModel
-                        .createJournalCreateRequest(
+            .sheet(item: $activeModal) { modal in
+                switch modal {
+                case .bottomSheet:
+                    BBBottomSheetView(title: localizedStrings.BabyJournalViewSelectEventTitle) { event in
+                        if let createRequest = viewModel.makeJournalRequest(
                             event: event,
-                            selectedBabyIndex: selectedBabyIndex, selectedDate: selectedDate
-                        )
-                    showBottomSheet = false
+                            selectedBabyIndex: selectedBabyIndex,
+                            selectedDate: selectedDate
+                        ){
+                            Task {
+                                await viewModel.createJournalData(request: createRequest)
+                            }
+                        }
+                        activeModal = nil
+                    }
+                    .presentationDetents([.medium])
+                    
+                case .eventDetail(let event):
+                    EventModalView(
+                        event: event,
+                        selectedBabyIndex: selectedBabyIndex,
+                        selectedDate: selectedDate,
+                        viewModel: viewModel,
+                        onClose: {
+                            activeModal = nil
+                        }
+                        
+                    )
+                    .presentationDetents([.large])
                 }
-                .presentationDetents([.medium])
             }
     }
 
@@ -55,7 +75,7 @@ public struct BabyJournalView: View {
             BBHStack{
                 Spacer()
                 BBFloatingActionButton(iconName: "plus") {
-                    showBottomSheet = true
+                    activeModal = .bottomSheet
                 }
             }
             .padding()
@@ -110,7 +130,11 @@ public struct BabyJournalView: View {
                     description: event.eventDate,
                     type: .event(.feed),
                     onEdit: {}, // TODO: Vlad will implement the Edit button
-                    onDelete: {} // TODO: Vlad will implement the Delete button
+                    onDelete: {}, // TODO: Vlad will implement the Delete button
+                    type: .event(.eat),
+                    onTap: {
+                        activeModal = .eventDetail(event: event)
+                    }
                 )
             }
         }

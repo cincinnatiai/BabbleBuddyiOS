@@ -31,14 +31,16 @@ public struct BBJournalEventItem: View {
 
     private func iconName(for type: EventType) -> String {
         switch type {
-        case .feed: return "feeding-bottle"
+        case .eat: return "feeding-bottle"
         case .pee: return "pee-icon"
         case .poop: return "poop-icon"
         case .sleep: return "sleeping-icon"
+        case .sleep_start: return "sleeping-icon"
+        case .sleep_end: return "sleeping-icon"
         case .play: return "play-icon"
         case .weight: return "wheight-icon"
         case .height: return "height-icon"
-        case .headSize: return "head-size"
+        case .head_circumference: return "head-size"
         case .more: return "ellipsis.circle"
         case .less: return "chevron.up.circle"
         }
