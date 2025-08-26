@@ -19,6 +19,12 @@ enum BabiesListLocalizedStringKeys {
     static var BabyTableViewCellDescriptionLabel: String { "BabyTableViewCell_Description_Label".localized }
     static var BabiesListViewAlertMessageTitle: String { "BabiesListView_AlertMessage_Title".localized }
     static var BabiesListViewAlertActionLabel: String { "BabiesListView_AlertAction_Label".localized }
+    static var BabyListViewAlertDeleteTitle: String { "BabyListView_AlertDelete_Title".localized }
+    static var BabyListViewAlertDeleteMessage: String { "BabyListView_AlertDelete_Message".localized }
+    static var BabyListViewAlertDeleteCancel: String { "BabyListView_AlertDelete_Cancel".localized }
+    static var BabyListViewAlertDelete: String { "BabyListView_AlertDelete_Delete".localized }
+    static var BabyListViewAlertDeleteDeleting: String { "BabyListView_AlertDelete_Deleting".localized }
+    static var BabyListViewAlertDeleteError: String { "BabyListView_AlertDelete_Error".localized }
     static var BabyRegistrationViewFirstNameTitle: String { "BabyRegistrationView_FirstName_Title".localized }
     static var BabyRegistrationViewFirstNamePlaceHolder: String { "BabyRegistrationView_FirstName_PlaceHolder".localized }
     static var BabyRegistrationViewLastNameTitle: String { "BabyRegistrationView_LastName_Title".localized }

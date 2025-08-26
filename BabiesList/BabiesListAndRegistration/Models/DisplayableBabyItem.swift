@@ -6,6 +6,7 @@
 //
 
 public struct BabyCardDisplayModel {
+    let rangeKey: String
     let baby: DisplayableBabyItem
     let gender: String?
 }

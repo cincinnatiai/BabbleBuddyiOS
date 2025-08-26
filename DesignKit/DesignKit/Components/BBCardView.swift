@@ -8,16 +8,42 @@ public struct BBCardView: View {
     let imageURL: String
     let description: String
     let type: BabyCardType
+    let onEdit: (() -> Void)?
+    let onDelete: (() -> Void)?
 
-    public init(name: String, description: String, imageURL: String? = nil, type: BabyCardType) {
+    public init(
+        name: String,
+        description: String,
+        imageURL: String? = nil,
+        type: BabyCardType,
+        onEdit: @escaping (() -> Void),
+        onDelete: @escaping (()-> Void))
+    {
         self.name = name
         self.description = description
         self.imageURL = imageURL ?? ""
         self.type = type
+        self.onEdit = onEdit
+        self.onDelete = onDelete
     }
 
     public var body: some View {
-        BBCardSectionViewContainer(title: name, icon: iconView) {
+        BBCardSectionViewContainer(
+            title: name,
+            icon: iconView,
+            editIcon: AnyView(
+            Button(action: { onEdit?() }) {
+                Image(systemName: "pencil")
+                    .font(.title2)
+            }
+            .buttonStyle(.plain)
+        ), deleteIcon: AnyView(
+            Button(action: { onDelete?() }) {
+                Image(systemName: "trash.fill")
+                    .font(.title2)
+            }
+            .buttonStyle(.plain)
+        )) {
             Text(description)
                 .textStyle(.body)
                 .foregroundColor(AppColor.textSecondary)

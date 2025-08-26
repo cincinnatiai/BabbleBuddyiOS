@@ -12,6 +12,12 @@
 "BabiesListView_AlertMessage_Title" = "Error";
 "BabiesListView_AlertAction_Label" = "Ok";
 "BabyListView_Screen_Title" = "My Babies";
+"BabyListView_AlertDelete_Title" = "Confirm";
+"BabyListView_AlertDelete_Message" = "Are you sure you want to Delete: ";
+"BabyListView_AlertDelete_Cancel" = "Cancel";
+"BabyListView_AlertDelete_Delete" = "Delete";
+"BabyListView_AlertDelete_Deleting" = "Deleting...";
+"BabyListView_AlertDelete_Error" = "Failed to delete baby";
 
 // MARK: Baby registration feature
 "BabyRegistrationView_Screen_Title" = "Baby registration";

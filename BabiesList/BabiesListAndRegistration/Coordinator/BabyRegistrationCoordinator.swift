@@ -18,15 +18,18 @@ final class BabyRegistrationCoordinator: BBCoordinator {
     private let navigationController: UINavigationController
     private let onSuccessfulRegistration: () -> Void
     private let localizedStrings = BabiesListLocalizedStringKeys.self
+    private let existingBaby: CreateBabyResponseProtocol?
 
     // MARK: Initialization
     init(
         service: BBABabiesServiceProtocol,
+        existingBaby: CreateBabyResponseProtocol? = nil,
         userEmail: String,
         navigationController: UINavigationController,
         onSuccessfulRegistration: @escaping () -> Void
     ) {
         self.service = service
+        self.existingBaby = existingBaby
         self.navigationController = navigationController
         self.userEmail = userEmail
         self.onSuccessfulRegistration = onSuccessfulRegistration
@@ -35,7 +38,8 @@ final class BabyRegistrationCoordinator: BBCoordinator {
     func start() {
         viewModel = BabyRegistrationViewModel(
             userEmail: userEmail,
-            babyService: service
+            babyService: service,
+            existingBaby: existingBaby
         )
         guard let viewModel = viewModel else { return }
         view = BabyRegistrationView(viewModel: viewModel) { [weak self] in
@@ -48,8 +52,11 @@ final class BabyRegistrationCoordinator: BBCoordinator {
     }
 
     func createView() {
-        let registrationVC = UIHostingController(rootView: view)
-        registrationVC.title = localizedStrings.BabyRegistrationScreenTitle
-        navigationController.pushViewController(registrationVC, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            let registrationVC = UIHostingController(rootView: view)
+            registrationVC.title = localizedStrings.BabyRegistrationScreenTitle
+            self.navigationController.pushViewController(registrationVC, animated: true)
+        }
     }
 }

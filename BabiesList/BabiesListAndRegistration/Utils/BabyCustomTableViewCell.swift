@@ -13,12 +13,18 @@ final class BabyTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func configure(with item: BabyCardDisplayModel) {
+    func configure(
+        with item: BabyCardDisplayModel,
+        onEdit: @escaping () -> Void,
+        onDelete: @escaping () -> Void
+    ) {
         let view = BBCardView(
             name: item.baby.title,
             description: item.baby.details?.first ?? "N/A",
             imageURL: item.baby.imageURL,
-            type: .baby(gender: item.gender)
+            type: .baby(gender: item.gender),
+            onEdit: onEdit,
+            onDelete: onDelete
         )
 
         let hosting = UIHostingController(rootView: view)

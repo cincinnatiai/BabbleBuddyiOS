@@ -18,6 +18,8 @@ import SwiftUI
 public struct BBCardSectionViewContainer<Content: View>: View {
     let title: String?
     let icon: Image?
+    let editIcon: AnyView?
+    let deleteIcon: AnyView?
     let content: () -> Content
 
     // MARK: - Layout Constants
@@ -29,10 +31,14 @@ public struct BBCardSectionViewContainer<Content: View>: View {
     public init(
         title: String? = nil,
         icon: Image? = nil,
+        editIcon: AnyView? = nil,
+        deleteIcon: AnyView? = nil,
         @ViewBuilder content: @escaping () -> Content
     ) {
         self.title = title
         self.icon = icon
+        self.editIcon = editIcon
+        self.deleteIcon = deleteIcon
         self.content = content
     }
 
@@ -51,6 +57,9 @@ public struct BBCardSectionViewContainer<Content: View>: View {
                     Text(title)
                         .font(.headline)
                         .foregroundStyle(.primary)
+                    Spacer()
+                    editIcon
+                    deleteIcon
                 }
             }
             content()
