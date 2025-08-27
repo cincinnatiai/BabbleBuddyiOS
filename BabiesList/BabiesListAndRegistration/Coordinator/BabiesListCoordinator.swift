@@ -34,10 +34,19 @@ public final class BabiesListCoordinator: BBCoordinator {
 
     public func navigateToBabiesList() -> UIViewController {
         guard let viewModel else { return UIViewController()}
-
-        return BabiesListView(viewModel: viewModel) { navController in
+        let view = BabiesListView(viewModel: viewModel, onAddBabyTapped: { navController in
             self.navigateToBabyRegistration(navController: navController)
-        }
+        }, onEditBabbyTapped: { navController, baby in
+            viewModel.fetchBaby(id: baby.rangeKey) { result in
+                switch result {
+                case .success(let babyDetails):
+                    self.navigateToEditBaby(navController: navController, baby: babyDetails)
+                case .failure: break
+                // TODO: handle error
+                }
+            }
+        })
+        return view
     }
 
     public func createView() {}
@@ -48,6 +57,22 @@ public final class BabiesListCoordinator: BBCoordinator {
     ){
         registrationCoordinator = BabyRegistrationCoordinator(
             service: babyService,
+            userEmail: user,
+            navigationController: navController,
+            onSuccessfulRegistration: {
+                self.viewModel?.initialize()
+            }
+        )
+        registrationCoordinator?.start()
+    }
+    
+    private func navigateToEditBaby(
+        navController: UINavigationController,
+        baby: CreateBabyResponseProtocol
+    ) {
+        registrationCoordinator = BabyRegistrationCoordinator(
+            service: babyService,
+            existingBaby: baby,
             userEmail: user,
             navigationController: navController,
             onSuccessfulRegistration: {

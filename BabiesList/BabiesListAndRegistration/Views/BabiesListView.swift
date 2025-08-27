@@ -15,6 +15,7 @@ public class BabiesListView: UIViewController {
     private var displayableBabies: [DisplayableBabyItem] = []
     private var subscription = [AnyCancellable]()
     private let onAddBabyTapped: ( UINavigationController ) -> Void
+    private let onEditBabbyTapped: (UINavigationController, BabyCardDisplayModel) -> Void
     private var localizedStrings: BabiesListLocalizedStringKeys.Type {
         return BabiesListLocalizedStringKeys.self
     }
@@ -32,7 +33,13 @@ public class BabiesListView: UIViewController {
     private lazy var babyListView: BBGenericListBuilder<BabyCardDisplayModel, BabyTableViewCell> = {
         let view = BBGenericListBuilder<BabyCardDisplayModel, BabyTableViewCell>()
         view.configureCell = { cell, baby in
-            cell.configure(with: baby)
+            cell.configure(with: baby) {
+                if let nav = self.navigationController {
+                    self.onEditBabbyTapped(nav, baby)
+                }
+            } onDelete: {
+                self.showDeleteConfirmation(for: baby)
+            }
         }
         view.didSelectItem = { baby in
             // TODO: Navigate to details screen
@@ -47,10 +54,12 @@ public class BabiesListView: UIViewController {
     /// - Parameter viewModel: The view model responsible for fetching and providing baby data.
     public init(
         viewModel: BabiesListViewModel,
-        onAddBabyTapped: @escaping ( UINavigationController ) -> Void
+        onAddBabyTapped: @escaping ( UINavigationController ) -> Void,
+        onEditBabbyTapped: @escaping (UINavigationController, BabyCardDisplayModel) -> Void
     ) {
         self.viewModel = viewModel
         self.onAddBabyTapped = onAddBabyTapped
+        self.onEditBabbyTapped = onEditBabbyTapped
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -118,6 +127,7 @@ public class BabiesListView: UIViewController {
     /// Observes state changes in the view model to update the UI accordingly.
     func observeViewModel() {
         viewModel.$babiesState
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] state in
                 guard let self else { return }
                 switch state {
@@ -171,6 +181,61 @@ public class BabiesListView: UIViewController {
 
     @objc func languageDidChange(_ notification: Notification) {
         title = localizedStrings.BabyListViewScreenTitle
+    }
+    
+    private func showDeleteConfirmation(for baby: BabyCardDisplayModel) {
+        let alert = UIAlertController(
+            title: localizedStrings.BabyListViewAlertDeleteTitle,
+            message: "\(localizedStrings.BabyListViewAlertDeleteMessage) \(baby.baby.title)?",
+            preferredStyle: .alert
+        )
+        alert.addAction(
+            UIAlertAction(
+                title: localizedStrings.BabyListViewAlertDeleteCancel,
+                style: .cancel,
+                handler: nil
+            )
+        )
+        alert.addAction(
+            UIAlertAction(
+                title: localizedStrings.BabyListViewAlertDelete,
+                style: .destructive,
+                handler: { [weak self] _ in
+                    self?.deleteBaby(baby)
+                }
+            )
+        )
+        present(alert, animated: true)
+    }
+
+    private func deleteBaby(_ baby: BabyCardDisplayModel) {
+        viewModel.deleteBaby(baby: baby) { [weak self] result in
+            guard let self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let success):
+                    if success {
+                        self.showMessage(self.localizedStrings.BabyListViewAlertDeleteDeleting)
+                    } else {
+                        self.showMessage(self.localizedStrings.BabyListViewAlertDeleteError)
+                    }
+                case .failure(let error):
+                    self.showMessage("Error: \(error.localizedDescription)")
+                }
+            }
+        }
+    }
+    
+    private func showMessage(_ message: String) {
+        let alert = UIAlertController(
+            title: nil,
+            message: message,
+            preferredStyle: .alert
+        )
+        present(alert, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            alert.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

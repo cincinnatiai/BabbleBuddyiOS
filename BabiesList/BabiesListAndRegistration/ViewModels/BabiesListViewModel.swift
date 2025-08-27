@@ -15,6 +15,8 @@ public class BabiesListViewModel {
     // MARK: Private properties
     private let babyService: BBABabiesServiceProtocol
     private let onSuccessFetchedBabies: (String) -> Void
+    private var user: String = ""
+    private let cincinnatiBabyService = "CincinnatiBabyService"
 
     // MARK: Initializer
     public init(
@@ -32,10 +34,10 @@ public class BabiesListViewModel {
             do {
                 let response = try await babyService.fetchBabies()
                 let babies = await transformToDisplayableBabies(response: response)
-                let user = response[0].accountProfile?.encryptedEmail?
-                    .base64DecodedString()
+                user = response[0].accountProfile?.encryptedEmail?
+                    .base64DecodedString() ?? ""
 
-                if let user = user {
+                if !user.isEmpty {
                     onSuccessFetchedBabies(user)
                 }
                 
@@ -50,6 +52,43 @@ public class BabiesListViewModel {
         }
     }
 
+    func fetchBaby(
+        id: String,
+        completion: @escaping (Result<CreateBabyResponseProtocol, Error>) -> Void
+    ) {
+        Task {
+            do {
+                let response = try await babyService.fetchBaby(with: id)
+                completion(.success(response))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func deleteBaby(
+        baby: BabyCardDisplayModel,
+        completion: @escaping (Result<Bool, Error>) -> Void
+    ) {
+        Task {
+            do {
+                let request = DeleteBabyRequestModel(
+                    isHardDelete: true,
+                    partitionKey: cincinnatiBabyService,
+                    rangeKey: baby.rangeKey,
+                    userId: user
+                )
+                let success = try await babyService.deleteBaby(request: request)
+                if success {
+                    initialize()
+                }
+                completion(.success(success))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
+
     // MARK: Private methods
     private func transformToDisplayableBabies(response: [BabiesResponseProtocol]) async -> [BabyCardDisplayModel] {
         return response.compactMap { element in
@@ -60,6 +99,7 @@ public class BabiesListViewModel {
             else { return nil }
 
             let gender = extractGender(from: baby.metadata)
+            let rangeKey = baby.rangeKey ?? ""
 
             let displayItem = DisplayableBabyItem(
                 imageURL: "",
@@ -67,7 +107,11 @@ public class BabiesListViewModel {
                 details: [babyDescription]
             )
 
-            return BabyCardDisplayModel(baby: displayItem, gender: gender)
+            return BabyCardDisplayModel(
+                rangeKey: rangeKey,
+                baby: displayItem,
+                gender: gender
+            )
         }
     }
 

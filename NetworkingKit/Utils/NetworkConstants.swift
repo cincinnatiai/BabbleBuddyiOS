@@ -16,6 +16,16 @@ public enum NetworkConstants {
 
     public enum Endpoint {
         public static let fetchAccounts = "fetchAccounts"
+        public static let create = "create"
+        public static let update = "update"
+        public static let delete = "delete"
+    }
+
+    public enum QueryItem {
+        public static let action = "action"
+        public static let partitionKey = "partitionKey"
+        public static let rangeKey = "rangeKey"
+        public static let cincinnatiBabyService = "CincinnatiBabyService"
     }
 
     public enum Error {

@@ -12,6 +12,12 @@
 "BabiesListView_AlertMessage_Title" = "오류";
 "BabiesListView_AlertAction_Label" = "좋아요";
 "BabyListView_Screen_Title" = "내 아기들";
+"BabyListView_AlertDelete_Title" = "확인";
+"BabyListView_AlertDelete_Message" = "삭제하시겠습니까: ";
+"BabyListView_AlertDelete_Cancel" = "취소";
+"BabyListView_AlertDelete_Delete" = "삭제";
+"BabyListView_AlertDelete_Deleting" = "삭제 중...";
+"BabyListView_AlertDelete_Error" = "아기를 삭제하지 못했습니다";
 
 // MARK: Baby registration feature
 "BabyRegistrationView_Screen_Title" = "아기 등록";
