@@ -41,8 +41,8 @@ public final class BabiesListCoordinator: BBCoordinator {
                 switch result {
                 case .success(let babyDetails):
                     self.navigateToEditBaby(navController: navController, baby: babyDetails)
-                case .failure(let error):
-                    print(error)
+                case .failure: break
+                // TODO: handle error
                 }
             }
         })
