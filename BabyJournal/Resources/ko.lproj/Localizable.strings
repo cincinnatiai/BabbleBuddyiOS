@@ -21,6 +21,7 @@
 "EventModalView_Unknown_Event_Type" = "알 수 없는 이벤트 유형입니다.";
 "EventModalView_Button_Save" = "저장";
 "EventModalView_Button_Delete" = "이벤트 삭제";
+"EventModalView_Delete_Confirmation_Message" = "이 이벤트를 삭제하시겠습니까?";
 "EventModalView_Button_Cancel" = "취소";
 "EventModalView_Mood" = "기분";
 // MARK: Events Forms

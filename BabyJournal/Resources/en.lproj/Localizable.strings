@@ -21,6 +21,7 @@
 "EventModalView_Unknown_Event_Type" = "Unknown event type.";
 "EventModalView_Button_Save" = "Save";
 "EventModalView_Button_Delete" = "Delete Event";
+"EventModalView_Delete_Confirmation_Message" = "Are you sure you want to delete this event?";
 "EventModalView_Button_Cancel" = "Cancel";
 "EventModalView_Mood" = "Mood";
 // MARK: Events Forms

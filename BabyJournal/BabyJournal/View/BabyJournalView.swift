@@ -128,10 +128,9 @@ public struct BabyJournalView: View {
                 BBCardView(
                     name: event.eventType,
                     description: event.eventDate,
-                    type: .event(.feed),
+                    type: .event(.eat),
                     onEdit: {}, // TODO: Vlad will implement the Edit button
                     onDelete: {}, // TODO: Vlad will implement the Delete button
-                    type: .event(.eat),
                     onTap: {
                         activeModal = .eventDetail(event: event)
                     }

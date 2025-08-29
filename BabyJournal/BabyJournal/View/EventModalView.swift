@@ -6,6 +6,7 @@ struct EventModalView: View {
     let selectedBabyIndex: Int
     let selectedDate: Date
     @ObservedObject var viewModel: BabyJournalViewModel
+    @State private var showDeleteConfirmation = false
     let onClose: () -> Void
     private var localizedStrings: BabyJournalLocalizedStringKeys.Type { BabyJournalLocalizedStringKeys.self }
 
@@ -41,6 +42,16 @@ struct EventModalView: View {
             .navigationTitle(localizedStrings.EventModalViewScreenTitle)
             .navigationBarTitleDisplayMode(.inline)
             .onAppear(perform: populateExistingValues)
+            .alert(isPresented: $showDeleteConfirmation) {
+                        Alert(
+                            title: Text(localizedStrings.EventModalViewButtonDelete),
+                            message: Text(localizedStrings.EventModalViewDeleteConfirmationMessage),
+                            primaryButton: .destructive(Text(localizedStrings.EventModalViewButtonDelete)) {
+                                handleDelete()
+                            },
+                            secondaryButton: .cancel()
+                        )
+                    }
             if case .loading = viewModel.state {
                 Color.black.opacity(0.4)
                     .ignoresSafeArea()
@@ -104,7 +115,7 @@ private extension EventModalView {
             .disabled(isLoading)
 
             Button(localizedStrings.EventModalViewButtonDelete, role: .destructive) {
-                handleDelete()
+                showDeleteConfirmation = true
             }
             .buttonStyle(.borderedProminent)
             .disabled(isLoading)

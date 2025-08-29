@@ -29,6 +29,7 @@ enum BabyJournalLocalizedStringKeys {
     static var EventModalViewUnknownEventType: String {"EventModalView_Unknown_Event_Type".localized}
     static var EventModalViewButtonSave: String {"EventModalView_Button_Save".localized}
     static var EventModalViewButtonDelete: String {"EventModalView_Button_Delete".localized}
+    static var EventModalViewDeleteConfirmationMessage: String {"EventModalView_Delete_Confirmation_Message".localized}
     static var EventModalViewButtonCancel: String {"EventModalView_Button_Cancel".localized}
     static var EventModalViewMood: String {"EventModalView_Mood".localized}
     // MARK: - Event Forms
