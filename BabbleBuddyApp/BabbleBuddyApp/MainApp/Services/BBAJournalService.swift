@@ -82,4 +82,38 @@ class BBAJournalService: BabyJournalServiceProtocol {
 
         return response
     }
+    
+    func deleteJournalEntry(request: any BabyJournal.JournalDeleteRequestProtocol) async throws -> Bool {
+        guard var components = URLComponents(string: baseURL) else {
+            throw ServiceErrors.invalidURL
+        }
+        
+        components.queryItems = [
+            URLQueryItem(name: "controller", value: "babyEvent"),
+            URLQueryItem(name: "action", value: "delete")
+        ]
+        
+        
+        guard let url = components.url else {
+            throw ServiceErrors.invalidURL
+        }
+        
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
+        let body = try encoder.encode(request)
+        
+        let endpoint = EndPointModel(
+            url: url,
+            method: .POST,
+            headers: [:],
+            body: body
+        )
+        
+        let success = try await client
+            .request(
+                endpoint: endpoint,
+                responseType: Bool.self
+            )
+        return success
+    }
 }

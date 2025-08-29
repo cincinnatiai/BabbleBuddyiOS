@@ -7,6 +7,7 @@ public struct BBCardView: View {
     let name: String
     let imageURL: String
     let description: String
+    let onTap: (() -> Void)?
     let type: BabyCardType
     let onEdit: (() -> Void)?
     let onDelete: (() -> Void)?
@@ -17,11 +18,14 @@ public struct BBCardView: View {
         imageURL: String? = nil,
         type: BabyCardType,
         onEdit: @escaping (() -> Void),
-        onDelete: @escaping (()-> Void))
+        onDelete: @escaping (()-> Void),
+        onTap: (() -> Void)? = nil)
+        
     {
         self.name = name
         self.description = description
         self.imageURL = imageURL ?? ""
+        self.onTap = onTap
         self.type = type
         self.onEdit = onEdit
         self.onDelete = onDelete
@@ -32,24 +36,21 @@ public struct BBCardView: View {
             title: name,
             icon: iconView,
             editIcon: AnyView(
-            Button(action: { onEdit?() }) {
-                Image(systemName: "pencil")
-                    .font(.title2)
+                Button(action: { onEdit?() }) {
+                    Image(systemName: "pencil")
+                        .font(.title2)
+                }
+                    .buttonStyle(.plain)
+            ), deleteIcon: AnyView(
+                Button(action: { onDelete?() }) {
+                    Image(systemName: "trash.fill")
+                        .font(.title2)
+                }
+                    .buttonStyle(.plain)
+            ),
+            onTap: onTap) {
             }
-            .buttonStyle(.plain)
-        ), deleteIcon: AnyView(
-            Button(action: { onDelete?() }) {
-                Image(systemName: "trash.fill")
-                    .font(.title2)
-            }
-            .buttonStyle(.plain)
-        )) {
-            Text(description)
-                .textStyle(.body)
-                .foregroundColor(AppColor.textSecondary)
-        }
     }
-
     // MARK: - Icon View
 
     private var iconView: Image? {
@@ -68,14 +69,16 @@ public struct BBCardView: View {
 
     private func eventIcon(for type: EventType) -> String {
         switch type {
-        case .feed: return "feeding-bottle"
+        case .eat: return "feeding-bottle"
         case .pee: return "pee-icon"
         case .poop: return "poop-icon"
         case .sleep: return "sleeping-icon"
+        case .sleep_start: return "sleeping-icon"
+        case .sleep_end: return "sleeping-icon"
         case .play: return "play-icon"
         case .weight: return "wheight-icon"
         case .height: return "height-icon"
-        case .headSize: return "head-size"
+        case .head_circumference: return "head-size"
         case .more: return "ellipsis.circle"
         case .less: return "chevron.up.circle"
         }
@@ -91,21 +94,21 @@ public enum BabyCardType {
 }
 
 public enum EventType: String, CaseIterable {
-    case feed, pee, poop, sleep, play
-    case weight, height, headSize
+    case eat, pee, poop, sleep, sleep_start, sleep_end, play
+    case weight, height, head_circumference
     case more, less
 
     static var primary: [EventType] {
-        [.feed, .pee, .poop, .sleep, .play, .more]
+        [.eat, .pee, .poop, .sleep, .play, .more]
     }
 
     static var secondary: [EventType] {
-        [.weight, .height, .headSize, .less]
+        [.weight, .height, .head_circumference, .less]
     }
 
     public var eventName: String {
            switch self {
-           case .feed:
+           case .eat:
                return "EAT"
            default:
                return self.rawValue.uppercased()

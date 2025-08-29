@@ -12,3 +12,22 @@
 "BabyJournalView_Select_Event_Title" = "Select an event";
 "BabyJournalView_Select_Title" = "Select";
 "BabyJournalView_Error_Title" = "Error";
+// MARK: Event Modal View
+"EventModalView_Screen_Title" = "Edit Event";
+"EventModalView_Event_Info" = "Event Info";
+"EventModalView_Type" = "Type: ";
+"EventModalView_Date" = "Date: ";
+"EventModalView_Details" = "Details";
+"EventModalView_Unknown_Event_Type" = "Unknown event type.";
+"EventModalView_Button_Save" = "Save";
+"EventModalView_Button_Delete" = "Delete Event";
+"EventModalView_Delete_Confirmation_Message" = "Are you sure you want to delete this event?";
+"EventModalView_Button_Cancel" = "Cancel";
+"EventModalView_Mood" = "Mood";
+// MARK: Events Forms
+"EventForms_Feeding_Type" = "Feeding Type";
+"EventForms_Diaper_Dietels" = "Diaper Details";
+"EventForms_Sleep_Quality" = "Sleep Quality";
+"EventForms_Activity_Details" = "Activity Details";
+"EventForms_Crying_Reason" = "Crying Reason";
+"EventForms_Temperature" = "Temperature";

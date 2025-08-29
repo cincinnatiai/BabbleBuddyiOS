@@ -89,10 +89,22 @@ final public class BabyJournalViewModel: ObservableObject {
         displayFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         displayFormatter.timeZone = TimeZone(identifier: event.timezone)
         let formattedDate = displayFormatter.string(from: date)
+        let body = event.decodedBody
 
         return BabyEventDisplayableInfo(
             eventType: event.type,
-            eventDate: formattedDate
+            eventDate: formattedDate,
+            partitionKey: event.partitionKey,
+            rangeKey: event.rangeKey,
+            userId: event.userId,
+            notes: body.notes,
+            mood: body.mood,
+            temperature: body.temperature,
+            feedingType: body.feedingType,
+            diaperDetails: body.diaperDetails,
+            sleepQuality: body.sleepQuality,
+            cryingReason: body.cryingReason,
+            activityDetails: body.activityDetails
         )
     }
 
@@ -115,18 +127,26 @@ final public class BabyJournalViewModel: ObservableObject {
         }
     }
 
-    private func createJournalData(request: JournalCreateRequestProtocol) {
-        Task {
-            do{
-                _ = try await journalService.createJournalEntry(
-                    request: request
-                )
-                fetchBabies()
-            } catch {
-                await MainActor.run {
-                    state = .error(error: error)
-                }
+    func createJournalData(request: JournalCreateRequestProtocol, shouldFetch: Bool = true) async {
+        do{
+            _ = try await journalService.createJournalEntry(
+                request: request
+            )
+            if shouldFetch { fetchBabies() }
+        } catch {
+            await MainActor.run {
+                state = .error(error: error)
             }
+        }
+    }
+
+    public func deleteJournalData(request: JournalDeleteRequestProtocol, shouldFetch: Bool = true) async {
+
+        do {
+            let _  = try await journalService.deleteJournalEntry(request: request)
+            if shouldFetch { fetchBabies() }
+        } catch {
+            state = .error(error: error)
         }
     }
 
@@ -221,29 +241,27 @@ final public class BabyJournalViewModel: ObservableObject {
         }
     }
 
-    func createJournalCreateRequest(
+    func makeJournalRequest(
         event: EventType,
         selectedBabyIndex: Int,
         selectedDate: Date,
         requestBody: BabyEventBodyModel = BabyEventBodyModel()
-    ){
+    ) -> BabyJournalEventRequestModel? {
         currentDate = selectedDate
         currentBabyIndex = selectedBabyIndex
         let stringEvent = getStringEvent(event: event)
         let baby = babies[selectedBabyIndex]
-        let dateTime = mergeDatePickerWithCurrentTime(
-            selectedDate: selectedDate
-        )
+        let dateTime = mergeDatePickerWithCurrentTime(selectedDate: selectedDate)
 
         guard let accountRangeKey = baby.account?.rangeKey,
               let userId = baby.accountProfile?.rangeKey else {
-            return
+            return nil
         }
 
         do {
             let bodyData = try JSONEncoder().encode(requestBody)
             let bodyString = String(data: bodyData, encoding: .utf8) ?? ""
-            let createRequest = BabyJournalEventRequestModel(
+            return BabyJournalEventRequestModel(
                 accountPartitionKey: "CincinnatiBabyService",
                 accountRangeKey: accountRangeKey,
                 body: bodyString,
@@ -255,19 +273,70 @@ final public class BabyJournalViewModel: ObservableObject {
                 unit: "",
                 userId: userId
             )
-            createJournalData(request: createRequest)
         } catch {
             state = .error(error: error)
+            return nil
         }
     }
-}
 
-struct BabyEventDisplayableInfo {
-    public let eventType: String
-    public let eventDate: String
+    func makeDeleteRequest(
+        isHardDelete: Bool = true,
+        partitionKey: String,
+        rangeKey: String,
+        userId: String
+    ) -> JournalDeleteRequestModel? {
+        return JournalDeleteRequestModel(
+            isHardDelete: isHardDelete,
+            partitionKey: partitionKey,
+            rangeKey: rangeKey,
+            userId: userId
+        )
+    }
 
-    init(eventType: String, eventDate: String) {
-        self.eventType = eventType
-        self.eventDate = eventDate
+    func handleSaveEventUpdate(
+        event: BabyEventDisplayableInfo,
+        eventType: EventType?,
+        selectedBabyIndex: Int,
+        selectedDate: Date,
+        requestBody: BabyEventBodyModel,
+        onClose: @escaping () -> Void
+    ) {
+        guard let eventType = eventType else {
+            onClose()
+            return
+        }
+
+        guard let createRequest = makeJournalRequest(
+            event: eventType,
+            selectedBabyIndex: selectedBabyIndex,
+            selectedDate: selectedDate,
+            requestBody: requestBody
+        ), let deleteRequest = makeDeleteRequest(
+            partitionKey: event.partitionKey,
+            rangeKey: event.rangeKey,
+            userId: event.userId
+        ) else {
+            return
+        }
+
+        Task {
+            await deleteJournalData(request: deleteRequest, shouldFetch: false)
+            await createJournalData(request: createRequest, shouldFetch: false)
+            fetchBabies()
+            onClose()
+        }
+    }
+
+    func handleDeleteEvent(event: BabyEventDisplayableInfo) {
+        guard let deleteRequest = makeDeleteRequest(
+            isHardDelete: true,
+            partitionKey: event.partitionKey,
+            rangeKey: event.rangeKey,
+            userId: event.userId
+        ) else { return }
+
+        Task{
+            await deleteJournalData(request: deleteRequest)
+        }
     }
 }
